@@ -1,0 +1,8 @@
+---
+title: "Demo: Shinylive-Apps & webR"
+
+---
+
+In den folgenden Abschnitten sind verschiedene Shiny-Apps und webR-Anwendungen dargestellt. 
+
+...
