@@ -26,6 +26,10 @@ website:
       - index.qmd
       - text: "VO2-Modellfunktion"
         file: VO2.qmd
+      - text: "EPOC-Modellfunktion"
+        file: EPOC.qmd
+      - text: "Laktat-Leistung"
+        file: Laktat.qmd
 
 lang: de
 number-sections: true
