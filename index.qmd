@@ -1,8 +1,11 @@
 ---
 title: "Demo: Shinylive-Apps & webR"
-
 ---
 
-In den folgenden Abschnitten sind verschiedene Shiny-Apps und webR-Anwendungen dargestellt. 
+In den folgenden Abschnitten werden Möglichkeiten zur interaktiven Gestaltung der Masterarbeit mittels verschiedener Shiny-Apps und webR-Anwendungen vorgestellt. Dazu zählt eine interaktive exponentielle V̇O₂-Modellfunktion, die den Anstieg des Sauerstoffvolumenstroms zu Beginn einer Belastung modelliert. Zudem wird eine interaktive bi-exponentielle EPOC-Modellfunktion dargestellt.<br>
+Die unterschiedlichen Parameter der Modellfunktionen können mittels Schiebereglern angepasst werden. Darüber hinaus ist es möglich, eigene Daten in Form einer CSV-Datei hochzuladen. Zusätzlich ist eine interaktive Laktat-Leistungs-Beziehung in einer Shiny-App integriert, bei der die Datenpunkte ebenfalls interaktiv verändert werden können.
 
-...
+Die automatische Anpassung mittels nichtlinearer Regression ist derzeit noch nicht funktionsfähig.
+
+In der finalen Masterarbeit sollen weitere interaktive Shiny-Apps nach diesem Vorbild implementiert werden, um Berechnungen anschaulich darzustellen und die Nutzung sowie Berechnung verschiedener Parameter mit eigenen Daten zu ermöglichen.
+

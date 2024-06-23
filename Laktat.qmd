@@ -10,7 +10,7 @@ filters:
   - shinylive
 ---
 
-# Laktat-Leistungs - Beziehung in einer Shiny App
+# Laktat-Leistungs-Beziehung
 
 ```{shinylive-r}
 #| standalone: true

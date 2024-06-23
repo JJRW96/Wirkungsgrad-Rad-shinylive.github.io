@@ -15,6 +15,7 @@ website:
   page-footer:
     right: "[Quarto](https://quarto.org/)"
     left: "Johannes Will, 2024"
+    
   sidebar:
     logo: "images/Logo_η_3.png"  
     pinned: false

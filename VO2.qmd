@@ -12,6 +12,7 @@ filters:
 
 # Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung in Shiny
 
+
 ```{shinylive-r}
 #| standalone: true
 #| viewerHeight: 900
@@ -29,9 +30,9 @@ ui <- fluidPage(
   titlePanel("V̇O2-Modellfunktion"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("VO2", "V̇O2", min = 0.5, max = 7.0, value = 1.7, step = 0.1),
+      sliderInput("VO2", "V̇O2", min = 0.0, max = 7.0, value = 1.7, step = 0.1),
       sliderInput("Tau", "Tau", min = 5, max = 360, value = 23, step = 1.0),
-      sliderInput("VO2_Start", "V̇O2 Start", min = 0.2, max = 4.0, value = 0.4, step = 0.1),
+      sliderInput("VO2_Start", "V̇O2 Start", min = 0.0, max = 4.0, value = 0.4, step = 0.1),
       sliderInput("time_delay", "Zeitverzögerung", min = 0, max = 300, value = 10, step = 1),
       sliderInput("VO2_Ruhe", "V̇O2 Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),
       actionButton("toggle_data", "Beispieldaten einfügen"),
@@ -77,24 +78,24 @@ server <- function(input, output, session) {
 
   observeEvent(input$optimize, {
     if (show_data()) {
-      data_to_use <- if (is.null(uploaded_data())) {
+      Beispieldaten <- if (is.null(uploaded_data())) {
         data.frame(t_s = t_data, VO2_t = VO2_data)
       } else {
         uploaded_data()
       }
       
       t_delay <- isolate(input$time_delay)
-      diffs <- abs(data_to_use$t_s - t_delay)
+      diffs <- abs(Beispieldaten$t_s - t_delay)
       row_index <- which.min(diffs)
-      min_VO2 <- data_to_use$VO2_t[row_index] # VO2 zum Zeitpunkt von t_delay
-      max_VO2 <- max(data_to_use$VO2_t, na.rm = TRUE)
+      min_VO2 <- Beispieldaten$VO2_t[row_index] # VO2 zum Zeitpunkt von t_delay
+      max_VO2 <- max(Beispieldaten$VO2_t, na.rm = TRUE)
       VO2_Ruhe <- isolate(input$VO2_Ruhe)
       
       # Fitten des VO2_SS * (1 - exp(-(t_s-t_delay)/Tau)) + VO2_Start Terms mit den Startwerten für VO2_SS und C
       start_values <- list(VO2 = isolate(input$VO2), Tau = isolate(input$Tau), VO2_Start = isolate(input$VO2_Start))
       
       fit <- try(nlsLM(VO2_t ~ VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start,
-                       data = data_to_use,
+                       data = Beispieldaten,
                        start = start_values,
                        lower = c(VO2 = 0.5, Tau = 5, VO2_Start = 0.2),
                        upper = c(VO2 = 7.0, Tau = 360, VO2_Start = 4.0),
@@ -128,20 +129,20 @@ server <- function(input, output, session) {
       VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start
     }
     
-    data_to_use <- if (show_data() && !is.null(uploaded_data())) {
+    Beispieldaten <- if (show_data() && !is.null(uploaded_data())) {
       uploaded_data()
     } else {
       data.frame(t_s = t_data, VO2_t = VO2_data)
     }
     
     tau4 <- 4 * Tau
-    max_t <- max(data_to_use$t_s, na.rm = TRUE)
+    max_t <- max(Beispieldaten$t_s, na.rm = TRUE)
     max_x <- max(1.05 * tau4 + t_delay, max_t * 1.05)
     t_s <- seq(0, max_x * 1.20, by = 1)
     model_values <- ifelse(t_s >= t_delay, model_function(t_s, VO2, Tau, VO2_Start, t_delay), NA)
     VO2_SS_gross <- model_function(tau4 + t_delay, VO2, Tau, VO2_Start, t_delay)
     VO2_SS_net <- VO2_SS_gross - VO2_Ruhe
-    max_y <- max(1.05 * VO2_SS_gross, max(data_to_use$VO2_t, na.rm = TRUE) * 1.05)
+    max_y <- max(1.05 * VO2_SS_gross, max(Beispieldaten$VO2_t, na.rm = TRUE) * 1.05)
     
     eq_text <- sprintf("V̇O₂ = %.2f * (1 - e<sup>-(t - %.2f) / %.2f</sup>) + %.2f",
                        VO2, t_delay, Tau, VO2_Start)
@@ -246,18 +247,18 @@ server <- function(input, output, session) {
     
     if (show_data()) {
       # Modellwerte für die eingefügten Datenpunkte berechnen
-      model_values_at_data <- model_function(data_to_use$t_s, VO2, Tau, VO2_Start, t_delay)
+      model_values_at_data <- model_function(Beispieldaten$t_s, VO2, Tau, VO2_Start, t_delay)
       
       # Beschränke die Daten auf den Zeitraum von t_delay bis max_t für die R²-Berechnung
-      data_subset <- data_to_use[data_to_use$t_s >= t_delay & data_to_use$t_s <= max_t, ]
+      data_subset <- Beispieldaten[Beispieldaten$t_s >= t_delay & Beispieldaten$t_s <= max_t, ]
       
       # R² berechnen
-      ss_res <- sum((data_subset$VO2_t - model_values_at_data[data_to_use$t_s >= t_delay & data_to_use$t_s <= max_t])^2, na.rm = TRUE)
+      ss_res <- sum((data_subset$VO2_t - model_values_at_data[Beispieldaten$t_s >= t_delay & Beispieldaten$t_s <= max_t])^2, na.rm = TRUE)
       ss_tot <- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)
       r_squared <- 1 - (ss_res / ss_tot)
       
       p <- p %>%
-        add_trace(data = data_to_use, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',
+        add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',
                   name = 'V̇O<sub>2</sub>', 
                   marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),
                   line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4')) %>%
@@ -286,6 +287,24 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 ```
 
+::: {.callout-note icon=false}
+## nlsLM
+Die Funktion der automatischen Anpassung mittels nichtlinearer Regression ist noch nicht funktionsfähig.
+:::
+
+
+::: {.callout-note icon=false}
+## CSV-Datei hochladen
+VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:<br>
+t_s,VO2_t<br>
+0.0,0.479<br>
+1.0,0.459<br>
+2.3,0.488<br>
+3.5,0.477<br>
+...
+:::
+
+# Anpassbarer und ausführbarer R-Code mit webR
 
 ```{webr-r}
 # Hier VO2-Daten einfügen
@@ -299,3 +318,5 @@ VO2_t <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 
 plot(t_s, VO2_t, type="o", col="blue", xlab="Zeit (s)", ylab="VO2 (l/min)", main="VO2 (l/min)")
 
 ```
+
+
