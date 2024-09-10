@@ -1,20 +1,3 @@
----
-title: "EPOC-Modellfunktion"
-format:
-  html:
-    resources: 
-      - shinylive-sw.js
-
-filters:
-  - webr
-  - shinylive
----
-
-# Modellfunktion des EPOC in Abhängigkeit von der Zeit während der Belastung
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 1200
 library(shiny)
 library(plotly)
 library(minpack.lm)
@@ -33,18 +16,10 @@ model_function <- function(t_s, A, TauA, B, TauB, C, t_delay) {
 # UI
 ui <- fluidPage(
   useShinyjs(),
-  tags$head(
-    tags$style(HTML("
-      .sidebar { width: 300px; }
-      .main-content { margin-left: 310px; }
-    "))
-  ),
   titlePanel("EPOC-Modellfunktion"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
-      style = "position: fixed; height: 100vh; overflow-y: auto;",
-      class = "sidebar",
+  fluidRow(
+    column(3,
+      style = "height: 90vh; overflow-y: auto;",
       tags$h4(tags$strong("Modellparameter:")),
       sliderInput("A", "A", min = 0.0, max = 6, value = 2.2, step = 0.01),
       sliderInput("TauA", "TauA", min = 5, max = 90, value = 35, step = 0.10),
@@ -54,19 +29,19 @@ ui <- fluidPage(
       sliderInput("O2_Store", "O2-Speicher [l]", min = 0, max = 1, value = 0.4, step = 0.01),
       sliderInput("t_delay", "Zeitverzögerung [s]", min = 0, max = 300, value = 0, step = 1),
       sliderInput("VO2_Ruhe", "VO2 Ruhe [l · min^-1]", min = 0.0, max = 1.0, value = 0.3, step = 0.01),
-      br(),
+      br(), br(),
       actionButton("toggle_data", "Beispieldaten anzeigen"),
-      br(),
+      br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv"),
       tags$h4(tags$strong("Modelanpassung:")),
       actionButton("fit_all", "nlsLM - Fit"),
       h4("Schrittweise:"),
-      actionButton("fit_tau", "1. Fit: Tau"),
-      actionButton("fit_slow", "2. Fit: EPOC Slow"),
+      actionButton("fit_tau", "1. Fit: Tau"), br(),
+      actionButton("fit_slow", "2. Fit: EPOC Slow"), br(),
       actionButton("fit_full", "3. Fit: EPOC Fast"),
-      br(),
+      br(), br(),
       actionButton("toggle_view", "Ruhe_sim anzeigen"),
-      br(),
+      br(), br(),
       tags$h4(tags$strong("Berechnung - Ruhesauerstoffaufnahme:")),
       radioButtons("geschlecht", "Geschlecht:", choices = c("Männlich", "Weiblich")),
       sliderInput("koerpermasse", "Körpermasse [kg]:", min = 40, max = 150, value = 75),
@@ -75,14 +50,16 @@ ui <- fluidPage(
       sliderInput("rq", "RQ:", min = 0.7, max = 1.0, value = 0.77, step = 0.01),
       actionButton("berechne_vo2_ruhe", "VO2 Ruhe berechnen")
     ),
-    mainPanel(
-      class = "main-content",
-      plotlyOutput("plot", height = "600px"),
-      htmlOutput("instructions")
+    column(8,
+           fluidRow(
+             column(12, plotlyOutput("plot"))
+           ),
+           fluidRow(
+             column(12, htmlOutput("instructions"))
+           )
     )
   )
 )
-
 
 
 server <- function(input, output, session) {
@@ -563,19 +540,3 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui = ui, server = server)
-
-
-
-```
-
-
-::: {.callout-note icon=false}
-## CSV-Datei hochladen
-VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:<br>
-t_s,VO2_t<br>
-0.0,5.479<br>
-1.0,5.251<br>
-2.3,4.829<br>
-3.5,4.746<br>
-...
-:::

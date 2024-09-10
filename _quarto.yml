@@ -29,7 +29,7 @@ website:
         file: VO2.qmd
       - text: "EPOC-Modellfunktion"
         file: EPOC.qmd
-      - text: "Laktat-Leistung"
+      - text: "Laktat-Modellfunktionen"
         file: Laktat.qmd
 
 lang: de

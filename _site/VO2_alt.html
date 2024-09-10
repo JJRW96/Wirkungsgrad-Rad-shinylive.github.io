@@ -64,8 +64,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./EPOC.html" rel="next">
-<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -399,7 +397,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-max-height":"","fig-height":5,"fig-cap":"","read-only":"false","results":"markup","editor-quick-suggestions":"false","label":"unnamed-chunk-1","editor-font-scale":"1","output":"true","dpi":72,"fig-width":7,"warning":"true","context":"interactive","out-width":"700px","autorun":"false","editor-word-wrap":"true","message":"true","out-height":"","classes":"","comment":""},"code":"# Hier VO2-Daten einfügen\n\n# Zeitpunkte\nt_s <- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)\n\n# VO2-Werte\nVO2_t <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)\n\nplot(t_s, VO2_t, type=\"o\", col=\"blue\", xlab=\"Zeit (s)\", ylab=\"VO2 (l/min)\", main=\"VO2 (l/min)\")"}];
+globalThis.qwebrCellDetails = [{"code":"# Hier VO2-Daten einfügen\n\n# Zeitpunkte\nt_s <- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)\n\n# VO2-Werte\nVO2_t <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)\n\nplot(t_s, VO2_t, type=\"o\", col=\"blue\", xlab=\"Zeit (s)\", ylab=\"VO2 (l/min)\", main=\"VO2 (l/min)\")","id":1,"options":{"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","results":"markup","out-height":"","comment":"","fig-cap":"","dpi":72,"message":"true","fig-height":5,"editor-word-wrap":"true","warning":"true","context":"interactive","output":"true","classes":"","fig-width":7,"label":"unnamed-chunk-1","out-width":"700px","read-only":"false","autorun":"false"}}];
 
 </script>
 <script type="module">
@@ -1610,7 +1608,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./VO2.html">VO2-Modellfunktion</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">VO2-Modellfunktion während der Belastung</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
@@ -1646,7 +1644,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./VO2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./VO2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">VO2-Modellfunktion</span></a>
   </div>
 </li>
@@ -1659,7 +1657,7 @@ globalThis.qwebrExecuteCode = async function (
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Laktat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Laktat-Modellfunktionen</span></a>
+ <span class="menu-text">Laktat-Leistung</span></a>
   </div>
 </li>
     </ul>
@@ -1672,9 +1670,8 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Inhalt auf dieser Seite</h2>
    
   <ul>
-  <li><a href="#modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" id="toc-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" class="nav-link active" data-scroll-target="#modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung"><span class="header-section-number">1</span> Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</a></li>
-  <li><a href="#bi-exponentiale-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" id="toc-bi-exponentiale-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" class="nav-link" data-scroll-target="#bi-exponentiale-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung"><span class="header-section-number">2</span> Bi-exponentiale Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</a></li>
-  <li><a href="#anpassbarer-und-ausführbarer-r-code-mit-webr-eines-des-sauerstoffvolumenstrom-verlaufs-in-abhängigkeit-von-der-zeit-während-der-belastung" id="toc-anpassbarer-und-ausführbarer-r-code-mit-webr-eines-des-sauerstoffvolumenstrom-verlaufs-in-abhängigkeit-von-der-zeit-während-der-belastung" class="nav-link" data-scroll-target="#anpassbarer-und-ausführbarer-r-code-mit-webr-eines-des-sauerstoffvolumenstrom-verlaufs-in-abhängigkeit-von-der-zeit-während-der-belastung"><span class="header-section-number">3</span> Anpassbarer und ausführbarer R-Code mit webR eines des Sauerstoffvolumenstrom-Verlaufs in Abhängigkeit von der Zeit während der Belastung</a></li>
+  <li><a href="#modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung-in-shiny" id="toc-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung-in-shiny" class="nav-link active" data-scroll-target="#modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung-in-shiny"><span class="header-section-number">1</span> Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung in Shiny</a></li>
+  <li><a href="#anpassbarer-und-ausführbarer-r-code-mit-webr" id="toc-anpassbarer-und-ausführbarer-r-code-mit-webr" class="nav-link" data-scroll-target="#anpassbarer-und-ausführbarer-r-code-mit-webr"><span class="header-section-number">2</span> Anpassbarer und ausführbarer R-Code mit webR</a></li>
   </ul>
 </nav>
     </div>
@@ -1967,7 +1964,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">VO2-Modellfunktion während der Belastung</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code zeigen</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Gesamten Code verbergen</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">Quellcode anzeigen</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">VO2-Modellfunktion während der Belastung</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -1984,8 +1981,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</h1>
+<section id="modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung-in-shiny" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung in Shiny</h1>
 <pre class="shinylive-r" data-engine="r"><code>#| standalone: true
 #| viewerHeight: 900
 
@@ -2002,22 +1999,16 @@ ui &lt;- fluidPage(
   titlePanel("V̇O2-Modellfunktion"),
   sidebarLayout(
     sidebarPanel(
-      width = 3,
       sliderInput("VO2", "V̇O2", min = 0.0, max = 7.0, value = 1.7, step = 0.1),
       sliderInput("Tau", "Tau", min = 5, max = 360, value = 23, step = 1.0),
       sliderInput("VO2_Start", "V̇O2 Start", min = 0.0, max = 4.0, value = 0.4, step = 0.1),
-      sliderInput("VO2_Ruhe", "V̇O2 Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),
       sliderInput("time_delay", "Zeitverzögerung", min = 0, max = 300, value = 10, step = 1),
-      conditionalPanel(
-        condition = "output.showFitSlider",
-        sliderInput("nlsLM_end", "nlsLM Ende", min = 10, max = max(t_data), value = max(t_data), step = 1)
-      ),
+      sliderInput("VO2_Ruhe", "V̇O2 Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),
       actionButton("toggle_data", "Beispieldaten einfügen"),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv"),
       actionButton("optimize", "Fit: nlsLM")
     ),
     mainPanel(
-      width = 9,
       plotlyOutput("plot")
     )
   )
@@ -2030,8 +2021,12 @@ server &lt;- function(input, output, session) {
   
   observeEvent(input$toggle_data, {
     show_data(!show_data())
-    max_t &lt;- max(t_data)
-    updateSliderInput(session, "nlsLM_end", min = input$time_delay, max = max_t, value = max_t)
+  })
+  
+  observe({
+    if (input$VO2_Start &lt; input$VO2_Ruhe) {
+      updateSliderInput(session, "V̇O2, Start", value = input$VO2_Ruhe)
+    }
   })
   
   observeEvent(input$file_upload, {
@@ -2040,8 +2035,6 @@ server &lt;- function(input, output, session) {
     if ("t_s" %in% names(df) &amp;&amp; "VO2_t" %in% names(df)) {
       uploaded_data(df)
       show_data(TRUE)
-      max_t &lt;- max(df$t_s)
-      updateSliderInput(session, "nlsLM_end", min = input$time_delay, max = max_t, value = max_t)
     } else {
       showModal(modalDialog(
         title = "Invalid CSV",
@@ -2051,18 +2044,7 @@ server &lt;- function(input, output, session) {
       ))
     }
   })
-  
-  observe({
-    if (input$VO2_Start &lt; input$VO2_Ruhe) {
-      updateSliderInput(session, "VO2_Start", value = input$VO2_Ruhe)
-    }
-  })
-  
-  output$showFitSlider &lt;- reactive({
-    show_data()
-  })
-  outputOptions(output, "showFitSlider", suspendWhenHidden = FALSE)
-  
+
   observeEvent(input$optimize, {
     if (show_data()) {
       Beispieldaten &lt;- if (is.null(uploaded_data())) {
@@ -2072,31 +2054,27 @@ server &lt;- function(input, output, session) {
       }
       
       t_delay &lt;- isolate(input$time_delay)
-      nlsLM_end &lt;- isolate(input$nlsLM_end)
+      diffs &lt;- abs(Beispieldaten$t_s - t_delay)
+      row_index &lt;- which.min(diffs)
+      min_VO2 &lt;- Beispieldaten$VO2_t[row_index] # VO2 zum Zeitpunkt von t_delay
+      max_VO2 &lt;- max(Beispieldaten$VO2_t, na.rm = TRUE)
+      VO2_Ruhe &lt;- isolate(input$VO2_Ruhe)
       
-      # Finde den nächstgelegenen Zeitpunkt zu t_delay
-      closest_index &lt;- which.min(abs(Beispieldaten$t_s - t_delay))
-      
-      # Setze VO2_Start auf den gerundeten Wert des nächsten Punktes
-      VO2_Start &lt;- round(Beispieldaten$VO2_t[closest_index], 1)
-      
-      updateSliderInput(session, "VO2_Start", value = VO2_Start)
-      
-      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= nlsLM_end, ]
-      
-      start_values &lt;- list(VO2 = isolate(input$VO2), Tau = isolate(input$Tau))
+      # Fitten des VO2_SS * (1 - exp(-(t_s-t_delay)/Tau)) + VO2_Start Terms mit den Startwerten für VO2_SS und C
+      start_values &lt;- list(VO2 = isolate(input$VO2), Tau = isolate(input$Tau), VO2_Start = isolate(input$VO2_Start))
       
       fit &lt;- try(nlsLM(VO2_t ~ VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start,
-                       data = data_subset,
+                       data = Beispieldaten,
                        start = start_values,
-                       lower = c(VO2 = 0.5, Tau = 5),
-                       upper = c(VO2 = 7.0, Tau = 360),
+                       lower = c(VO2 = 0.5, Tau = 5, VO2_Start = 0.2),
+                       upper = c(VO2 = 7.0, Tau = 360, VO2_Start = 4.0),
                        control = nls.control(maxiter = 1024)), silent = TRUE)
       
       if (!inherits(fit, "try-error")) {
-        params &lt;- as.list(coef(fit))
-        updateSliderInput(session, "VO2", value = params$VO2)
-        updateSliderInput(session, "Tau", value = params$Tau)
+        params &lt;- coef(fit)
+        updateSliderInput(session, "VO2", value = params["VO2"])
+        updateSliderInput(session, "Tau", value = params["Tau"])
+        updateSliderInput(session, "VO2_Start", value = params["VO2_Start"])
       } else {
         showModal(modalDialog(
           title = "nlsLM fehlgeschlagen",
@@ -2114,8 +2092,8 @@ server &lt;- function(input, output, session) {
     VO2_Start &lt;- input$VO2_Start
     t_delay &lt;- input$time_delay
     VO2_Ruhe &lt;- input$VO2_Ruhe
-    nlsLM_end &lt;- input$nlsLM_end
     
+    # Modellfunktion
     model_function &lt;- function(t_s, VO2, Tau, VO2_Start, t_delay) {
       VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start
     }
@@ -2154,12 +2132,6 @@ server &lt;- function(input, output, session) {
         type = "line", x0 = tau4 + t_delay, x1 = tau4 + t_delay, y0 = 0, y1 = max_y * 1.2,
         line = list(color = "gray", width = 1, dash = "dash")
       ),
-      if (show_data()) {
-        list(
-          type = "line", x0 = nlsLM_end, x1 = nlsLM_end, y0 = 0, y1 = max_y * 1.2,
-          line = list(color = "gray", width = 1, dash = "dash")
-        )
-      },
       list(
         type = "line", x0 = 0, x1 = max_x, y0 = VO2_Ruhe, y1 = VO2_Ruhe,
         line = list(color = '#1CADE4', width = 1, dash = "solid")
@@ -2170,7 +2142,6 @@ server &lt;- function(input, output, session) {
       add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',
                 name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%
       layout(title = "V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",
-             margin = list(t = 40),
              xaxis = list(title = "t [s]"),
              yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),
              shapes = shapes,
@@ -2238,23 +2209,20 @@ server &lt;- function(input, output, session) {
                list(
                  x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
-               ),
-               if (show_data()) {
-                 list(
-                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
-                   textangle = -90, font = list(size = 11)
-                 )
-               }
+               )
              )) %&gt;%
       add_trace(x = ~t_s, y = ~rep(VO2_Ruhe, length(t_s)), type = 'scatter', mode = 'lines',
                 name = 'V̇O&lt;sub&gt;2, Ruhe&lt;/sub&gt;', line = list(color = '#1CADE4'))
     
     if (show_data()) {
+      # Modellwerte für die eingefügten Datenpunkte berechnen
       model_values_at_data &lt;- model_function(Beispieldaten$t_s, VO2, Tau, VO2_Start, t_delay)
       
-      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= input$nlsLM_end, ]
+      # Beschränke die Daten auf den Zeitraum von t_delay bis max_t für die R²-Berechnung
+      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= max_t, ]
       
-      ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= input$nlsLM_end])^2, na.rm = TRUE)
+      # R² berechnen
+      ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= max_t])^2, na.rm = TRUE)
       ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)
       r_squared &lt;- 1 - (ss_res / ss_tot)
       
@@ -2286,14 +2254,18 @@ server &lt;- function(input, output, session) {
 
 # App ausführen
 shinyApp(ui = ui, server = server)</code></pre>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#::: {.callout-note icon=false}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## nlsLM</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Die Funktion der automatischen Anpassung mittels nichtlinearer Regression ist noch nicht funktionsfähig.</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#:::</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+nlsLM
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Funktion der automatischen Anpassung mittels nichtlinearer Regression ist noch nicht funktionsfähig.</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2309,219 +2281,8 @@ CSV-Datei hochladen
 </div>
 </div>
 </section>
-<section id="bi-exponentiale-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Bi-exponentiale Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</h1>
-<pre class="shinylive-r" data-engine="r"><code>#| standalone: true
-#| viewerHeight: 900
-
-library(shiny)
-library(plotly)
-library(minpack.lm)
-
-# Example data
-t_data &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)
-VO2_data &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)
-
-# UI
-ui &lt;- fluidPage(
-  titlePanel("Biexponentielle V̇O2-Modellfunktion"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
-      sliderInput("VO2", "V̇O2_fast", min = 0.0, max = 7.0, value = 1.5, step = 0.1),
-      sliderInput("tau_fast", "Tau_fast", min = 5, max = 360, value = 20, step = 1.0),
-      sliderInput("VO2_Start", "V̇O2_Start", min = 0.0, max = 4.0, value = 0.6, step = 0.1),
-      sliderInput("VO2_Ruhe", "V̇O2_Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),
-      sliderInput("time_delay", "Zeitverzögerung_fast", min = 0, max = 300, value = 10, step = 1),
-      sliderInput("VO2_slow", "V̇O2_slow", min = 0.0, max = 7.0, value = 0.1, step = 0.1),
-      sliderInput("tau_slow", "Tau_slow", min = 30, max = 600, value = 180, step = 1.0),
-      sliderInput("time_delay_slow", "Zeitverzögerung_slow", min = 0, max = 600, value = 120, step = 1),
-      actionButton("toggle_data", "Beispieldaten einfügen"),
-      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
-    ),
-    mainPanel(
-      width = 9,
-      plotlyOutput("plot")
-    )
-  )
-)
-
-# Server
-server &lt;- function(input, output, session) {
-  show_data &lt;- reactiveVal(FALSE)
-  uploaded_data &lt;- reactiveVal(NULL)
-  
-  observeEvent(input$toggle_data, {
-    show_data(!show_data())
-  })
-  
-  observeEvent(input$file_upload, {
-    req(input$file_upload)
-    df &lt;- read.csv(input$file_upload$datapath)
-    if ("t_s" %in% names(df) &amp;&amp; "VO2_t" %in% names(df)) {
-      uploaded_data(df)
-      show_data(TRUE)
-    } else {
-      showModal(modalDialog(
-        title = "Invalid CSV",
-        "Die csv-Datei muss 't_s' und 'VO2_t' als Spaltennamen beinhalten.",
-        easyClose = TRUE,
-        footer = NULL
-      ))
-    }
-  })
-  
-  observe({
-    if (input$VO2_Start &lt; input$VO2_Ruhe) {
-      updateSliderInput(session, "VO2_Start", value = input$VO2_Ruhe)
-    }
-  })
-  
-  output$plot &lt;- renderPlotly({
-    VO2 &lt;- input$VO2
-    tau_fast &lt;- input$tau_fast
-    VO2_slow &lt;- input$VO2_slow
-    tau_slow &lt;- input$tau_slow
-    VO2_Start &lt;- input$VO2_Start
-    t_delay &lt;- input$time_delay
-    t_delay_slow &lt;- input$time_delay_slow
-    VO2_Ruhe &lt;- input$VO2_Ruhe
-    
-    model_function &lt;- function(t_s, VO2, tau_fast, VO2_slow, tau_slow, VO2_Start, t_delay, t_delay_slow) {
-      VO2 * (1 - exp(-(t_s - t_delay) / tau_fast)) + 
-        VO2_slow * (1 - exp(-(t_s - t_delay_slow) / tau_slow)) + 
-        VO2_Start
-    }
-    
-    model_fast &lt;- function(t_s, VO2, tau_fast, t_delay) {
-      VO2 * (1 - exp(-(t_s - t_delay) / tau_fast))
-    }
-    
-    model_slow &lt;- function(t_s, VO2_slow, tau_slow, t_delay_slow) {
-      pmax(VO2_slow * (1 - exp(-(t_s - t_delay_slow) / tau_slow)), 0)
-    }
-    
-    Beispieldaten &lt;- if (show_data() &amp;&amp; !is.null(uploaded_data())) {
-      uploaded_data()
-    } else {
-      data.frame(t_s = t_data, VO2_t = VO2_data)
-    }
-    
-    max_t &lt;- max(Beispieldaten$t_s, na.rm = TRUE)
-    max_x &lt;- max_t * 1.05
-    t_s &lt;- seq(0, max_x * 1.20, by = 1)
-    
-    model_values &lt;- ifelse(t_s &gt;= t_delay, model_function(t_s, VO2, tau_fast, VO2_slow, tau_slow, VO2_Start, t_delay, t_delay_slow), NA)
-    fast_values &lt;- ifelse(t_s &gt;= t_delay, model_fast(t_s, VO2, tau_fast, t_delay), NA)
-    slow_values &lt;- ifelse(t_s &gt;= t_delay_slow, model_slow(t_s, VO2_slow, tau_slow, t_delay_slow), NA)
-    
-    max_y &lt;- max(Beispieldaten$VO2_t, na.rm = TRUE) * 1.05
-    
-    eq_text &lt;- sprintf("V̇O₂ = %.2f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.2f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.2f",
-                       VO2, t_delay, tau_fast, VO2_slow, t_delay_slow, tau_slow, VO2_Start)
-    t_halb &lt;- tau_fast * log(2)
-    
-    shapes &lt;- list(
-      list(
-        type = "line", x0 = t_delay, x1 = t_delay, y0 = 0, y1 = max_y * 1.2,
-        line = list(color = "gray", width = 1, dash = "dash")
-      ),
-      list(
-        type = "line", x0 = t_delay_slow, x1 = t_delay_slow, y0 = 0, y1 = max_y * 1.2,
-        line = list(color = "gray", width = 1, dash = "dash")
-      )
-    )
-    
-    p &lt;- plot_ly() %&gt;%
-      add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',
-                name = 'V̇O2-Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%
-      add_trace(x = ~t_s, y = ~fast_values, type = 'scatter', mode = 'lines', 
-                name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;fast&lt;/sub&gt;', line = list(color = '#42BA97')) %&gt;%
-      add_trace(x = ~t_s, y = ~slow_values, type = 'scatter', mode = 'lines', 
-                name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;slow&lt;/sub&gt;', line = list(color = '#BB7693')) %&gt;%
-      layout(title = "Biexponentielle V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",
-             margin = list(t = 40),
-             xaxis = list(title = "t [s]"),
-             yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),
-             shapes = shapes,
-             annotations = list(
-               list(
-                 x = max_x * 0.20,
-                 y = max_y * 0.3,
-                 text = eq_text,
-                 showarrow = FALSE,
-                 xanchor = 'left',
-                 yanchor = 'bottom',
-                 font = list(
-                   family = "Arial, sans-serif",
-                   size = 10,
-                   color = "black"
-                 )
-               ),
-               list(
-                 x = max_x * 0.2,
-                 y = max_y * 0.1,
-                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),
-                 showarrow = FALSE,
-                 xanchor = 'left',
-                 yanchor = 'bottom',
-                 font = list(
-                   family = "Arial, sans-serif",
-                   size = 10,
-                   color = "black"
-                 )
-               ),
-               list(
-                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
-                 textangle = -90, font = list(size = 11)
-               ),
-               list(
-                 x = t_delay_slow, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay_slow&lt;/sub&gt;: %.1f", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
-                 textangle = -90, font = list(size = 11)
-               )
-             )) %&gt;%
-      add_trace(x = ~t_s, y = ~rep(VO2_Ruhe, length(t_s)), type = 'scatter', mode = 'lines',
-                name = 'V̇O&lt;sub&gt;2, Ruhe&lt;/sub&gt;', line = list(color = '#1CADE4'))
-    
-    if (show_data()) {
-      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= max_t, ]
-      model_values_at_data &lt;- model_function(data_subset$t_s, VO2, tau_fast, VO2_slow, tau_slow, VO2_Start, t_delay, t_delay_slow)
-      
-      ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data)^2, na.rm = TRUE)
-      ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)
-      r_squared &lt;- 1 - (ss_res / ss_tot)
-    
-      p &lt;- p %&gt;%
-        add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',
-                  name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;', 
-                  marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),
-                  line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4')) %&gt;%
-        layout(annotations = list(
-          list(
-            x = max_x * 0.2,
-            y = max_y * 0.2,
-            text = sprintf("R²: %.3f", r_squared),
-            showarrow = FALSE,
-            xanchor = 'left',
-            yanchor = 'bottom',
-            font = list(
-              family = "Arial, sans-serif",
-              size = 10,
-              color = "black"
-            )
-          )
-        ))
-    }
-    
-    p
-  })
-}
-
-# App ausführen
-shinyApp(ui = ui, server = server)</code></pre>
-</section>
-<section id="anpassbarer-und-ausführbarer-r-code-mit-webr-eines-des-sauerstoffvolumenstrom-verlaufs-in-abhängigkeit-von-der-zeit-während-der-belastung" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Anpassbarer und ausführbarer R-Code mit webR eines des Sauerstoffvolumenstrom-Verlaufs in Abhängigkeit von der Zeit während der Belastung</h1>
+<section id="anpassbarer-und-ausführbarer-r-code-mit-webr" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Anpassbarer und ausführbarer R-Code mit webR</h1>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
@@ -3145,588 +2906,328 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Demo: Shinylive-Apps &amp; webR">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Demo: Shinylive-Apps &amp; webR</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./EPOC.html" class="pagination-link" aria-label="EPOC-Modellfunktion">
-        <span class="nav-page-text">EPOC-Modellfunktion</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "VO2-Modellfunktion während der Belastung"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    resources: </span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - shinylive-sw.js</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">      </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - shinylive</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(minpack.lm)</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="in"># Beispieldaten</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="in">t_data &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_data &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="in"># UI</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("V̇O2-Modellfunktion"),</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 3,</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2", "V̇O2", min = 0.0, max = 7.0, value = 1.7, step = 0.1),</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("Tau", "Tau", min = 5, max = 360, value = 23, step = 1.0),</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_Start", "V̇O2 Start", min = 0.0, max = 4.0, value = 0.4, step = 0.1),</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_Ruhe", "V̇O2 Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("time_delay", "Zeitverzögerung", min = 0, max = 300, value = 10, step = 1),</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="in">      conditionalPanel(</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="in">        condition = "output.showFitSlider",</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in">        sliderInput("nlsLM_end", "nlsLM Ende", min = 10, max = max(t_data), value = max(t_data), step = 1)</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("toggle_data", "Beispieldaten einfügen"),</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv"),</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Fit: nlsLM")</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 9,</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot")</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in"># Server</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="in">  show_data &lt;- reactiveVal(FALSE)</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="in">  uploaded_data &lt;- reactiveVal(NULL)</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$toggle_data, {</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="in">    show_data(!show_data())</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="in">    max_t &lt;- max(t_data)</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="in">    updateSliderInput(session, "nlsLM_end", min = input$time_delay, max = max_t, value = max_t)</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$file_upload, {</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="in">    req(input$file_upload)</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="in">    df &lt;- read.csv(input$file_upload$datapath)</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="in">    if ("t_s" %in% names(df) &amp;&amp; "VO2_t" %in% names(df)) {</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data(df)</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="in">      show_data(TRUE)</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a><span class="in">      max_t &lt;- max(df$t_s)</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "nlsLM_end", min = input$time_delay, max = max_t, value = max_t)</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Invalid CSV",</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die csv-Datei muss 't_s' und 'VO2_t' als Spaltennamen beinhalten.",</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="in">  observe({</span></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="in">    if (input$VO2_Start &lt; input$VO2_Ruhe) {</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "VO2_Start", value = input$VO2_Ruhe)</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="in">  output$showFitSlider &lt;- reactive({</span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">    show_data()</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="in">  outputOptions(output, "showFitSlider", suspendWhenHidden = FALSE)</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$optimize, {</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="in">    if (show_data()) {</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="in">      Beispieldaten &lt;- if (is.null(uploaded_data())) {</span></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="in">        data.frame(t_s = t_data, VO2_t = VO2_data)</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="in">      } else {</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="in">        uploaded_data()</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="in">      t_delay &lt;- isolate(input$time_delay)</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="in">      nlsLM_end &lt;- isolate(input$nlsLM_end)</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="in">      # Finde den nächstgelegenen Zeitpunkt zu t_delay</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="in">      closest_index &lt;- which.min(abs(Beispieldaten$t_s - t_delay))</span></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="in">      # Setze VO2_Start auf den gerundeten Wert des nächsten Punktes</span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="in">      VO2_Start &lt;- round(Beispieldaten$VO2_t[closest_index], 1)</span></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "VO2_Start", value = VO2_Start)</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="in">      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= nlsLM_end, ]</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="in">      start_values &lt;- list(VO2 = isolate(input$VO2), Tau = isolate(input$Tau))</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="in">      fit &lt;- try(nlsLM(VO2_t ~ VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start,</span></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a><span class="in">                       data = data_subset,</span></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="in">                       start = start_values,</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="in">                       lower = c(VO2 = 0.5, Tau = 5),</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="in">                       upper = c(VO2 = 7.0, Tau = 360),</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="in">                       control = nls.control(maxiter = 1024)), silent = TRUE)</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="in">      if (!inherits(fit, "try-error")) {</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="in">        params &lt;- as.list(coef(fit))</span></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a><span class="in">        updateSliderInput(session, "VO2", value = params$VO2)</span></span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="in">        updateSliderInput(session, "Tau", value = params$Tau)</span></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a><span class="in">      } else {</span></span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="in">        showModal(modalDialog(</span></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a><span class="in">          title = "nlsLM fehlgeschlagen",</span></span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="in">          "Die nicht-lineare Regression mittels Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",</span></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="in">          easyClose = TRUE,</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="in">          footer = NULL</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="in">        ))</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2 &lt;- input$VO2</span></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a><span class="in">    Tau &lt;- input$Tau</span></span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Start &lt;- input$VO2_Start</span></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a><span class="in">    t_delay &lt;- input$time_delay</span></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Ruhe &lt;- input$VO2_Ruhe</span></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a><span class="in">    nlsLM_end &lt;- input$nlsLM_end</span></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a><span class="in">    model_function &lt;- function(t_s, VO2, Tau, VO2_Start, t_delay) {</span></span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a><span class="in">      VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start</span></span>
-<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a><span class="in">    Beispieldaten &lt;- if (show_data() &amp;&amp; !is.null(uploaded_data())) {</span></span>
-<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
-<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
-<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_s = t_data, VO2_t = VO2_data)</span></span>
-<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="in">    tau4 &lt;- 4 * Tau</span></span>
-<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a><span class="in">    max_t &lt;- max(Beispieldaten$t_s, na.rm = TRUE)</span></span>
-<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a><span class="in">    max_x &lt;- max(1.05 * tau4 + t_delay, max_t * 1.05)</span></span>
-<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a><span class="in">    t_s &lt;- seq(0, max_x * 1.20, by = 1)</span></span>
-<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a><span class="in">    model_values &lt;- ifelse(t_s &gt;= t_delay, model_function(t_s, VO2, Tau, VO2_Start, t_delay), NA)</span></span>
-<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_gross &lt;- model_function(tau4 + t_delay, VO2, Tau, VO2_Start, t_delay)</span></span>
-<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_net &lt;- VO2_SS_gross - VO2_Ruhe</span></span>
-<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a><span class="in">    max_y &lt;- max(1.05 * VO2_SS_gross, max(Beispieldaten$VO2_t, na.rm = TRUE) * 1.05)</span></span>
-<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("V̇O₂ = %.2f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.2f",</span></span>
-<span id="cb4-167"><a href="#cb4-167" aria-hidden="true" tabindex="-1"></a><span class="in">                       VO2, t_delay, Tau, VO2_Start)</span></span>
-<span id="cb4-168"><a href="#cb4-168" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_gross_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,gross&lt;/sub&gt;: %.3f", VO2_SS_gross)</span></span>
-<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_net_text &lt;- sprintf("VO₂ &lt;sub&gt;SS,net&lt;/sub&gt;: %.3f", VO2_SS_net)</span></span>
-<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="in">    t_halb &lt;- Tau * log(2)</span></span>
-<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a><span class="in">    shapes &lt;- list(</span></span>
-<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
-<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = t_delay, x1 = t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
-<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
-<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
-<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
-<span id="cb4-178"><a href="#cb4-178" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = Tau + t_delay, x1 = Tau + t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
-<span id="cb4-179"><a href="#cb4-179" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
-<span id="cb4-180"><a href="#cb4-180" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
-<span id="cb4-181"><a href="#cb4-181" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
-<span id="cb4-182"><a href="#cb4-182" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = tau4 + t_delay, x1 = tau4 + t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
-<span id="cb4-183"><a href="#cb4-183" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
-<span id="cb4-184"><a href="#cb4-184" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
-<span id="cb4-185"><a href="#cb4-185" aria-hidden="true" tabindex="-1"></a><span class="in">      if (show_data()) {</span></span>
-<span id="cb4-186"><a href="#cb4-186" aria-hidden="true" tabindex="-1"></a><span class="in">        list(</span></span>
-<span id="cb4-187"><a href="#cb4-187" aria-hidden="true" tabindex="-1"></a><span class="in">          type = "line", x0 = nlsLM_end, x1 = nlsLM_end, y0 = 0, y1 = max_y * 1.2,</span></span>
-<span id="cb4-188"><a href="#cb4-188" aria-hidden="true" tabindex="-1"></a><span class="in">          line = list(color = "gray", width = 1, dash = "dash")</span></span>
-<span id="cb4-189"><a href="#cb4-189" aria-hidden="true" tabindex="-1"></a><span class="in">        )</span></span>
-<span id="cb4-190"><a href="#cb4-190" aria-hidden="true" tabindex="-1"></a><span class="in">      },</span></span>
-<span id="cb4-191"><a href="#cb4-191" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
-<span id="cb4-192"><a href="#cb4-192" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = 0, x1 = max_x, y0 = VO2_Ruhe, y1 = VO2_Ruhe,</span></span>
-<span id="cb4-193"><a href="#cb4-193" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = '#1CADE4', width = 1, dash = "solid")</span></span>
-<span id="cb4-194"><a href="#cb4-194" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
-<span id="cb4-195"><a href="#cb4-195" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb4-196"><a href="#cb4-196" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-197"><a href="#cb4-197" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
-<span id="cb4-198"><a href="#cb4-198" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',</span></span>
-<span id="cb4-199"><a href="#cb4-199" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%</span></span>
-<span id="cb4-200"><a href="#cb4-200" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",</span></span>
-<span id="cb4-201"><a href="#cb4-201" aria-hidden="true" tabindex="-1"></a><span class="in">             margin = list(t = 40),</span></span>
-<span id="cb4-202"><a href="#cb4-202" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "t [s]"),</span></span>
-<span id="cb4-203"><a href="#cb4-203" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),</span></span>
-<span id="cb4-204"><a href="#cb4-204" aria-hidden="true" tabindex="-1"></a><span class="in">             shapes = shapes,</span></span>
-<span id="cb4-205"><a href="#cb4-205" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
-<span id="cb4-206"><a href="#cb4-206" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-207"><a href="#cb4-207" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
-<span id="cb4-208"><a href="#cb4-208" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.5,</span></span>
-<span id="cb4-209"><a href="#cb4-209" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = eq_text,</span></span>
-<span id="cb4-210"><a href="#cb4-210" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
-<span id="cb4-211"><a href="#cb4-211" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
-<span id="cb4-212"><a href="#cb4-212" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
-<span id="cb4-213"><a href="#cb4-213" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
-<span id="cb4-214"><a href="#cb4-214" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
-<span id="cb4-215"><a href="#cb4-215" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
-<span id="cb4-216"><a href="#cb4-216" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
-<span id="cb4-217"><a href="#cb4-217" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-218"><a href="#cb4-218" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-219"><a href="#cb4-219" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-220"><a href="#cb4-220" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
-<span id="cb4-221"><a href="#cb4-221" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.4,</span></span>
-<span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = VO2_SS_gross_text,</span></span>
-<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
-<span id="cb4-224"><a href="#cb4-224" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
-<span id="cb4-225"><a href="#cb4-225" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
-<span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
-<span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
-<span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
-<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
-<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
-<span id="cb4-234"><a href="#cb4-234" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.3,</span></span>
-<span id="cb4-235"><a href="#cb4-235" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = VO2_SS_net_text,</span></span>
-<span id="cb4-236"><a href="#cb4-236" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
-<span id="cb4-237"><a href="#cb4-237" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
-<span id="cb4-238"><a href="#cb4-238" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
-<span id="cb4-239"><a href="#cb4-239" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
-<span id="cb4-240"><a href="#cb4-240" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
-<span id="cb4-241"><a href="#cb4-241" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
-<span id="cb4-242"><a href="#cb4-242" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
-<span id="cb4-243"><a href="#cb4-243" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-244"><a href="#cb4-244" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-245"><a href="#cb4-245" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-246"><a href="#cb4-246" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
-<span id="cb4-247"><a href="#cb4-247" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.2,</span></span>
-<span id="cb4-248"><a href="#cb4-248" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),</span></span>
-<span id="cb4-249"><a href="#cb4-249" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
-<span id="cb4-250"><a href="#cb4-250" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
-<span id="cb4-251"><a href="#cb4-251" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
-<span id="cb4-252"><a href="#cb4-252" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
-<span id="cb4-253"><a href="#cb4-253" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
-<span id="cb4-254"><a href="#cb4-254" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
-<span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
-<span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
-<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb4-264"><a href="#cb4-264" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
-<span id="cb4-265"><a href="#cb4-265" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-266"><a href="#cb4-266" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-267"><a href="#cb4-267" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb4-268"><a href="#cb4-268" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
-<span id="cb4-269"><a href="#cb4-269" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-270"><a href="#cb4-270" aria-hidden="true" tabindex="-1"></a><span class="in">               if (show_data()) {</span></span>
-<span id="cb4-271"><a href="#cb4-271" aria-hidden="true" tabindex="-1"></a><span class="in">                 list(</span></span>
-<span id="cb4-272"><a href="#cb4-272" aria-hidden="true" tabindex="-1"></a><span class="in">                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb4-273"><a href="#cb4-273" aria-hidden="true" tabindex="-1"></a><span class="in">                   textangle = -90, font = list(size = 11)</span></span>
-<span id="cb4-274"><a href="#cb4-274" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-275"><a href="#cb4-275" aria-hidden="true" tabindex="-1"></a><span class="in">               }</span></span>
-<span id="cb4-276"><a href="#cb4-276" aria-hidden="true" tabindex="-1"></a><span class="in">             )) %&gt;%</span></span>
-<span id="cb4-277"><a href="#cb4-277" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~rep(VO2_Ruhe, length(t_s)), type = 'scatter', mode = 'lines',</span></span>
-<span id="cb4-278"><a href="#cb4-278" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2, Ruhe&lt;/sub&gt;', line = list(color = '#1CADE4'))</span></span>
-<span id="cb4-279"><a href="#cb4-279" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-280"><a href="#cb4-280" aria-hidden="true" tabindex="-1"></a><span class="in">    if (show_data()) {</span></span>
-<span id="cb4-281"><a href="#cb4-281" aria-hidden="true" tabindex="-1"></a><span class="in">      model_values_at_data &lt;- model_function(Beispieldaten$t_s, VO2, Tau, VO2_Start, t_delay)</span></span>
-<span id="cb4-282"><a href="#cb4-282" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-283"><a href="#cb4-283" aria-hidden="true" tabindex="-1"></a><span class="in">      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= input$nlsLM_end, ]</span></span>
-<span id="cb4-284"><a href="#cb4-284" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-285"><a href="#cb4-285" aria-hidden="true" tabindex="-1"></a><span class="in">      ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= input$nlsLM_end])^2, na.rm = TRUE)</span></span>
-<span id="cb4-286"><a href="#cb4-286" aria-hidden="true" tabindex="-1"></a><span class="in">      ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)</span></span>
-<span id="cb4-287"><a href="#cb4-287" aria-hidden="true" tabindex="-1"></a><span class="in">      r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
-<span id="cb4-288"><a href="#cb4-288" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-289"><a href="#cb4-289" aria-hidden="true" tabindex="-1"></a><span class="in">      p &lt;- p %&gt;%</span></span>
-<span id="cb4-290"><a href="#cb4-290" aria-hidden="true" tabindex="-1"></a><span class="in">        add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
-<span id="cb4-291"><a href="#cb4-291" aria-hidden="true" tabindex="-1"></a><span class="in">                  name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;', </span></span>
-<span id="cb4-292"><a href="#cb4-292" aria-hidden="true" tabindex="-1"></a><span class="in">                  marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),</span></span>
-<span id="cb4-293"><a href="#cb4-293" aria-hidden="true" tabindex="-1"></a><span class="in">                  line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4')) %&gt;%</span></span>
-<span id="cb4-294"><a href="#cb4-294" aria-hidden="true" tabindex="-1"></a><span class="in">        layout(annotations = list(</span></span>
-<span id="cb4-295"><a href="#cb4-295" aria-hidden="true" tabindex="-1"></a><span class="in">          list(</span></span>
-<span id="cb4-296"><a href="#cb4-296" aria-hidden="true" tabindex="-1"></a><span class="in">            x = max_x * 0.85,</span></span>
-<span id="cb4-297"><a href="#cb4-297" aria-hidden="true" tabindex="-1"></a><span class="in">            y = max_y * 0.1,</span></span>
-<span id="cb4-298"><a href="#cb4-298" aria-hidden="true" tabindex="-1"></a><span class="in">            text = sprintf("R²: %.3f", r_squared),</span></span>
-<span id="cb4-299"><a href="#cb4-299" aria-hidden="true" tabindex="-1"></a><span class="in">            showarrow = FALSE,</span></span>
-<span id="cb4-300"><a href="#cb4-300" aria-hidden="true" tabindex="-1"></a><span class="in">            xanchor = 'left',</span></span>
-<span id="cb4-301"><a href="#cb4-301" aria-hidden="true" tabindex="-1"></a><span class="in">            yanchor = 'bottom',</span></span>
-<span id="cb4-302"><a href="#cb4-302" aria-hidden="true" tabindex="-1"></a><span class="in">            font = list(</span></span>
-<span id="cb4-303"><a href="#cb4-303" aria-hidden="true" tabindex="-1"></a><span class="in">              family = "Arial, sans-serif",</span></span>
-<span id="cb4-304"><a href="#cb4-304" aria-hidden="true" tabindex="-1"></a><span class="in">              size = 12,</span></span>
-<span id="cb4-305"><a href="#cb4-305" aria-hidden="true" tabindex="-1"></a><span class="in">              color = "black"</span></span>
-<span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a><span class="in">            )</span></span>
-<span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a><span class="in">          )</span></span>
-<span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a><span class="in">        ))</span></span>
-<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
-<span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-313"><a href="#cb4-313" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb4-314"><a href="#cb4-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-315"><a href="#cb4-315" aria-hidden="true" tabindex="-1"></a><span class="in"># App ausführen</span></span>
-<span id="cb4-316"><a href="#cb4-316" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
-<span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a><span class="co">#::: {.callout-note icon=false}</span></span>
-<span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a><span class="do">## nlsLM</span></span>
-<span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a><span class="co">#Die Funktion der automatischen Anpassung mittels nichtlinearer Regression ist noch nicht funktionsfähig.</span></span>
-<span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a><span class="co">#:::</span></span>
-<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-330"><a href="#cb4-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-331"><a href="#cb4-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-332"><a href="#cb4-332" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false}</span>
-<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV-Datei hochladen</span></span>
-<span id="cb4-334"><a href="#cb4-334" aria-hidden="true" tabindex="-1"></a>VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:&lt;br&gt;</span>
-<span id="cb4-335"><a href="#cb4-335" aria-hidden="true" tabindex="-1"></a>t_s,VO2_t&lt;br&gt;</span>
-<span id="cb4-336"><a href="#cb4-336" aria-hidden="true" tabindex="-1"></a>0.0,0.479&lt;br&gt;</span>
-<span id="cb4-337"><a href="#cb4-337" aria-hidden="true" tabindex="-1"></a>1.0,0.459&lt;br&gt;</span>
-<span id="cb4-338"><a href="#cb4-338" aria-hidden="true" tabindex="-1"></a>2.3,0.488&lt;br&gt;</span>
-<span id="cb4-339"><a href="#cb4-339" aria-hidden="true" tabindex="-1"></a>3.5,0.477&lt;br&gt;</span>
-<span id="cb4-340"><a href="#cb4-340" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb4-341"><a href="#cb4-341" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-342"><a href="#cb4-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-343"><a href="#cb4-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-344"><a href="#cb4-344" aria-hidden="true" tabindex="-1"></a><span class="fu"># Bi-exponentiale Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</span></span>
-<span id="cb4-345"><a href="#cb4-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
-<span id="cb4-346"><a href="#cb4-346" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
-<span id="cb4-347"><a href="#cb4-347" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
-<span id="cb4-348"><a href="#cb4-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-349"><a href="#cb4-349" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
-<span id="cb4-350"><a href="#cb4-350" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
-<span id="cb4-351"><a href="#cb4-351" aria-hidden="true" tabindex="-1"></a><span class="in">library(minpack.lm)</span></span>
-<span id="cb4-352"><a href="#cb4-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-353"><a href="#cb4-353" aria-hidden="true" tabindex="-1"></a><span class="in"># Example data</span></span>
-<span id="cb4-354"><a href="#cb4-354" aria-hidden="true" tabindex="-1"></a><span class="in">t_data &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
-<span id="cb4-355"><a href="#cb4-355" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_data &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
-<span id="cb4-356"><a href="#cb4-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-357"><a href="#cb4-357" aria-hidden="true" tabindex="-1"></a><span class="in"># UI</span></span>
-<span id="cb4-358"><a href="#cb4-358" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
-<span id="cb4-359"><a href="#cb4-359" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("Biexponentielle V̇O2-Modellfunktion"),</span></span>
-<span id="cb4-360"><a href="#cb4-360" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
-<span id="cb4-361"><a href="#cb4-361" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
-<span id="cb4-362"><a href="#cb4-362" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 3,</span></span>
-<span id="cb4-363"><a href="#cb4-363" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2", "V̇O2_fast", min = 0.0, max = 7.0, value = 1.5, step = 0.1),</span></span>
-<span id="cb4-364"><a href="#cb4-364" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("tau_fast", "Tau_fast", min = 5, max = 360, value = 20, step = 1.0),</span></span>
-<span id="cb4-365"><a href="#cb4-365" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_Start", "V̇O2_Start", min = 0.0, max = 4.0, value = 0.6, step = 0.1),</span></span>
-<span id="cb4-366"><a href="#cb4-366" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_Ruhe", "V̇O2_Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),</span></span>
-<span id="cb4-367"><a href="#cb4-367" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("time_delay", "Zeitverzögerung_fast", min = 0, max = 300, value = 10, step = 1),</span></span>
-<span id="cb4-368"><a href="#cb4-368" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_slow", "V̇O2_slow", min = 0.0, max = 7.0, value = 0.1, step = 0.1),</span></span>
-<span id="cb4-369"><a href="#cb4-369" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("tau_slow", "Tau_slow", min = 30, max = 600, value = 180, step = 1.0),</span></span>
-<span id="cb4-370"><a href="#cb4-370" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("time_delay_slow", "Zeitverzögerung_slow", min = 0, max = 600, value = 120, step = 1),</span></span>
-<span id="cb4-371"><a href="#cb4-371" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("toggle_data", "Beispieldaten einfügen"),</span></span>
-<span id="cb4-372"><a href="#cb4-372" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
-<span id="cb4-373"><a href="#cb4-373" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
-<span id="cb4-374"><a href="#cb4-374" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
-<span id="cb4-375"><a href="#cb4-375" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 9,</span></span>
-<span id="cb4-376"><a href="#cb4-376" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot")</span></span>
-<span id="cb4-377"><a href="#cb4-377" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb4-378"><a href="#cb4-378" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb4-379"><a href="#cb4-379" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb4-380"><a href="#cb4-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-381"><a href="#cb4-381" aria-hidden="true" tabindex="-1"></a><span class="in"># Server</span></span>
-<span id="cb4-382"><a href="#cb4-382" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
-<span id="cb4-383"><a href="#cb4-383" aria-hidden="true" tabindex="-1"></a><span class="in">  show_data &lt;- reactiveVal(FALSE)</span></span>
-<span id="cb4-384"><a href="#cb4-384" aria-hidden="true" tabindex="-1"></a><span class="in">  uploaded_data &lt;- reactiveVal(NULL)</span></span>
-<span id="cb4-385"><a href="#cb4-385" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-386"><a href="#cb4-386" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$toggle_data, {</span></span>
-<span id="cb4-387"><a href="#cb4-387" aria-hidden="true" tabindex="-1"></a><span class="in">    show_data(!show_data())</span></span>
-<span id="cb4-388"><a href="#cb4-388" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-389"><a href="#cb4-389" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-390"><a href="#cb4-390" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$file_upload, {</span></span>
-<span id="cb4-391"><a href="#cb4-391" aria-hidden="true" tabindex="-1"></a><span class="in">    req(input$file_upload)</span></span>
-<span id="cb4-392"><a href="#cb4-392" aria-hidden="true" tabindex="-1"></a><span class="in">    df &lt;- read.csv(input$file_upload$datapath)</span></span>
-<span id="cb4-393"><a href="#cb4-393" aria-hidden="true" tabindex="-1"></a><span class="in">    if ("t_s" %in% names(df) &amp;&amp; "VO2_t" %in% names(df)) {</span></span>
-<span id="cb4-394"><a href="#cb4-394" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data(df)</span></span>
-<span id="cb4-395"><a href="#cb4-395" aria-hidden="true" tabindex="-1"></a><span class="in">      show_data(TRUE)</span></span>
-<span id="cb4-396"><a href="#cb4-396" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
-<span id="cb4-397"><a href="#cb4-397" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
-<span id="cb4-398"><a href="#cb4-398" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Invalid CSV",</span></span>
-<span id="cb4-399"><a href="#cb4-399" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die csv-Datei muss 't_s' und 'VO2_t' als Spaltennamen beinhalten.",</span></span>
-<span id="cb4-400"><a href="#cb4-400" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
-<span id="cb4-401"><a href="#cb4-401" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
-<span id="cb4-402"><a href="#cb4-402" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
-<span id="cb4-403"><a href="#cb4-403" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-404"><a href="#cb4-404" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-405"><a href="#cb4-405" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-406"><a href="#cb4-406" aria-hidden="true" tabindex="-1"></a><span class="in">  observe({</span></span>
-<span id="cb4-407"><a href="#cb4-407" aria-hidden="true" tabindex="-1"></a><span class="in">    if (input$VO2_Start &lt; input$VO2_Ruhe) {</span></span>
-<span id="cb4-408"><a href="#cb4-408" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "VO2_Start", value = input$VO2_Ruhe)</span></span>
-<span id="cb4-409"><a href="#cb4-409" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-410"><a href="#cb4-410" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-411"><a href="#cb4-411" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb4-412"><a href="#cb4-412" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
-<span id="cb4-413"><a href="#cb4-413" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2 &lt;- input$VO2</span></span>
-<span id="cb4-414"><a href="#cb4-414" aria-hidden="true" tabindex="-1"></a><span class="in">    tau_fast &lt;- input$tau_fast</span></span>
-<span id="cb4-415"><a href="#cb4-415" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_slow &lt;- input$VO2_slow</span></span>
-<span id="cb4-416"><a href="#cb4-416" aria-hidden="true" tabindex="-1"></a><span class="in">    tau_slow &lt;- input$tau_slow</span></span>
-<span id="cb4-417"><a href="#cb4-417" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Start &lt;- input$VO2_Start</span></span>
-<span id="cb4-418"><a href="#cb4-418" aria-hidden="true" tabindex="-1"></a><span class="in">    t_delay &lt;- input$time_delay</span></span>
-<span id="cb4-419"><a href="#cb4-419" aria-hidden="true" tabindex="-1"></a><span class="in">    t_delay_slow &lt;- input$time_delay_slow</span></span>
-<span id="cb4-420"><a href="#cb4-420" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Ruhe &lt;- input$VO2_Ruhe</span></span>
-<span id="cb4-421"><a href="#cb4-421" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-422"><a href="#cb4-422" aria-hidden="true" tabindex="-1"></a><span class="in">    model_function &lt;- function(t_s, VO2, tau_fast, VO2_slow, tau_slow, VO2_Start, t_delay, t_delay_slow) {</span></span>
-<span id="cb4-423"><a href="#cb4-423" aria-hidden="true" tabindex="-1"></a><span class="in">      VO2 * (1 - exp(-(t_s - t_delay) / tau_fast)) + </span></span>
-<span id="cb4-424"><a href="#cb4-424" aria-hidden="true" tabindex="-1"></a><span class="in">        VO2_slow * (1 - exp(-(t_s - t_delay_slow) / tau_slow)) + </span></span>
-<span id="cb4-425"><a href="#cb4-425" aria-hidden="true" tabindex="-1"></a><span class="in">        VO2_Start</span></span>
-<span id="cb4-426"><a href="#cb4-426" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-427"><a href="#cb4-427" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-428"><a href="#cb4-428" aria-hidden="true" tabindex="-1"></a><span class="in">    model_fast &lt;- function(t_s, VO2, tau_fast, t_delay) {</span></span>
-<span id="cb4-429"><a href="#cb4-429" aria-hidden="true" tabindex="-1"></a><span class="in">      VO2 * (1 - exp(-(t_s - t_delay) / tau_fast))</span></span>
-<span id="cb4-430"><a href="#cb4-430" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-431"><a href="#cb4-431" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-432"><a href="#cb4-432" aria-hidden="true" tabindex="-1"></a><span class="in">    model_slow &lt;- function(t_s, VO2_slow, tau_slow, t_delay_slow) {</span></span>
-<span id="cb4-433"><a href="#cb4-433" aria-hidden="true" tabindex="-1"></a><span class="in">      pmax(VO2_slow * (1 - exp(-(t_s - t_delay_slow) / tau_slow)), 0)</span></span>
-<span id="cb4-434"><a href="#cb4-434" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-435"><a href="#cb4-435" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-436"><a href="#cb4-436" aria-hidden="true" tabindex="-1"></a><span class="in">    Beispieldaten &lt;- if (show_data() &amp;&amp; !is.null(uploaded_data())) {</span></span>
-<span id="cb4-437"><a href="#cb4-437" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
-<span id="cb4-438"><a href="#cb4-438" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
-<span id="cb4-439"><a href="#cb4-439" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_s = t_data, VO2_t = VO2_data)</span></span>
-<span id="cb4-440"><a href="#cb4-440" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-441"><a href="#cb4-441" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-442"><a href="#cb4-442" aria-hidden="true" tabindex="-1"></a><span class="in">    max_t &lt;- max(Beispieldaten$t_s, na.rm = TRUE)</span></span>
-<span id="cb4-443"><a href="#cb4-443" aria-hidden="true" tabindex="-1"></a><span class="in">    max_x &lt;- max_t * 1.05</span></span>
-<span id="cb4-444"><a href="#cb4-444" aria-hidden="true" tabindex="-1"></a><span class="in">    t_s &lt;- seq(0, max_x * 1.20, by = 1)</span></span>
-<span id="cb4-445"><a href="#cb4-445" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-446"><a href="#cb4-446" aria-hidden="true" tabindex="-1"></a><span class="in">    model_values &lt;- ifelse(t_s &gt;= t_delay, model_function(t_s, VO2, tau_fast, VO2_slow, tau_slow, VO2_Start, t_delay, t_delay_slow), NA)</span></span>
-<span id="cb4-447"><a href="#cb4-447" aria-hidden="true" tabindex="-1"></a><span class="in">    fast_values &lt;- ifelse(t_s &gt;= t_delay, model_fast(t_s, VO2, tau_fast, t_delay), NA)</span></span>
-<span id="cb4-448"><a href="#cb4-448" aria-hidden="true" tabindex="-1"></a><span class="in">    slow_values &lt;- ifelse(t_s &gt;= t_delay_slow, model_slow(t_s, VO2_slow, tau_slow, t_delay_slow), NA)</span></span>
-<span id="cb4-449"><a href="#cb4-449" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-450"><a href="#cb4-450" aria-hidden="true" tabindex="-1"></a><span class="in">    max_y &lt;- max(Beispieldaten$VO2_t, na.rm = TRUE) * 1.05</span></span>
-<span id="cb4-451"><a href="#cb4-451" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-452"><a href="#cb4-452" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("V̇O₂ = %.2f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.2f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.2f",</span></span>
-<span id="cb4-453"><a href="#cb4-453" aria-hidden="true" tabindex="-1"></a><span class="in">                       VO2, t_delay, tau_fast, VO2_slow, t_delay_slow, tau_slow, VO2_Start)</span></span>
-<span id="cb4-454"><a href="#cb4-454" aria-hidden="true" tabindex="-1"></a><span class="in">    t_halb &lt;- tau_fast * log(2)</span></span>
-<span id="cb4-455"><a href="#cb4-455" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-456"><a href="#cb4-456" aria-hidden="true" tabindex="-1"></a><span class="in">    shapes &lt;- list(</span></span>
-<span id="cb4-457"><a href="#cb4-457" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
-<span id="cb4-458"><a href="#cb4-458" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = t_delay, x1 = t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
-<span id="cb4-459"><a href="#cb4-459" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
-<span id="cb4-460"><a href="#cb4-460" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
-<span id="cb4-461"><a href="#cb4-461" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
-<span id="cb4-462"><a href="#cb4-462" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = t_delay_slow, x1 = t_delay_slow, y0 = 0, y1 = max_y * 1.2,</span></span>
-<span id="cb4-463"><a href="#cb4-463" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
-<span id="cb4-464"><a href="#cb4-464" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
-<span id="cb4-465"><a href="#cb4-465" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb4-466"><a href="#cb4-466" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-467"><a href="#cb4-467" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
-<span id="cb4-468"><a href="#cb4-468" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',</span></span>
-<span id="cb4-469"><a href="#cb4-469" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O2-Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%</span></span>
-<span id="cb4-470"><a href="#cb4-470" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~fast_values, type = 'scatter', mode = 'lines', </span></span>
-<span id="cb4-471"><a href="#cb4-471" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;fast&lt;/sub&gt;', line = list(color = '#42BA97')) %&gt;%</span></span>
-<span id="cb4-472"><a href="#cb4-472" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~slow_values, type = 'scatter', mode = 'lines', </span></span>
-<span id="cb4-473"><a href="#cb4-473" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;slow&lt;/sub&gt;', line = list(color = '#BB7693')) %&gt;%</span></span>
-<span id="cb4-474"><a href="#cb4-474" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "Biexponentielle V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",</span></span>
-<span id="cb4-475"><a href="#cb4-475" aria-hidden="true" tabindex="-1"></a><span class="in">             margin = list(t = 40),</span></span>
-<span id="cb4-476"><a href="#cb4-476" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "t [s]"),</span></span>
-<span id="cb4-477"><a href="#cb4-477" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),</span></span>
-<span id="cb4-478"><a href="#cb4-478" aria-hidden="true" tabindex="-1"></a><span class="in">             shapes = shapes,</span></span>
-<span id="cb4-479"><a href="#cb4-479" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
-<span id="cb4-480"><a href="#cb4-480" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-481"><a href="#cb4-481" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.20,</span></span>
-<span id="cb4-482"><a href="#cb4-482" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.3,</span></span>
-<span id="cb4-483"><a href="#cb4-483" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = eq_text,</span></span>
-<span id="cb4-484"><a href="#cb4-484" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
-<span id="cb4-485"><a href="#cb4-485" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
-<span id="cb4-486"><a href="#cb4-486" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
-<span id="cb4-487"><a href="#cb4-487" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
-<span id="cb4-488"><a href="#cb4-488" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
-<span id="cb4-489"><a href="#cb4-489" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 10,</span></span>
-<span id="cb4-490"><a href="#cb4-490" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
-<span id="cb4-491"><a href="#cb4-491" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-492"><a href="#cb4-492" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-493"><a href="#cb4-493" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-494"><a href="#cb4-494" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.2,</span></span>
-<span id="cb4-495"><a href="#cb4-495" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.1,</span></span>
-<span id="cb4-496"><a href="#cb4-496" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),</span></span>
-<span id="cb4-497"><a href="#cb4-497" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
-<span id="cb4-498"><a href="#cb4-498" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
-<span id="cb4-499"><a href="#cb4-499" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
-<span id="cb4-500"><a href="#cb4-500" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
-<span id="cb4-501"><a href="#cb4-501" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
-<span id="cb4-502"><a href="#cb4-502" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 10,</span></span>
-<span id="cb4-503"><a href="#cb4-503" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
-<span id="cb4-504"><a href="#cb4-504" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
-<span id="cb4-505"><a href="#cb4-505" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-506"><a href="#cb4-506" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-507"><a href="#cb4-507" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb4-508"><a href="#cb4-508" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
-<span id="cb4-509"><a href="#cb4-509" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
-<span id="cb4-510"><a href="#cb4-510" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-511"><a href="#cb4-511" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay_slow, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay_slow&lt;/sub&gt;: %.1f", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb4-512"><a href="#cb4-512" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
-<span id="cb4-513"><a href="#cb4-513" aria-hidden="true" tabindex="-1"></a><span class="in">               )</span></span>
-<span id="cb4-514"><a href="#cb4-514" aria-hidden="true" tabindex="-1"></a><span class="in">             )) %&gt;%</span></span>
-<span id="cb4-515"><a href="#cb4-515" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~rep(VO2_Ruhe, length(t_s)), type = 'scatter', mode = 'lines',</span></span>
-<span id="cb4-516"><a href="#cb4-516" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2, Ruhe&lt;/sub&gt;', line = list(color = '#1CADE4'))</span></span>
-<span id="cb4-517"><a href="#cb4-517" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-518"><a href="#cb4-518" aria-hidden="true" tabindex="-1"></a><span class="in">    if (show_data()) {</span></span>
-<span id="cb4-519"><a href="#cb4-519" aria-hidden="true" tabindex="-1"></a><span class="in">      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= max_t, ]</span></span>
-<span id="cb4-520"><a href="#cb4-520" aria-hidden="true" tabindex="-1"></a><span class="in">      model_values_at_data &lt;- model_function(data_subset$t_s, VO2, tau_fast, VO2_slow, tau_slow, VO2_Start, t_delay, t_delay_slow)</span></span>
-<span id="cb4-521"><a href="#cb4-521" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb4-522"><a href="#cb4-522" aria-hidden="true" tabindex="-1"></a><span class="in">      ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data)^2, na.rm = TRUE)</span></span>
-<span id="cb4-523"><a href="#cb4-523" aria-hidden="true" tabindex="-1"></a><span class="in">      ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)</span></span>
-<span id="cb4-524"><a href="#cb4-524" aria-hidden="true" tabindex="-1"></a><span class="in">      r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
-<span id="cb4-525"><a href="#cb4-525" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-526"><a href="#cb4-526" aria-hidden="true" tabindex="-1"></a><span class="in">      p &lt;- p %&gt;%</span></span>
-<span id="cb4-527"><a href="#cb4-527" aria-hidden="true" tabindex="-1"></a><span class="in">        add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
-<span id="cb4-528"><a href="#cb4-528" aria-hidden="true" tabindex="-1"></a><span class="in">                  name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;', </span></span>
-<span id="cb4-529"><a href="#cb4-529" aria-hidden="true" tabindex="-1"></a><span class="in">                  marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),</span></span>
-<span id="cb4-530"><a href="#cb4-530" aria-hidden="true" tabindex="-1"></a><span class="in">                  line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4')) %&gt;%</span></span>
-<span id="cb4-531"><a href="#cb4-531" aria-hidden="true" tabindex="-1"></a><span class="in">        layout(annotations = list(</span></span>
-<span id="cb4-532"><a href="#cb4-532" aria-hidden="true" tabindex="-1"></a><span class="in">          list(</span></span>
-<span id="cb4-533"><a href="#cb4-533" aria-hidden="true" tabindex="-1"></a><span class="in">            x = max_x * 0.2,</span></span>
-<span id="cb4-534"><a href="#cb4-534" aria-hidden="true" tabindex="-1"></a><span class="in">            y = max_y * 0.2,</span></span>
-<span id="cb4-535"><a href="#cb4-535" aria-hidden="true" tabindex="-1"></a><span class="in">            text = sprintf("R²: %.3f", r_squared),</span></span>
-<span id="cb4-536"><a href="#cb4-536" aria-hidden="true" tabindex="-1"></a><span class="in">            showarrow = FALSE,</span></span>
-<span id="cb4-537"><a href="#cb4-537" aria-hidden="true" tabindex="-1"></a><span class="in">            xanchor = 'left',</span></span>
-<span id="cb4-538"><a href="#cb4-538" aria-hidden="true" tabindex="-1"></a><span class="in">            yanchor = 'bottom',</span></span>
-<span id="cb4-539"><a href="#cb4-539" aria-hidden="true" tabindex="-1"></a><span class="in">            font = list(</span></span>
-<span id="cb4-540"><a href="#cb4-540" aria-hidden="true" tabindex="-1"></a><span class="in">              family = "Arial, sans-serif",</span></span>
-<span id="cb4-541"><a href="#cb4-541" aria-hidden="true" tabindex="-1"></a><span class="in">              size = 10,</span></span>
-<span id="cb4-542"><a href="#cb4-542" aria-hidden="true" tabindex="-1"></a><span class="in">              color = "black"</span></span>
-<span id="cb4-543"><a href="#cb4-543" aria-hidden="true" tabindex="-1"></a><span class="in">            )</span></span>
-<span id="cb4-544"><a href="#cb4-544" aria-hidden="true" tabindex="-1"></a><span class="in">          )</span></span>
-<span id="cb4-545"><a href="#cb4-545" aria-hidden="true" tabindex="-1"></a><span class="in">        ))</span></span>
-<span id="cb4-546"><a href="#cb4-546" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb4-547"><a href="#cb4-547" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-548"><a href="#cb4-548" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
-<span id="cb4-549"><a href="#cb4-549" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb4-550"><a href="#cb4-550" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb4-551"><a href="#cb4-551" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-552"><a href="#cb4-552" aria-hidden="true" tabindex="-1"></a><span class="in"># App ausführen</span></span>
-<span id="cb4-553"><a href="#cb4-553" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
-<span id="cb4-554"><a href="#cb4-554" aria-hidden="true" tabindex="-1"></a><span class="in">```</span>  </span>
-<span id="cb4-555"><a href="#cb4-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-556"><a href="#cb4-556" aria-hidden="true" tabindex="-1"></a><span class="fu"># Anpassbarer und ausführbarer R-Code mit webR eines des Sauerstoffvolumenstrom-Verlaufs in Abhängigkeit von der Zeit während der Belastung</span></span>
-<span id="cb4-557"><a href="#cb4-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-558"><a href="#cb4-558" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb4-559"><a href="#cb4-559" aria-hidden="true" tabindex="-1"></a><span class="in"># Hier VO2-Daten einfügen</span></span>
-<span id="cb4-560"><a href="#cb4-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-561"><a href="#cb4-561" aria-hidden="true" tabindex="-1"></a><span class="in"># Zeitpunkte</span></span>
-<span id="cb4-562"><a href="#cb4-562" aria-hidden="true" tabindex="-1"></a><span class="in">t_s &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
-<span id="cb4-563"><a href="#cb4-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-564"><a href="#cb4-564" aria-hidden="true" tabindex="-1"></a><span class="in"># VO2-Werte</span></span>
-<span id="cb4-565"><a href="#cb4-565" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_t &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
-<span id="cb4-566"><a href="#cb4-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-567"><a href="#cb4-567" aria-hidden="true" tabindex="-1"></a><span class="in">plot(t_s, VO2_t, type="o", col="blue", xlab="Zeit (s)", ylab="VO2 (l/min)", main="VO2 (l/min)")</span></span>
-<span id="cb4-568"><a href="#cb4-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-569"><a href="#cb4-569" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-570"><a href="#cb4-570" aria-hidden="true" tabindex="-1"></a></span>
-</code><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "VO2-Modellfunktion während der Belastung"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    resources: </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - shinylive-sw.js</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">      </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - shinylive</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung in Shiny</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(minpack.lm)</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="in"># Beispieldaten</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="in">t_data &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_data &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="in"># UI</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("V̇O2-Modellfunktion"),</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2", "V̇O2", min = 0.0, max = 7.0, value = 1.7, step = 0.1),</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("Tau", "Tau", min = 5, max = 360, value = 23, step = 1.0),</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_Start", "V̇O2 Start", min = 0.0, max = 4.0, value = 0.4, step = 0.1),</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("time_delay", "Zeitverzögerung", min = 0, max = 300, value = 10, step = 1),</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("VO2_Ruhe", "V̇O2 Ruhe", min = 0, max = 1, value = 0.4, step = 0.1),</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("toggle_data", "Beispieldaten einfügen"),</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv"),</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Fit: nlsLM")</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot")</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in"># Server</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">  show_data &lt;- reactiveVal(FALSE)</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">  uploaded_data &lt;- reactiveVal(NULL)</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$toggle_data, {</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">    show_data(!show_data())</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">  observe({</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">    if (input$VO2_Start &lt; input$VO2_Ruhe) {</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "V̇O2, Start", value = input$VO2_Ruhe)</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$file_upload, {</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">    req(input$file_upload)</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">    df &lt;- read.csv(input$file_upload$datapath)</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">    if ("t_s" %in% names(df) &amp;&amp; "VO2_t" %in% names(df)) {</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data(df)</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">      show_data(TRUE)</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Invalid CSV",</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die csv-Datei muss 't_s' und 'VO2_t' als Spaltennamen beinhalten.",</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$optimize, {</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">    if (show_data()) {</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">      Beispieldaten &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">        data.frame(t_s = t_data, VO2_t = VO2_data)</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">      } else {</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">        uploaded_data()</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">      t_delay &lt;- isolate(input$time_delay)</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in">      diffs &lt;- abs(Beispieldaten$t_s - t_delay)</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">      row_index &lt;- which.min(diffs)</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">      min_VO2 &lt;- Beispieldaten$VO2_t[row_index] # VO2 zum Zeitpunkt von t_delay</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">      max_VO2 &lt;- max(Beispieldaten$VO2_t, na.rm = TRUE)</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">      VO2_Ruhe &lt;- isolate(input$VO2_Ruhe)</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="in">      # Fitten des VO2_SS * (1 - exp(-(t_s-t_delay)/Tau)) + VO2_Start Terms mit den Startwerten für VO2_SS und C</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">      start_values &lt;- list(VO2 = isolate(input$VO2), Tau = isolate(input$Tau), VO2_Start = isolate(input$VO2_Start))</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">      fit &lt;- try(nlsLM(VO2_t ~ VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start,</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">                       data = Beispieldaten,</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="in">                       start = start_values,</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="in">                       lower = c(VO2 = 0.5, Tau = 5, VO2_Start = 0.2),</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="in">                       upper = c(VO2 = 7.0, Tau = 360, VO2_Start = 4.0),</span></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="in">                       control = nls.control(maxiter = 1024)), silent = TRUE)</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="in">      if (!inherits(fit, "try-error")) {</span></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="in">        params &lt;- coef(fit)</span></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="in">        updateSliderInput(session, "VO2", value = params["VO2"])</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="in">        updateSliderInput(session, "Tau", value = params["Tau"])</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="in">        updateSliderInput(session, "VO2_Start", value = params["VO2_Start"])</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="in">      } else {</span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="in">        showModal(modalDialog(</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="in">          title = "nlsLM fehlgeschlagen",</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">          "Die nicht-lineare Regression mittels Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",</span></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="in">          easyClose = TRUE,</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="in">          footer = NULL</span></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="in">        ))</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2 &lt;- input$VO2</span></span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="in">    Tau &lt;- input$Tau</span></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Start &lt;- input$VO2_Start</span></span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="in">    t_delay &lt;- input$time_delay</span></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Ruhe &lt;- input$VO2_Ruhe</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="in">    # Modellfunktion</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="in">    model_function &lt;- function(t_s, VO2, Tau, VO2_Start, t_delay) {</span></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="in">      VO2 * (1 - exp(-(t_s - t_delay) / Tau)) + VO2_Start</span></span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="in">    Beispieldaten &lt;- if (show_data() &amp;&amp; !is.null(uploaded_data())) {</span></span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_s = t_data, VO2_t = VO2_data)</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="in">    tau4 &lt;- 4 * Tau</span></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="in">    max_t &lt;- max(Beispieldaten$t_s, na.rm = TRUE)</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="in">    max_x &lt;- max(1.05 * tau4 + t_delay, max_t * 1.05)</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="in">    t_s &lt;- seq(0, max_x * 1.20, by = 1)</span></span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="in">    model_values &lt;- ifelse(t_s &gt;= t_delay, model_function(t_s, VO2, Tau, VO2_Start, t_delay), NA)</span></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_gross &lt;- model_function(tau4 + t_delay, VO2, Tau, VO2_Start, t_delay)</span></span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_net &lt;- VO2_SS_gross - VO2_Ruhe</span></span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="in">    max_y &lt;- max(1.05 * VO2_SS_gross, max(Beispieldaten$VO2_t, na.rm = TRUE) * 1.05)</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("V̇O₂ = %.2f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.2f",</span></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="in">                       VO2, t_delay, Tau, VO2_Start)</span></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_gross_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,gross&lt;/sub&gt;: %.3f", VO2_SS_gross)</span></span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_net_text &lt;- sprintf("VO₂ &lt;sub&gt;SS,net&lt;/sub&gt;: %.3f", VO2_SS_net)</span></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="in">    t_halb &lt;- Tau * log(2)</span></span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="in">    shapes &lt;- list(</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = t_delay, x1 = t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = Tau + t_delay, x1 = Tau + t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = tau4 + t_delay, x1 = tau4 + t_delay, y0 = 0, y1 = max_y * 1.2,</span></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = "gray", width = 1, dash = "dash")</span></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a><span class="in">      ),</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a><span class="in">      list(</span></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="in">        type = "line", x0 = 0, x1 = max_x, y0 = VO2_Ruhe, y1 = VO2_Ruhe,</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="in">        line = list(color = '#1CADE4', width = 1, dash = "solid")</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',</span></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",</span></span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "t [s]"),</span></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="in">             shapes = shapes,</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.5,</span></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = eq_text,</span></span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.4,</span></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = VO2_SS_gross_text,</span></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.3,</span></span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = VO2_SS_net_text,</span></span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.85,</span></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.2,</span></span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),</span></span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a><span class="in">                   family = "Arial, sans-serif",</span></span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a><span class="in">               )</span></span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a><span class="in">             )) %&gt;%</span></span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~rep(VO2_Ruhe, length(t_s)), type = 'scatter', mode = 'lines',</span></span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2, Ruhe&lt;/sub&gt;', line = list(color = '#1CADE4'))</span></span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a><span class="in">    if (show_data()) {</span></span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a><span class="in">      # Modellwerte für die eingefügten Datenpunkte berechnen</span></span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a><span class="in">      model_values_at_data &lt;- model_function(Beispieldaten$t_s, VO2, Tau, VO2_Start, t_delay)</span></span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a><span class="in">      # Beschränke die Daten auf den Zeitraum von t_delay bis max_t für die R²-Berechnung</span></span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="in">      data_subset &lt;- Beispieldaten[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= max_t, ]</span></span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a><span class="in">      # R² berechnen</span></span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a><span class="in">      ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data[Beispieldaten$t_s &gt;= t_delay &amp; Beispieldaten$t_s &lt;= max_t])^2, na.rm = TRUE)</span></span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a><span class="in">      ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)</span></span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a><span class="in">      r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a><span class="in">      p &lt;- p %&gt;%</span></span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a><span class="in">        add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a><span class="in">                  name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;', </span></span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a><span class="in">                  marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),</span></span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a><span class="in">                  line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4')) %&gt;%</span></span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a><span class="in">        layout(annotations = list(</span></span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a><span class="in">          list(</span></span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a><span class="in">            x = max_x * 0.85,</span></span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a><span class="in">            y = max_y * 0.1,</span></span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a><span class="in">            text = sprintf("R²: %.3f", r_squared),</span></span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a><span class="in">            showarrow = FALSE,</span></span>
+<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a><span class="in">            xanchor = 'left',</span></span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a><span class="in">            yanchor = 'bottom',</span></span>
+<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a><span class="in">            font = list(</span></span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a><span class="in">              family = "Arial, sans-serif",</span></span>
+<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a><span class="in">              size = 12,</span></span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a><span class="in">              color = "black"</span></span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a><span class="in">            )</span></span>
+<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a><span class="in">          )</span></span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a><span class="in">        ))</span></span>
+<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="in"># App ausführen</span></span>
+<span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
+<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false}</span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a><span class="fu">## nlsLM</span></span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>Die Funktion der automatischen Anpassung mittels nichtlinearer Regression ist noch nicht funktionsfähig.</span>
+<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false}</span>
+<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV-Datei hochladen</span></span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a>VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:&lt;br&gt;</span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a>t_s,VO2_t&lt;br&gt;</span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a>0.0,0.479&lt;br&gt;</span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a>1.0,0.459&lt;br&gt;</span>
+<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a>2.3,0.488&lt;br&gt;</span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a>3.5,0.477&lt;br&gt;</span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="fu"># Anpassbarer und ausführbarer R-Code mit webR</span></span>
+<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="in"># Hier VO2-Daten einfügen</span></span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a><span class="in"># Zeitpunkte</span></span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a><span class="in">t_s &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="in"># VO2-Werte</span></span>
+<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_t &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a><span class="in">plot(t_s, VO2_t, type="o", col="blue", xlab="Zeit (s)", ylab="VO2 (l/min)", main="VO2 (l/min)")</span></span>
+<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
