@@ -34,6 +34,20 @@ jobs:
             any::shiny
             any::plotly
             any::minpack.lm
+            any::DT
+            any::patchwork
+            any::zoo
+            any::ggplot2
+            any::dplyr
+            any::tidyr
+            any::htmltools
+            any::htmlwidgets
+            any::RColorBrewer
+            any::purrr
+            any::readxl
+            any::extrafont
+            any::flextable
+            any::curl
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
