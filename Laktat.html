@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Shinylive und webR Test - Laktat-Leistungs-Beziehung</title>
+<title>Laktat-Modellfunktionen – Shinylive und webR Test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -119,13 +119,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Laktat.html">Laktat-Leistung</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Laktat.html">Laktat-Modellfunktionen</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -171,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Laktat.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Laktat-Leistung</span></a>
+ <span class="menu-text">Laktat-Modellfunktionen</span></a>
   </div>
 </li>
     </ul>
@@ -184,7 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Inhalt auf dieser Seite</h2>
    
   <ul>
-  <li><a href="#laktat-leistungs-beziehung" id="toc-laktat-leistungs-beziehung" class="nav-link active" data-scroll-target="#laktat-leistungs-beziehung"><span class="header-section-number">1</span> Laktat-Leistungs-Beziehung</a></li>
+  <li><a href="#blutlaktat-modellfunktion-exponentieller-abfall-nach-dem-belastungsende" id="toc-blutlaktat-modellfunktion-exponentieller-abfall-nach-dem-belastungsende" class="nav-link active" data-scroll-target="#blutlaktat-modellfunktion-exponentieller-abfall-nach-dem-belastungsende"><span class="header-section-number">1</span> Blutlaktat-Modellfunktion: Exponentieller Abfall nach dem Belastungsende</a></li>
+  <li><a href="#blutlaktat-bateman-modellfunktion-während-und-nach-dem-belastungszeitraum" id="toc-blutlaktat-bateman-modellfunktion-während-und-nach-dem-belastungszeitraum" class="nav-link" data-scroll-target="#blutlaktat-bateman-modellfunktion-während-und-nach-dem-belastungszeitraum"><span class="header-section-number">2</span> Blutlaktat-Bateman-Modellfunktion: Während und nach dem Belastungszeitraum</a></li>
+  <li><a href="#blutlaktat-kompartmentmodell-modellfunktion-nach-freund-et-al.-1986-während-und-nach-dem-belastungszeitraum" id="toc-blutlaktat-kompartmentmodell-modellfunktion-nach-freund-et-al.-1986-während-und-nach-dem-belastungszeitraum" class="nav-link" data-scroll-target="#blutlaktat-kompartmentmodell-modellfunktion-nach-freund-et-al.-1986-während-und-nach-dem-belastungszeitraum"><span class="header-section-number">3</span> Blutlaktat-Kompartmentmodell-Modellfunktion (nach Freund et al.&nbsp;1986): Während und nach dem Belastungszeitraum</a></li>
+  <li><a href="#laktat-leistungs-beziehung" id="toc-laktat-leistungs-beziehung" class="nav-link" data-scroll-target="#laktat-leistungs-beziehung"><span class="header-section-number">4</span> Laktat-Leistungs-Beziehung</a></li>
   </ul>
 </nav>
     </div>
@@ -193,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Laktat-Leistungs-Beziehung</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Laktat-Modellfunktionen</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -210,8 +213,708 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="laktat-leistungs-beziehung" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Laktat-Leistungs-Beziehung</h1>
+<section id="blutlaktat-modellfunktion-exponentieller-abfall-nach-dem-belastungsende" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Blutlaktat-Modellfunktion: Exponentieller Abfall nach dem Belastungsende</h1>
+<pre class="shinylive-r" data-engine="r"><code>#| standalone: true
+#| viewerHeight: 900
+library(shiny)
+library(plotly)
+library(minpack.lm)
+
+# Define data
+t_s &lt;- c(23, 127, 261, 422.5, 549.8, 664.5, 795.8, 1254.9)
+BLC_t &lt;- c(10.04, 7.49, 5.18, 3.9, 2.67, 2.18, 1.64, 0.98)
+
+# New model function: A * exp(-k * (t - delay)) + BLC0
+laktat_model_function &lt;- function(t, A, k, BLC0, delay) {
+  A * exp(-k * (t - delay)) + BLC0
+}
+
+# User interface (UI)
+ui &lt;- fluidPage(
+  titlePanel("Exponentielles Laktat-Abbaumodell"),
+  sidebarLayout(
+    sidebarPanel(
+      width = 3,
+      sliderInput("A", "A [mmol/l]", min = 0.0, max = 15.0, value = 8.0, step = 0.1),
+      sliderInput("k", "k [s^-1]", min = 0.0001, max = 0.02, value = 0.005, step = 0.0001),
+      sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
+      sliderInput("delay", "Delay [s]", min = 0, max = 3600, value = 0, step = 0.1),
+      actionButton("set_delay", "Delay auf BLC_1"),
+      br(), 
+      actionButton("optimize", "Anpassen: nlsLM"),
+      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
+    ),
+    mainPanel(
+      plotlyOutput("plot")
+    )
+  )
+)
+
+# Server logic
+server &lt;- function(input, output, session) {
+  # Reactive value for uploaded data
+  uploaded_data &lt;- reactiveVal(NULL)
+  
+  # Observer for CSV upload
+  observeEvent(input$file_upload, {
+    req(input$file_upload)
+    df &lt;- read.csv(input$file_upload$datapath)
+    
+    if ("t_s" %in% names(df) &amp;&amp; "BLC_t" %in% names(df)) {
+      uploaded_data(df)
+    } else {
+      showModal(modalDialog(
+        title = "Ungültige CSV",
+        "Die CSV-Datei muss 't_s' und 'BLC_t' als Spaltennamen enthalten.",
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    }
+  })
+  
+  # Observer for setting delay to first time point
+  observeEvent(input$set_delay, {
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_s = t_s, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    updateSliderInput(session, "delay", value = min(data$t_s))
+  })
+  
+  observeEvent(input$optimize, {
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_s = t_s, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    
+    delay &lt;- input$delay
+    
+    # Filter data points after the delay
+    data_filtered &lt;- data[data$t_s &gt; delay, ]
+    
+    if (nrow(data_filtered) &lt; 3) {
+      showNotification("Nicht genügend Datenpunkte nach dem Delay für den Fitting-Prozess.", type = "error")
+      return()
+    }
+    
+    best_fit &lt;- NULL
+    best_rss &lt;- Inf
+    
+    withProgress(message = 'Fitting in progress', value = 0, {
+      for (i in 1:100) {
+        # Randomized starting values
+        A_start &lt;- runif(1, 0, 15)
+        k_start &lt;- runif(1, 0.0001, 0.02)
+        BLC0_start &lt;- runif(1, 0, 5)
+        
+        start_values &lt;- list(A = A_start, k = k_start, BLC0 = BLC0_start)
+        
+        model_equation &lt;- BLC_t ~ A * exp(-k * (t_s - delay)) + BLC0
+        
+        fit &lt;- try(nlsLM(model_equation,
+                         data = data_filtered,
+                         start = start_values,
+                         lower = c(A = 0, k = 0.0001, BLC0 = 0),
+                         upper = c(A = 15, k = 0.02, BLC0 = 5),
+                         control = nls.control(maxiter = 1024)), silent = TRUE)
+        
+        if (!inherits(fit, "try-error")) {
+          rss &lt;- sum(residuals(fit)^2)
+          if (rss &lt; best_rss) {
+            best_rss &lt;- rss
+            best_fit &lt;- fit
+          }
+        }
+        
+        incProgress(1/100, detail = paste("Iteration", i))
+      }
+    })
+    
+    if (!is.null(best_fit)) {
+      params &lt;- as.list(coef(best_fit))
+      updateSliderInput(session, "A", value = params$A)
+      updateSliderInput(session, "k", value = params$k)
+      updateSliderInput(session, "BLC0", value = params$BLC0)
+      
+      showNotification("Fitting completed successfully!", type = "message")
+    } else {
+      showModal(modalDialog(
+        title = "nlsLM fehlgeschlagen",
+        "Die nicht-lineare Regression mit dem Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    }
+  })
+  
+  output$plot &lt;- renderPlotly({
+    A &lt;- input$A
+    k &lt;- input$k
+    BLC0 &lt;- input$BLC0
+    delay &lt;- input$delay
+    
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_s = t_s, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    
+    max_x &lt;- max(data$t_s) * 1.66
+    min_x &lt;- max(delay - 360, 0)
+    
+    t_s_modell &lt;- seq(min_x, max_x, length.out = 1000)
+    BLC_t_modell &lt;- laktat_model_function(t_s_modell, A, k, BLC0, delay)
+    
+    max_y &lt;- max(max(BLC_t_modell) * 1.1, max(data$BLC_t) * 1.1)
+    
+    # Create equation text
+    eq_text &lt;- sprintf("BLC(t) = %.2f * e&lt;sup&gt;-%.4f*(t-%.2f)&lt;/sup&gt; + %.3f", A, k, delay, BLC0)
+    
+    # Calculate R²
+    data_filtered &lt;- data[data$t_s &gt; delay, ]
+    BLC_t_modell_at_data &lt;- laktat_model_function(data_filtered$t_s, A, k, BLC0, delay)
+    ss_res &lt;- sum((data_filtered$BLC_t - BLC_t_modell_at_data)^2)
+    ss_tot &lt;- sum((data_filtered$BLC_t - mean(data_filtered$BLC_t))^2)
+    r_squared &lt;- 1 - (ss_res / ss_tot)
+    
+    # Plotly plot
+    p &lt;- plot_ly() %&gt;%
+      add_trace(x = t_s_modell[t_s_modell &gt;= delay], y = BLC_t_modell[t_s_modell &gt;= delay], 
+                type = 'scatter', mode = 'lines', 
+                name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%
+      add_trace(x = t_s_modell[t_s_modell &lt; delay], y = BLC_t_modell[t_s_modell &lt; delay], 
+                type = 'scatter', mode = 'lines', 
+                name = 'Modellfunktion (vor Delay)', line = list(color = '#EF6F6A', dash = 'dash')) %&gt;%
+      add_trace(x = data$t_s, y = data$BLC_t, type = 'scatter', mode = 'markers', 
+                name = 'Gemessene BLC-Werte', marker = list(color = '#42BA97', size = 10, symbol = 'x')) %&gt;%
+      add_segments(x = delay, xend = delay, y = 0, yend = max_y, 
+                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), 
+                   showlegend = FALSE, opacity = 0.75) %&gt;%
+      layout(title = "Exponentielles Laktat-Abbaumodell",
+             margin = list(t = 40),
+             xaxis = list(title = "Zeit [s]", range = c(min_x, max_x)),
+             yaxis = list(title = "Laktat [mmol/l]", range = c(0, max_y)),
+             annotations = list(
+               list(
+                 x = max_x * 0.5, 
+                 y = max_y * 0.95,
+                 text = eq_text,
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.90,
+                 text = sprintf("R²: %.4f", r_squared),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               )
+             ))
+    
+    p
+  })
+}
+
+# Start the app
+shinyApp(ui = ui, server = server)</code></pre>
+</section>
+<section id="blutlaktat-bateman-modellfunktion-während-und-nach-dem-belastungszeitraum" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Blutlaktat-Bateman-Modellfunktion: Während und nach dem Belastungszeitraum</h1>
+<pre class="shinylive-r" data-engine="r"><code>#| standalone: true
+#| viewerHeight: 900
+library(shiny)
+library(plotly)
+library(minpack.lm)
+
+# Definiere Daten
+t_min &lt;- c(0.4, 3.3, 6.5, 8.4, 10.2, 12.5, 14.9, 16.7, 19.3)
+BLC_t &lt;- c(0.82, 4.53, 6.97, 7.52, 7.73, 7.28, 6.37, 5.41, 4.71)
+
+# Normalisiere t_min, wenn der kleinste Wert größer als 0.0 ist
+if (min(t_min) &gt; 0.0) {
+  t_min &lt;- t_min - min(t_min)
+}
+
+# Bateman-Funktion für Laktatwerte (in Minuten) mit BLC0
+bateman_function &lt;- function(t, a, k1, k2, BLC0) {
+  BLC0 + (a * k1 / (k2 - k1)) * (exp(-k1 * t) - exp(-k2 * t))
+}
+
+# Invasions- und Eliminationsfunktionen
+invasion_function &lt;- function(t, a, k1, BLC0) {
+  BLC0 + a * (1 - exp(-k1 * t))
+}
+
+elimination_function &lt;- function(t, a, k2, BLC0) {
+  BLC0 + a * exp(-k2 * t)
+}
+
+# Benutzeroberfläche (UI)
+ui &lt;- fluidPage(
+  titlePanel("Bateman-Funktion für Laktat-Modellierung"),
+  sidebarLayout(
+    sidebarPanel(
+      width = 3,
+      sliderInput("a", "a [mmol/l]", min = 0.0, max = 30.0, value = 15.0, step = 0.01),
+      sliderInput("k1", "k1 [min^-1]", min = 0.1, max = 3.5, value = 0.5, step = 0.001),
+      sliderInput("k2", "k2 [min^-1]", min = 0.020, max = 0.200, value = 0.10, step = 0.001),
+      sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
+      actionButton("optimize", "Anpassen: nlsLM"),
+      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
+    ),
+    mainPanel(
+      plotlyOutput("plot")
+    )
+  )
+)
+
+# Server-Logik
+server &lt;- function(input, output, session) {
+  
+  # Reaktiver Wert für hochgeladene Daten
+  uploaded_data &lt;- reactiveVal(NULL)
+  
+  # Beobachter für CSV-Upload
+  observeEvent(input$file_upload, {
+    req(input$file_upload)
+    df &lt;- read.csv(input$file_upload$datapath)
+    
+    if ("t_min" %in% names(df) &amp;&amp; "BLC_t" %in% names(df)) {
+      if (df$t_min[1] != 0.0) {
+        df$t_min &lt;- df$t_min - df$t_min[1]
+      }
+      
+      uploaded_data(df)
+    } else {
+      showModal(modalDialog(
+        title = "Ungültige CSV",
+        "Die CSV-Datei muss 't_min' und 'BLC_t' als Spaltennamen enthalten.",
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    }
+  })
+  
+  observeEvent(input$optimize, {
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_min = t_min, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    
+    # Setze BLC0 Grenzen basierend auf dem ersten BLC_t Wert
+    BLC0_lower &lt;- max(0, data$BLC_t[1] * 0.9)
+    BLC0_upper &lt;- min(5, data$BLC_t[1] * 1.1)
+    
+    best_fit &lt;- NULL
+    best_rss &lt;- Inf
+    
+    withProgress(message = 'Fitting in progress', value = 0, {
+      for (i in 1:100) {
+        # Randomisierte Startwerte
+        a_start &lt;- runif(1, 0, 30)
+        k1_start &lt;- runif(1, 0.1, 3.5)
+        k2_start &lt;- runif(1, 0.020, 0.200)
+        BLC0_start &lt;- runif(1, BLC0_lower, BLC0_upper)
+        
+        start_values &lt;- list(a = a_start, k1 = k1_start, k2 = k2_start, BLC0 = BLC0_start)
+        
+        model_equation &lt;- BLC_t ~ BLC0 + (a * k1 / (k2 - k1)) * (exp(-k1 * t_min) - exp(-k2 * t_min))
+        
+        fit &lt;- try(nlsLM(model_equation,
+                         data = data,
+                         start = start_values,
+                         lower = c(a = 0.0, k1 = 0.1, k2 = 0.020, BLC0 = BLC0_lower),
+                         upper = c(a = 30.0, k1 = 3.5, k2 = 0.200, BLC0 = BLC0_upper),
+                         control = nls.control(maxiter = 1024)), silent = TRUE)
+        
+        if (!inherits(fit, "try-error")) {
+          rss &lt;- sum(residuals(fit)^2)
+          if (rss &lt; best_rss) {
+            best_rss &lt;- rss
+            best_fit &lt;- fit
+          }
+        }
+        
+        incProgress(1/100, detail = paste("Iteration", i))
+      }
+    })
+    
+    if (!is.null(best_fit)) {
+      params &lt;- as.list(coef(best_fit))
+      updateSliderInput(session, "a", value = params$a)
+      updateSliderInput(session, "k1", value = params$k1)
+      updateSliderInput(session, "k2", value = params$k2)
+      updateSliderInput(session, "BLC0", value = params$BLC0)
+      
+      showNotification("Fitting completed successfully!", type = "message")
+    } else {
+      showModal(modalDialog(
+        title = "nlsLM fehlgeschlagen",
+        "Die nicht-lineare Regression mit dem Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    }
+  })
+  
+  output$plot &lt;- renderPlotly({
+    a &lt;- input$a
+    k1 &lt;- input$k1
+    k2 &lt;- input$k2
+    BLC0 &lt;- input$BLC0
+    
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_min = t_min, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    
+    max_x &lt;- max(data$t_min) * 1.66
+    
+    t_min_modell &lt;- seq(0, max_x, length.out = 1000)
+    BLC_t_modell &lt;- bateman_function(t_min_modell, a, k1, k2, BLC0)
+    invasion_modell &lt;- invasion_function(t_min_modell, a, k1, BLC0)
+    elimination_modell &lt;- elimination_function(t_min_modell, a, k2, BLC0)
+    
+    max_y &lt;- max(max(BLC_t_modell) * 1.2, max(data$BLC_t) * 1.2, max(invasion_modell) * 1.2, max(elimination_modell) * 1.2)
+    
+    # Berechne tmax und Lamax
+    tmax &lt;- log(k1/k2) / (k1 - k2)
+    Lamax &lt;- bateman_function(tmax, a, k1, k2, BLC0)
+    
+    # Erstelle Gleichungstext
+    eq_text &lt;- sprintf("[La]&lt;sub&gt;b(t)&lt;/sub&gt; = %.2f + (%.2f * %.3f / (%.3f - %.3f)) * (e&lt;sup&gt;-%.3f*t&lt;/sup&gt; - e&lt;sup&gt;-%.3f*t&lt;/sup&gt;)", 
+                       BLC0, a, k1, k2, k1, k1, k2)
+    
+    # Berechne R²
+    BLC_t_modell_at_data &lt;- bateman_function(data$t_min, a, k1, k2, BLC0)
+    ss_res &lt;- sum((data$BLC_t - BLC_t_modell_at_data)^2)
+    ss_tot &lt;- sum((data$BLC_t - mean(data$BLC_t))^2)
+    r_squared &lt;- 1 - (ss_res / ss_tot)
+    
+    # Plotly-Plot
+    p &lt;- plot_ly() %&gt;%
+      add_trace(x = t_min_modell, y = BLC_t_modell, type = 'scatter', mode = 'lines', 
+                name = 'Bateman-Funktion', line = list(color = '#EF5350')) %&gt;%
+      add_trace(x = t_min_modell, y = invasion_modell, type = 'scatter', mode = 'lines', 
+                name = 'Invasion', line = list(color = "#9C85C0", width = 2, dash = '8 5'),
+                opacity = 0.65) %&gt;%
+      add_trace(x = t_min_modell, y = elimination_modell, type = 'scatter', mode = 'lines', 
+                name = 'Elimination', line = list(color = '#2683C6', width = 2, dash = '8 5'),
+                opacity = 0.65) %&gt;%
+      add_trace(x = data$t_min, y = data$BLC_t, type = 'scatter', mode = 'markers', 
+                name = 'Gemessene BLC-Werte', marker = list(color = "#42BA97", size = 9, symbol = 'x')) %&gt;%
+      add_segments(x = tmax, xend = tmax, y = 0, yend = max_y, 
+                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), 
+                   showlegend = FALSE, opacity = 0.5) %&gt;%
+      add_segments(x = 0, xend = max_x, y = Lamax, yend = Lamax, 
+                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), 
+                   showlegend = FALSE, opacity = 0.5) %&gt;%
+      layout(title = "Bateman-Funktion für Laktat-Modellierung",
+             margin = list(t = 40),
+             xaxis = list(title = "Zeit [min]", range = c(0, max_x)),
+             yaxis = list(title = "Laktat [mmol/l]", range = c(0, max_y)),
+             annotations = list(
+               list(
+                 x = max_x * 0.5, 
+                 y = max_y * 0.95,
+                 text = eq_text,
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.90,
+                 text = sprintf("R²: %.4f", r_squared),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.85,
+                 text = sprintf("BLC&lt;sub&gt;max&lt;/sub&gt;: %.2f mmol/l, TBLC&lt;sub&gt;max&lt;/sub&gt;: %.2f min", Lamax, tmax),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               )
+             ))
+    
+    p
+  })
+}
+
+# Starte die App
+shinyApp(ui = ui, server = server)</code></pre>
+</section>
+<section id="blutlaktat-kompartmentmodell-modellfunktion-nach-freund-et-al.-1986-während-und-nach-dem-belastungszeitraum" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Blutlaktat-Kompartmentmodell-Modellfunktion (nach Freund et al.&nbsp;1986): Während und nach dem Belastungszeitraum</h1>
+<pre class="shinylive-r" data-engine="r"><code>#| standalone: true
+#| viewerHeight: 900
+library(shiny)
+library(plotly)
+library(minpack.lm)
+
+# Definiere Daten
+t_min &lt;- c(0.4, 3.3, 6.5, 8.4, 10.2, 12.5, 14.9, 16.7, 19.3)
+BLC_t &lt;- c(0.82, 4.53, 6.97, 7.52, 7.73, 7.28, 6.37, 5.41, 4.71)
+
+# Normalisiere t_min, wenn der kleinste Wert größer als 0.0 ist
+if (min(t_min) &gt; 0.0) {
+  t_min &lt;- t_min - min(t_min)
+}
+
+# Freund et al. Kompartmentmodell-Funktion
+freund_model &lt;- function(t, A1, A2, gamma1, gamma2, La0) {
+  La0 + A1 * (1 - exp(-gamma1 * t)) + A2 * (1 - exp(-gamma2 * t))
+}
+
+# Berechne tmax und Lamax
+calculate_tmax_lamax &lt;- function(A1, A2, gamma1, gamma2, La0) {
+  f &lt;- function(t) freund_model(t, A1, A2, gamma1, gamma2, La0)
+  tmax &lt;- optimize(f, c(0, 100), maximum = TRUE)$maximum
+  Lamax &lt;- f(tmax)
+  list(tmax = tmax, Lamax = Lamax)
+}
+
+# Benutzeroberfläche (UI)
+ui &lt;- fluidPage(
+  titlePanel("Kompartmentmodell für Laktat-Modellierung"),
+  sidebarLayout(
+    sidebarPanel(
+      width = 3,
+      sliderInput("A1", "A1 [mmol/l]", min = 0.0, max = 100.0, value = 20.0, step = 0.1),
+      sliderInput("A2", "A2 [mmol/l]", min = -100.0, max = 0.0, value = -20.0, step = 0.1),
+      sliderInput("gamma1", "γ1 [min^-1]", min = 0.05, max = 2.0, value = 0.1, step = 0.001),
+      sliderInput("gamma2", "γ2 [min^-1]", min = 0.01, max = 0.5, value = 0.05, step = 0.001),
+      sliderInput("La0", "La0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
+      actionButton("optimize", "Anpassen: nlsLM"),
+      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
+    ),
+    mainPanel(
+      plotlyOutput("plot")
+    )
+  )
+)
+
+# Server-Logik
+server &lt;- function(input, output, session) {
+  
+  # Reaktiver Wert für hochgeladene Daten
+  uploaded_data &lt;- reactiveVal(NULL)
+  
+  # Beobachter für CSV-Upload
+  observeEvent(input$file_upload, {
+    req(input$file_upload)
+    df &lt;- read.csv(input$file_upload$datapath)
+    
+    if ("t_min" %in% names(df) &amp;&amp; "BLC_t" %in% names(df)) {
+      if (df$t_min[1] != 0.0) {
+        df$t_min &lt;- df$t_min - df$t_min[1]
+      }
+      
+      uploaded_data(df)
+    } else {
+      showModal(modalDialog(
+        title = "Ungültige CSV",
+        "Die CSV-Datei muss 't_min' und 'BLC_t' als Spaltennamen enthalten.",
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    }
+  })
+  
+  observeEvent(input$optimize, {
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_min = t_min, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    
+    # Setze La0 Grenzen basierend auf dem ersten BLC_t Wert
+    La0_lower &lt;- max(0, data$BLC_t[1] * 0.9)
+    La0_upper &lt;- min(5, data$BLC_t[1] * 1.1)
+    
+    best_fit &lt;- NULL
+    best_rss &lt;- Inf
+    
+    withProgress(message = 'Fitting in progress', value = 0, {
+      for (i in 1:100) {
+        # Randomisierte Startwerte
+        A1_start &lt;- runif(1, 0, 100)
+        A2_start &lt;- runif(1, -100, 0)
+        gamma1_start &lt;- runif(1, 0.05, 2)
+        gamma2_start &lt;- runif(1, 0.01, 0.5)
+        La0_start &lt;- runif(1, La0_lower, La0_upper)
+        
+        start_values &lt;- list(A1 = A1_start, A2 = A2_start, gamma1 = gamma1_start, gamma2 = gamma2_start, La0 = La0_start)
+        
+        model_equation &lt;- BLC_t ~ La0 + A1 * (1 - exp(-gamma1 * t_min)) + A2 * (1 - exp(-gamma2 * t_min))
+        
+        fit &lt;- try(nlsLM(model_equation,
+                         data = data,
+                         start = start_values,
+                         lower = c(A1 = 0.0, A2 = -100.0, gamma1 = 0.05, gamma2 = 0.01, La0 = La0_lower),
+                         upper = c(A1 = 100.0, A2 = 0.0, gamma1 = 2.0, gamma2 = 0.5, La0 = La0_upper),
+                         control = nls.control(maxiter = 1024)), silent = TRUE)
+        
+        if (!inherits(fit, "try-error")) {
+          rss &lt;- sum(residuals(fit)^2)
+          if (rss &lt; best_rss) {
+            best_rss &lt;- rss
+            best_fit &lt;- fit
+          }
+        }
+        
+        incProgress(1/100, detail = paste("Iteration", i))
+      }
+    })
+    
+    if (!is.null(best_fit)) {
+      params &lt;- as.list(coef(best_fit))
+      updateSliderInput(session, "A1", value = params$A1)
+      updateSliderInput(session, "A2", value = params$A2)
+      updateSliderInput(session, "gamma1", value = params$gamma1)
+      updateSliderInput(session, "gamma2", value = params$gamma2)
+      updateSliderInput(session, "La0", value = params$La0)
+      
+      showNotification("Fitting completed successfully!", type = "message")
+    } else {
+      showModal(modalDialog(
+        title = "nlsLM fehlgeschlagen",
+        "Die nicht-lineare Regression mit dem Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",
+        easyClose = TRUE,
+        footer = NULL
+      ))
+    }
+  })
+  
+  output$plot &lt;- renderPlotly({
+    A1 &lt;- input$A1
+    A2 &lt;- input$A2
+    gamma1 &lt;- input$gamma1
+    gamma2 &lt;- input$gamma2
+    La0 &lt;- input$La0
+    
+    data &lt;- if (is.null(uploaded_data())) {
+      data.frame(t_min = t_min, BLC_t = BLC_t)
+    } else {
+      uploaded_data()
+    }
+    
+    max_x &lt;- max(data$t_min) * 1.66
+    
+    t_min_modell &lt;- seq(0, max_x, length.out = 1000)
+    BLC_t_modell &lt;- freund_model(t_min_modell, A1, A2, gamma1, gamma2, La0)
+    
+    max_y &lt;- max(max(BLC_t_modell) * 1.2, max(data$BLC_t) * 1.2)
+    
+    # Berechne tmax und Lamax
+    results &lt;- calculate_tmax_lamax(A1, A2, gamma1, gamma2, La0)
+    tmax &lt;- results$tmax
+    Lamax &lt;- results$Lamax
+    
+    # Erstelle Gleichungstext
+    eq_text &lt;- sprintf("[La]&lt;sub&gt;b(t)&lt;/sub&gt; = %.2f + %.1f * (1 - e&lt;sup&gt;-%.3f*t&lt;/sup&gt;) + %.1f * (1 - e&lt;sup&gt;-%.3f*t&lt;/sup&gt;)", 
+                       La0, A1, gamma1, A2, gamma2)
+    
+    # Berechne R²
+    BLC_t_modell_at_data &lt;- freund_model(data$t_min, A1, A2, gamma1, gamma2, La0)
+    ss_res &lt;- sum((data$BLC_t - BLC_t_modell_at_data)^2)
+    ss_tot &lt;- sum((data$BLC_t - mean(data$BLC_t))^2)
+    r_squared &lt;- 1 - (ss_res / ss_tot)
+    
+    # Plotly-Plot
+    p &lt;- plot_ly() %&gt;%
+      add_trace(x = t_min_modell, y = BLC_t_modell, type = 'scatter', mode = 'lines', 
+                name = 'Modellgleichung', line = list(color = '#EF5350')) %&gt;%
+      add_trace(x = data$t_min, y = data$BLC_t, type = 'scatter', mode = 'markers', 
+                name = 'Gemessene BLC-Werte', marker = list(color = "#42BA97", size = 9, symbol = 'x')) %&gt;%
+      add_segments(x = tmax, xend = tmax, y = 0, yend = max_y, 
+                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), 
+                   showlegend = FALSE, opacity = 0.5) %&gt;%
+      add_segments(x = 0, xend = max_x, y = Lamax, yend = Lamax, 
+                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), 
+                   showlegend = FALSE, opacity = 0.5) %&gt;%
+      layout(title = "Freund et al. Kompartmentmodell für Laktat-Modellierung",
+             margin = list(t = 40),
+             xaxis = list(title = "Zeit [min]", range = c(0, max_x)),
+             yaxis = list(title = "Laktat [mmol/l]", range = c(0, max_y)),
+             annotations = list(
+               list(
+                 x = max_x * 0.5, 
+                 y = max_y * 0.95,
+                 text = eq_text,
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.90,
+                 text = sprintf("R²: %.4f", r_squared),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.85,
+                 text = sprintf("BLC&lt;sub&gt;max&lt;/sub&gt;: %.2f mmol/l, TBLC&lt;sub&gt;max&lt;/sub&gt;: %.2f min", Lamax, tmax),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               )
+             ))
+    
+    p
+  })
+}
+
+# Starte die App
+shinyApp(ui = ui, server = server)</code></pre>
+</section>
+<section id="laktat-leistungs-beziehung" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Laktat-Leistungs-Beziehung</h1>
 <pre class="shinylive-r" data-engine="r"><code>#| standalone: true
 #| viewerHeight: 900
 library(shiny)
@@ -511,18 +1214,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -554,7 +1246,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -613,7 +1327,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -945,135 +1659,843 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-next">
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Quellcode</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Laktat-Leistungs-Beziehung"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    resources: </span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - shinylive-sw.js</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - shinylive</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># Laktat-Leistungs-Beziehung</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="in"># UI</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("Laktat-Leistungs-Modell"),</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="in">      numericInput("num_rows", "Anzahl der Datenpunkte", 4, min = 1, max = 20),</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="in">      uiOutput("input_fields"),</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 2  </span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot"),</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 10  </span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in"># Server</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">  # Initialwerte für die Leistung und ΔBLC</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">  initial_values &lt;- list(</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 100, DeltaBLC = 0.3),</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 200, DeltaBLC = 1.0),</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 300, DeltaBLC = 2.8),</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 400, DeltaBLC = 8.0)</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">  # Dynamisch Input-Felder erzeugen</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">  output$input_fields &lt;- renderUI({</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">    num_rows &lt;- input$num_rows</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">    lapply(1:num_rows, function(i) {</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">      initial_value &lt;- if (i &lt;= length(initial_values)) initial_values[[i]] else list(Leistung = 0, DeltaBLC = 0)</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">      tagList(</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">        numericInput(paste0("leistung_", i), paste("Leistung", i), value = initial_value$Leistung, step = 10),</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">        numericInput(paste0("deltaBLC_", i), paste("ΔBLC", i), value = initial_value$DeltaBLC, step = 0.1)</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">  # Reaktive Datenframe basierend auf Eingabewerten</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">  input_data &lt;- reactive({</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">    num_rows &lt;- input$num_rows</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">    if (is.null(num_rows)) return(NULL)</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- data.frame(Leistung = numeric(num_rows), ΔBLC = numeric(num_rows))</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="in">    for (i in 1:num_rows) {</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">      leistung_val &lt;- input[[paste0("leistung_", i)]]</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">      deltaBLC_val &lt;- input[[paste0("deltaBLC_", i)]]</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">      if (is.null(leistung_val) || is.null(deltaBLC_val)) {</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">        data$Leistung[i] &lt;- if (i &lt;= length(initial_values)) initial_values[[i]]$Leistung else 0</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">        data$ΔBLC[i] &lt;- if (i &lt;= length(initial_values)) initial_values[[i]]$DeltaBLC else 0</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">      } else {</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">        data$Leistung[i] &lt;- leistung_val</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">        data$ΔBLC[i] &lt;- deltaBLC_val</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">    data</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">  # Initiale Werte setzen</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">  observe({</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in">    for (i in 1:length(initial_values)) {</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">      updateNumericInput(session, paste0("leistung_", i), value = initial_values[[i]]$Leistung)</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">      updateNumericInput(session, paste0("deltaBLC_", i), value = initial_values[[i]]$DeltaBLC)</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">  # Modell anpassen und Plot aktualisieren</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="in">    df_proband &lt;- input_data()</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">    if (is.null(df_proband)) return(NULL)</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">    # Anpassung des Exponentialmodells</span></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">    model &lt;- nls(ΔBLC ~ a * exp(b * Leistung), data = df_proband, start = list(a = 1, b = 0.01))</span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="in">    coef_exponential_model &lt;- coef(model)</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="in">    # Vorhersagen und Sequenz für den Plot</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="in">    x_seq &lt;- seq(min(df_proband$Leistung), max(df_proband$Leistung), length.out = 100)</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="in">    y_pred &lt;- predict(model, newdata = data.frame(Leistung = x_seq))</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="in">    # Plotly-Diagramm</span></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="in">    plot_ly() %&gt;%</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(data = df_proband, x = ~Leistung, y = ~ΔBLC, type = 'scatter', mode = 'markers',</span></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="in">                name = "ΔBLC",</span></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="in">                marker = list(color = "#2683C6", size = 7.0)) %&gt;%</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~x_seq, y = ~y_pred, type = 'scatter', mode = 'lines', </span></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Laktat-Modellfunktion', </span></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">                line = list(color = '#62A39F', width = 3)) %&gt;%</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="in">      add_annotations(text = sprintf("ΔBLC = %.5f \u00B7 e&lt;sup&gt;%.5f \u00B7 Leistung&lt;/sup&gt;", </span></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="in">                                     coef_exponential_model['a'], coef_exponential_model['b']),</span></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="in">                      x = min(df_proband$Leistung), y = max(y_pred), showarrow = FALSE,</span></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a><span class="in">                      xanchor = 'left', yanchor = 'bottom',</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="in">                      font = list(family = "Arial, sans-serif", size = 12, color = "black")) %&gt;%</span></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Laktat-Leistungs-Modell",</span></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="in">        margin = list(t = 40),</span></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="in">        xaxis = list(title = "Leistung [Watt]"),</span></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="in">        yaxis = list(title = "ΔBLC [mmol \u00B7 l&lt;sup&gt;-1&lt;/sup&gt;]")</span></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="in"># App starten</span></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Laktat-Modellfunktionen"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">    resources: </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">      - shinylive-sw.js</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">  - webr</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - shinylive</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># Blutlaktat-Modellfunktion: Exponentieller Abfall nach dem Belastungsende</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(minpack.lm)</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="in"># Define data</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="in">t_s &lt;- c(23, 127, 261, 422.5, 549.8, 664.5, 795.8, 1254.9)</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="in">BLC_t &lt;- c(10.04, 7.49, 5.18, 3.9, 2.67, 2.18, 1.64, 0.98)</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="in"># New model function: A * exp(-k * (t - delay)) + BLC0</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="in">laktat_model_function &lt;- function(t, A, k, BLC0, delay) {</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="in">  A * exp(-k * (t - delay)) + BLC0</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="in"># User interface (UI)</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("Exponentielles Laktat-Abbaumodell"),</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 3,</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("A", "A [mmol/l]", min = 0.0, max = 15.0, value = 8.0, step = 0.1),</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("k", "k [s^-1]", min = 0.0001, max = 0.02, value = 0.005, step = 0.0001),</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("delay", "Delay [s]", min = 0, max = 3600, value = 0, step = 0.1),</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("set_delay", "Delay auf BLC_1"),</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="in">      br(), </span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Anpassen: nlsLM"),</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot")</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="in"># Server logic</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="in">  # Reactive value for uploaded data</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="in">  uploaded_data &lt;- reactiveVal(NULL)</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="in">  # Observer for CSV upload</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$file_upload, {</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="in">    req(input$file_upload)</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="in">    df &lt;- read.csv(input$file_upload$datapath)</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="in">    if ("t_s" %in% names(df) &amp;&amp; "BLC_t" %in% names(df)) {</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data(df)</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Ungültige CSV",</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die CSV-Datei muss 't_s' und 'BLC_t' als Spaltennamen enthalten.",</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="in">  # Observer for setting delay to first time point</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$set_delay, {</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_s = t_s, BLC_t = BLC_t)</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="in">    updateSliderInput(session, "delay", value = min(data$t_s))</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$optimize, {</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_s = t_s, BLC_t = BLC_t)</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="in">    delay &lt;- input$delay</span></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="in">    # Filter data points after the delay</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a><span class="in">    data_filtered &lt;- data[data$t_s &gt; delay, ]</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a><span class="in">    if (nrow(data_filtered) &lt; 3) {</span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="in">      showNotification("Nicht genügend Datenpunkte nach dem Delay für den Fitting-Prozess.", type = "error")</span></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="in">      return()</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="in">    best_fit &lt;- NULL</span></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="in">    best_rss &lt;- Inf</span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="in">    withProgress(message = 'Fitting in progress', value = 0, {</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="in">      for (i in 1:100) {</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="in">        # Randomized starting values</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="in">        A_start &lt;- runif(1, 0, 15)</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="in">        k_start &lt;- runif(1, 0.0001, 0.02)</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="in">        BLC0_start &lt;- runif(1, 0, 5)</span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="in">        start_values &lt;- list(A = A_start, k = k_start, BLC0 = BLC0_start)</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="in">        model_equation &lt;- BLC_t ~ A * exp(-k * (t_s - delay)) + BLC0</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="in">        fit &lt;- try(nlsLM(model_equation,</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="in">                         data = data_filtered,</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a><span class="in">                         start = start_values,</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="in">                         lower = c(A = 0, k = 0.0001, BLC0 = 0),</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="in">                         upper = c(A = 15, k = 0.02, BLC0 = 5),</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="in">                         control = nls.control(maxiter = 1024)), silent = TRUE)</span></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="in">        if (!inherits(fit, "try-error")) {</span></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="in">          rss &lt;- sum(residuals(fit)^2)</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a><span class="in">          if (rss &lt; best_rss) {</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a><span class="in">            best_rss &lt;- rss</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a><span class="in">            best_fit &lt;- fit</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a><span class="in">          }</span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a><span class="in">        incProgress(1/100, detail = paste("Iteration", i))</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!is.null(best_fit)) {</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="in">      params &lt;- as.list(coef(best_fit))</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "A", value = params$A)</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "k", value = params$k)</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "BLC0", value = params$BLC0)</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="in">      showNotification("Fitting completed successfully!", type = "message")</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "nlsLM fehlgeschlagen",</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die nicht-lineare Regression mit dem Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a><span class="in">    A &lt;- input$A</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a><span class="in">    k &lt;- input$k</span></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC0 &lt;- input$BLC0</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a><span class="in">    delay &lt;- input$delay</span></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_s = t_s, BLC_t = BLC_t)</span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a><span class="in">    max_x &lt;- max(data$t_s) * 1.66</span></span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a><span class="in">    min_x &lt;- max(delay - 360, 0)</span></span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a><span class="in">    t_s_modell &lt;- seq(min_x, max_x, length.out = 1000)</span></span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC_t_modell &lt;- laktat_model_function(t_s_modell, A, k, BLC0, delay)</span></span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a><span class="in">    max_y &lt;- max(max(BLC_t_modell) * 1.1, max(data$BLC_t) * 1.1)</span></span>
+<span id="cb5-171"><a href="#cb5-171" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-172"><a href="#cb5-172" aria-hidden="true" tabindex="-1"></a><span class="in">    # Create equation text</span></span>
+<span id="cb5-173"><a href="#cb5-173" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("BLC(t) = %.2f * e&lt;sup&gt;-%.4f*(t-%.2f)&lt;/sup&gt; + %.3f", A, k, delay, BLC0)</span></span>
+<span id="cb5-174"><a href="#cb5-174" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-175"><a href="#cb5-175" aria-hidden="true" tabindex="-1"></a><span class="in">    # Calculate R²</span></span>
+<span id="cb5-176"><a href="#cb5-176" aria-hidden="true" tabindex="-1"></a><span class="in">    data_filtered &lt;- data[data$t_s &gt; delay, ]</span></span>
+<span id="cb5-177"><a href="#cb5-177" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC_t_modell_at_data &lt;- laktat_model_function(data_filtered$t_s, A, k, BLC0, delay)</span></span>
+<span id="cb5-178"><a href="#cb5-178" aria-hidden="true" tabindex="-1"></a><span class="in">    ss_res &lt;- sum((data_filtered$BLC_t - BLC_t_modell_at_data)^2)</span></span>
+<span id="cb5-179"><a href="#cb5-179" aria-hidden="true" tabindex="-1"></a><span class="in">    ss_tot &lt;- sum((data_filtered$BLC_t - mean(data_filtered$BLC_t))^2)</span></span>
+<span id="cb5-180"><a href="#cb5-180" aria-hidden="true" tabindex="-1"></a><span class="in">    r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
+<span id="cb5-181"><a href="#cb5-181" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-182"><a href="#cb5-182" aria-hidden="true" tabindex="-1"></a><span class="in">    # Plotly plot</span></span>
+<span id="cb5-183"><a href="#cb5-183" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
+<span id="cb5-184"><a href="#cb5-184" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = t_s_modell[t_s_modell &gt;= delay], y = BLC_t_modell[t_s_modell &gt;= delay], </span></span>
+<span id="cb5-185"><a href="#cb5-185" aria-hidden="true" tabindex="-1"></a><span class="in">                type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-186"><a href="#cb5-186" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%</span></span>
+<span id="cb5-187"><a href="#cb5-187" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = t_s_modell[t_s_modell &lt; delay], y = BLC_t_modell[t_s_modell &lt; delay], </span></span>
+<span id="cb5-188"><a href="#cb5-188" aria-hidden="true" tabindex="-1"></a><span class="in">                type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-189"><a href="#cb5-189" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Modellfunktion (vor Delay)', line = list(color = '#EF6F6A', dash = 'dash')) %&gt;%</span></span>
+<span id="cb5-190"><a href="#cb5-190" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = data$t_s, y = data$BLC_t, type = 'scatter', mode = 'markers', </span></span>
+<span id="cb5-191"><a href="#cb5-191" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Gemessene BLC-Werte', marker = list(color = '#42BA97', size = 10, symbol = 'x')) %&gt;%</span></span>
+<span id="cb5-192"><a href="#cb5-192" aria-hidden="true" tabindex="-1"></a><span class="in">      add_segments(x = delay, xend = delay, y = 0, yend = max_y, </span></span>
+<span id="cb5-193"><a href="#cb5-193" aria-hidden="true" tabindex="-1"></a><span class="in">                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), </span></span>
+<span id="cb5-194"><a href="#cb5-194" aria-hidden="true" tabindex="-1"></a><span class="in">                   showlegend = FALSE, opacity = 0.75) %&gt;%</span></span>
+<span id="cb5-195"><a href="#cb5-195" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "Exponentielles Laktat-Abbaumodell",</span></span>
+<span id="cb5-196"><a href="#cb5-196" aria-hidden="true" tabindex="-1"></a><span class="in">             margin = list(t = 40),</span></span>
+<span id="cb5-197"><a href="#cb5-197" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "Zeit [s]", range = c(min_x, max_x)),</span></span>
+<span id="cb5-198"><a href="#cb5-198" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "Laktat [mmol/l]", range = c(0, max_y)),</span></span>
+<span id="cb5-199"><a href="#cb5-199" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
+<span id="cb5-200"><a href="#cb5-200" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-201"><a href="#cb5-201" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5, </span></span>
+<span id="cb5-202"><a href="#cb5-202" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.95,</span></span>
+<span id="cb5-203"><a href="#cb5-203" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = eq_text,</span></span>
+<span id="cb5-204"><a href="#cb5-204" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-205"><a href="#cb5-205" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-206"><a href="#cb5-206" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-207"><a href="#cb5-207" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-208"><a href="#cb5-208" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-209"><a href="#cb5-209" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-210"><a href="#cb5-210" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-211"><a href="#cb5-211" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb5-212"><a href="#cb5-212" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-213"><a href="#cb5-213" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5,</span></span>
+<span id="cb5-214"><a href="#cb5-214" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.90,</span></span>
+<span id="cb5-215"><a href="#cb5-215" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = sprintf("R²: %.4f", r_squared),</span></span>
+<span id="cb5-216"><a href="#cb5-216" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-217"><a href="#cb5-217" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-218"><a href="#cb5-218" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-219"><a href="#cb5-219" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-220"><a href="#cb5-220" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-221"><a href="#cb5-221" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-222"><a href="#cb5-222" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-223"><a href="#cb5-223" aria-hidden="true" tabindex="-1"></a><span class="in">               )</span></span>
+<span id="cb5-224"><a href="#cb5-224" aria-hidden="true" tabindex="-1"></a><span class="in">             ))</span></span>
+<span id="cb5-225"><a href="#cb5-225" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-226"><a href="#cb5-226" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
+<span id="cb5-227"><a href="#cb5-227" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a><span class="in"># Start the app</span></span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-234"><a href="#cb5-234" aria-hidden="true" tabindex="-1"></a><span class="fu"># Blutlaktat-Bateman-Modellfunktion: Während und nach dem Belastungszeitraum</span></span>
+<span id="cb5-235"><a href="#cb5-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-236"><a href="#cb5-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
+<span id="cb5-237"><a href="#cb5-237" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
+<span id="cb5-238"><a href="#cb5-238" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
+<span id="cb5-239"><a href="#cb5-239" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
+<span id="cb5-240"><a href="#cb5-240" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
+<span id="cb5-241"><a href="#cb5-241" aria-hidden="true" tabindex="-1"></a><span class="in">library(minpack.lm)</span></span>
+<span id="cb5-242"><a href="#cb5-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-243"><a href="#cb5-243" aria-hidden="true" tabindex="-1"></a><span class="in"># Definiere Daten</span></span>
+<span id="cb5-244"><a href="#cb5-244" aria-hidden="true" tabindex="-1"></a><span class="in">t_min &lt;- c(0.4, 3.3, 6.5, 8.4, 10.2, 12.5, 14.9, 16.7, 19.3)</span></span>
+<span id="cb5-245"><a href="#cb5-245" aria-hidden="true" tabindex="-1"></a><span class="in">BLC_t &lt;- c(0.82, 4.53, 6.97, 7.52, 7.73, 7.28, 6.37, 5.41, 4.71)</span></span>
+<span id="cb5-246"><a href="#cb5-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-247"><a href="#cb5-247" aria-hidden="true" tabindex="-1"></a><span class="in"># Normalisiere t_min, wenn der kleinste Wert größer als 0.0 ist</span></span>
+<span id="cb5-248"><a href="#cb5-248" aria-hidden="true" tabindex="-1"></a><span class="in">if (min(t_min) &gt; 0.0) {</span></span>
+<span id="cb5-249"><a href="#cb5-249" aria-hidden="true" tabindex="-1"></a><span class="in">  t_min &lt;- t_min - min(t_min)</span></span>
+<span id="cb5-250"><a href="#cb5-250" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-251"><a href="#cb5-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-252"><a href="#cb5-252" aria-hidden="true" tabindex="-1"></a><span class="in"># Bateman-Funktion für Laktatwerte (in Minuten) mit BLC0</span></span>
+<span id="cb5-253"><a href="#cb5-253" aria-hidden="true" tabindex="-1"></a><span class="in">bateman_function &lt;- function(t, a, k1, k2, BLC0) {</span></span>
+<span id="cb5-254"><a href="#cb5-254" aria-hidden="true" tabindex="-1"></a><span class="in">  BLC0 + (a * k1 / (k2 - k1)) * (exp(-k1 * t) - exp(-k2 * t))</span></span>
+<span id="cb5-255"><a href="#cb5-255" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-256"><a href="#cb5-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-257"><a href="#cb5-257" aria-hidden="true" tabindex="-1"></a><span class="in"># Invasions- und Eliminationsfunktionen</span></span>
+<span id="cb5-258"><a href="#cb5-258" aria-hidden="true" tabindex="-1"></a><span class="in">invasion_function &lt;- function(t, a, k1, BLC0) {</span></span>
+<span id="cb5-259"><a href="#cb5-259" aria-hidden="true" tabindex="-1"></a><span class="in">  BLC0 + a * (1 - exp(-k1 * t))</span></span>
+<span id="cb5-260"><a href="#cb5-260" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-261"><a href="#cb5-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-262"><a href="#cb5-262" aria-hidden="true" tabindex="-1"></a><span class="in">elimination_function &lt;- function(t, a, k2, BLC0) {</span></span>
+<span id="cb5-263"><a href="#cb5-263" aria-hidden="true" tabindex="-1"></a><span class="in">  BLC0 + a * exp(-k2 * t)</span></span>
+<span id="cb5-264"><a href="#cb5-264" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-265"><a href="#cb5-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-266"><a href="#cb5-266" aria-hidden="true" tabindex="-1"></a><span class="in"># Benutzeroberfläche (UI)</span></span>
+<span id="cb5-267"><a href="#cb5-267" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
+<span id="cb5-268"><a href="#cb5-268" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("Bateman-Funktion für Laktat-Modellierung"),</span></span>
+<span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
+<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
+<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 3,</span></span>
+<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("a", "a [mmol/l]", min = 0.0, max = 30.0, value = 15.0, step = 0.01),</span></span>
+<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("k1", "k1 [min^-1]", min = 0.1, max = 3.5, value = 0.5, step = 0.001),</span></span>
+<span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("k2", "k2 [min^-1]", min = 0.020, max = 0.200, value = 0.10, step = 0.001),</span></span>
+<span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),</span></span>
+<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Anpassen: nlsLM"),</span></span>
+<span id="cb5-277"><a href="#cb5-277" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
+<span id="cb5-278"><a href="#cb5-278" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb5-279"><a href="#cb5-279" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
+<span id="cb5-280"><a href="#cb5-280" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot")</span></span>
+<span id="cb5-281"><a href="#cb5-281" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb5-282"><a href="#cb5-282" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb5-283"><a href="#cb5-283" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb5-284"><a href="#cb5-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-285"><a href="#cb5-285" aria-hidden="true" tabindex="-1"></a><span class="in"># Server-Logik</span></span>
+<span id="cb5-286"><a href="#cb5-286" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
+<span id="cb5-287"><a href="#cb5-287" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-288"><a href="#cb5-288" aria-hidden="true" tabindex="-1"></a><span class="in">  # Reaktiver Wert für hochgeladene Daten</span></span>
+<span id="cb5-289"><a href="#cb5-289" aria-hidden="true" tabindex="-1"></a><span class="in">  uploaded_data &lt;- reactiveVal(NULL)</span></span>
+<span id="cb5-290"><a href="#cb5-290" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-291"><a href="#cb5-291" aria-hidden="true" tabindex="-1"></a><span class="in">  # Beobachter für CSV-Upload</span></span>
+<span id="cb5-292"><a href="#cb5-292" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$file_upload, {</span></span>
+<span id="cb5-293"><a href="#cb5-293" aria-hidden="true" tabindex="-1"></a><span class="in">    req(input$file_upload)</span></span>
+<span id="cb5-294"><a href="#cb5-294" aria-hidden="true" tabindex="-1"></a><span class="in">    df &lt;- read.csv(input$file_upload$datapath)</span></span>
+<span id="cb5-295"><a href="#cb5-295" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-296"><a href="#cb5-296" aria-hidden="true" tabindex="-1"></a><span class="in">    if ("t_min" %in% names(df) &amp;&amp; "BLC_t" %in% names(df)) {</span></span>
+<span id="cb5-297"><a href="#cb5-297" aria-hidden="true" tabindex="-1"></a><span class="in">      if (df$t_min[1] != 0.0) {</span></span>
+<span id="cb5-298"><a href="#cb5-298" aria-hidden="true" tabindex="-1"></a><span class="in">        df$t_min &lt;- df$t_min - df$t_min[1]</span></span>
+<span id="cb5-299"><a href="#cb5-299" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb5-300"><a href="#cb5-300" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb5-301"><a href="#cb5-301" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data(df)</span></span>
+<span id="cb5-302"><a href="#cb5-302" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-303"><a href="#cb5-303" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb5-304"><a href="#cb5-304" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Ungültige CSV",</span></span>
+<span id="cb5-305"><a href="#cb5-305" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die CSV-Datei muss 't_min' und 'BLC_t' als Spaltennamen enthalten.",</span></span>
+<span id="cb5-306"><a href="#cb5-306" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb5-307"><a href="#cb5-307" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb5-308"><a href="#cb5-308" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb5-309"><a href="#cb5-309" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-310"><a href="#cb5-310" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-311"><a href="#cb5-311" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-312"><a href="#cb5-312" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$optimize, {</span></span>
+<span id="cb5-313"><a href="#cb5-313" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-314"><a href="#cb5-314" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_min = t_min, BLC_t = BLC_t)</span></span>
+<span id="cb5-315"><a href="#cb5-315" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-316"><a href="#cb5-316" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-317"><a href="#cb5-317" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-318"><a href="#cb5-318" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-319"><a href="#cb5-319" aria-hidden="true" tabindex="-1"></a><span class="in">    # Setze BLC0 Grenzen basierend auf dem ersten BLC_t Wert</span></span>
+<span id="cb5-320"><a href="#cb5-320" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC0_lower &lt;- max(0, data$BLC_t[1] * 0.9)</span></span>
+<span id="cb5-321"><a href="#cb5-321" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC0_upper &lt;- min(5, data$BLC_t[1] * 1.1)</span></span>
+<span id="cb5-322"><a href="#cb5-322" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-323"><a href="#cb5-323" aria-hidden="true" tabindex="-1"></a><span class="in">    best_fit &lt;- NULL</span></span>
+<span id="cb5-324"><a href="#cb5-324" aria-hidden="true" tabindex="-1"></a><span class="in">    best_rss &lt;- Inf</span></span>
+<span id="cb5-325"><a href="#cb5-325" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-326"><a href="#cb5-326" aria-hidden="true" tabindex="-1"></a><span class="in">    withProgress(message = 'Fitting in progress', value = 0, {</span></span>
+<span id="cb5-327"><a href="#cb5-327" aria-hidden="true" tabindex="-1"></a><span class="in">      for (i in 1:100) {</span></span>
+<span id="cb5-328"><a href="#cb5-328" aria-hidden="true" tabindex="-1"></a><span class="in">        # Randomisierte Startwerte</span></span>
+<span id="cb5-329"><a href="#cb5-329" aria-hidden="true" tabindex="-1"></a><span class="in">        a_start &lt;- runif(1, 0, 30)</span></span>
+<span id="cb5-330"><a href="#cb5-330" aria-hidden="true" tabindex="-1"></a><span class="in">        k1_start &lt;- runif(1, 0.1, 3.5)</span></span>
+<span id="cb5-331"><a href="#cb5-331" aria-hidden="true" tabindex="-1"></a><span class="in">        k2_start &lt;- runif(1, 0.020, 0.200)</span></span>
+<span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a><span class="in">        BLC0_start &lt;- runif(1, BLC0_lower, BLC0_upper)</span></span>
+<span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a><span class="in">        start_values &lt;- list(a = a_start, k1 = k1_start, k2 = k2_start, BLC0 = BLC0_start)</span></span>
+<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-336"><a href="#cb5-336" aria-hidden="true" tabindex="-1"></a><span class="in">        model_equation &lt;- BLC_t ~ BLC0 + (a * k1 / (k2 - k1)) * (exp(-k1 * t_min) - exp(-k2 * t_min))</span></span>
+<span id="cb5-337"><a href="#cb5-337" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-338"><a href="#cb5-338" aria-hidden="true" tabindex="-1"></a><span class="in">        fit &lt;- try(nlsLM(model_equation,</span></span>
+<span id="cb5-339"><a href="#cb5-339" aria-hidden="true" tabindex="-1"></a><span class="in">                         data = data,</span></span>
+<span id="cb5-340"><a href="#cb5-340" aria-hidden="true" tabindex="-1"></a><span class="in">                         start = start_values,</span></span>
+<span id="cb5-341"><a href="#cb5-341" aria-hidden="true" tabindex="-1"></a><span class="in">                         lower = c(a = 0.0, k1 = 0.1, k2 = 0.020, BLC0 = BLC0_lower),</span></span>
+<span id="cb5-342"><a href="#cb5-342" aria-hidden="true" tabindex="-1"></a><span class="in">                         upper = c(a = 30.0, k1 = 3.5, k2 = 0.200, BLC0 = BLC0_upper),</span></span>
+<span id="cb5-343"><a href="#cb5-343" aria-hidden="true" tabindex="-1"></a><span class="in">                         control = nls.control(maxiter = 1024)), silent = TRUE)</span></span>
+<span id="cb5-344"><a href="#cb5-344" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-345"><a href="#cb5-345" aria-hidden="true" tabindex="-1"></a><span class="in">        if (!inherits(fit, "try-error")) {</span></span>
+<span id="cb5-346"><a href="#cb5-346" aria-hidden="true" tabindex="-1"></a><span class="in">          rss &lt;- sum(residuals(fit)^2)</span></span>
+<span id="cb5-347"><a href="#cb5-347" aria-hidden="true" tabindex="-1"></a><span class="in">          if (rss &lt; best_rss) {</span></span>
+<span id="cb5-348"><a href="#cb5-348" aria-hidden="true" tabindex="-1"></a><span class="in">            best_rss &lt;- rss</span></span>
+<span id="cb5-349"><a href="#cb5-349" aria-hidden="true" tabindex="-1"></a><span class="in">            best_fit &lt;- fit</span></span>
+<span id="cb5-350"><a href="#cb5-350" aria-hidden="true" tabindex="-1"></a><span class="in">          }</span></span>
+<span id="cb5-351"><a href="#cb5-351" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb5-352"><a href="#cb5-352" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-353"><a href="#cb5-353" aria-hidden="true" tabindex="-1"></a><span class="in">        incProgress(1/100, detail = paste("Iteration", i))</span></span>
+<span id="cb5-354"><a href="#cb5-354" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb5-355"><a href="#cb5-355" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
+<span id="cb5-356"><a href="#cb5-356" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-357"><a href="#cb5-357" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!is.null(best_fit)) {</span></span>
+<span id="cb5-358"><a href="#cb5-358" aria-hidden="true" tabindex="-1"></a><span class="in">      params &lt;- as.list(coef(best_fit))</span></span>
+<span id="cb5-359"><a href="#cb5-359" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "a", value = params$a)</span></span>
+<span id="cb5-360"><a href="#cb5-360" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "k1", value = params$k1)</span></span>
+<span id="cb5-361"><a href="#cb5-361" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "k2", value = params$k2)</span></span>
+<span id="cb5-362"><a href="#cb5-362" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "BLC0", value = params$BLC0)</span></span>
+<span id="cb5-363"><a href="#cb5-363" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb5-364"><a href="#cb5-364" aria-hidden="true" tabindex="-1"></a><span class="in">      showNotification("Fitting completed successfully!", type = "message")</span></span>
+<span id="cb5-365"><a href="#cb5-365" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-366"><a href="#cb5-366" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb5-367"><a href="#cb5-367" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "nlsLM fehlgeschlagen",</span></span>
+<span id="cb5-368"><a href="#cb5-368" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die nicht-lineare Regression mit dem Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",</span></span>
+<span id="cb5-369"><a href="#cb5-369" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb5-370"><a href="#cb5-370" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb5-371"><a href="#cb5-371" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb5-372"><a href="#cb5-372" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-373"><a href="#cb5-373" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-374"><a href="#cb5-374" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-375"><a href="#cb5-375" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
+<span id="cb5-376"><a href="#cb5-376" aria-hidden="true" tabindex="-1"></a><span class="in">    a &lt;- input$a</span></span>
+<span id="cb5-377"><a href="#cb5-377" aria-hidden="true" tabindex="-1"></a><span class="in">    k1 &lt;- input$k1</span></span>
+<span id="cb5-378"><a href="#cb5-378" aria-hidden="true" tabindex="-1"></a><span class="in">    k2 &lt;- input$k2</span></span>
+<span id="cb5-379"><a href="#cb5-379" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC0 &lt;- input$BLC0</span></span>
+<span id="cb5-380"><a href="#cb5-380" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-381"><a href="#cb5-381" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-382"><a href="#cb5-382" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_min = t_min, BLC_t = BLC_t)</span></span>
+<span id="cb5-383"><a href="#cb5-383" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-384"><a href="#cb5-384" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-385"><a href="#cb5-385" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-386"><a href="#cb5-386" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-387"><a href="#cb5-387" aria-hidden="true" tabindex="-1"></a><span class="in">    max_x &lt;- max(data$t_min) * 1.66</span></span>
+<span id="cb5-388"><a href="#cb5-388" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-389"><a href="#cb5-389" aria-hidden="true" tabindex="-1"></a><span class="in">    t_min_modell &lt;- seq(0, max_x, length.out = 1000)</span></span>
+<span id="cb5-390"><a href="#cb5-390" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC_t_modell &lt;- bateman_function(t_min_modell, a, k1, k2, BLC0)</span></span>
+<span id="cb5-391"><a href="#cb5-391" aria-hidden="true" tabindex="-1"></a><span class="in">    invasion_modell &lt;- invasion_function(t_min_modell, a, k1, BLC0)</span></span>
+<span id="cb5-392"><a href="#cb5-392" aria-hidden="true" tabindex="-1"></a><span class="in">    elimination_modell &lt;- elimination_function(t_min_modell, a, k2, BLC0)</span></span>
+<span id="cb5-393"><a href="#cb5-393" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-394"><a href="#cb5-394" aria-hidden="true" tabindex="-1"></a><span class="in">    max_y &lt;- max(max(BLC_t_modell) * 1.2, max(data$BLC_t) * 1.2, max(invasion_modell) * 1.2, max(elimination_modell) * 1.2)</span></span>
+<span id="cb5-395"><a href="#cb5-395" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-396"><a href="#cb5-396" aria-hidden="true" tabindex="-1"></a><span class="in">    # Berechne tmax und Lamax</span></span>
+<span id="cb5-397"><a href="#cb5-397" aria-hidden="true" tabindex="-1"></a><span class="in">    tmax &lt;- log(k1/k2) / (k1 - k2)</span></span>
+<span id="cb5-398"><a href="#cb5-398" aria-hidden="true" tabindex="-1"></a><span class="in">    Lamax &lt;- bateman_function(tmax, a, k1, k2, BLC0)</span></span>
+<span id="cb5-399"><a href="#cb5-399" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-400"><a href="#cb5-400" aria-hidden="true" tabindex="-1"></a><span class="in">    # Erstelle Gleichungstext</span></span>
+<span id="cb5-401"><a href="#cb5-401" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("[La]&lt;sub&gt;b(t)&lt;/sub&gt; = %.2f + (%.2f * %.3f / (%.3f - %.3f)) * (e&lt;sup&gt;-%.3f*t&lt;/sup&gt; - e&lt;sup&gt;-%.3f*t&lt;/sup&gt;)", </span></span>
+<span id="cb5-402"><a href="#cb5-402" aria-hidden="true" tabindex="-1"></a><span class="in">                       BLC0, a, k1, k2, k1, k1, k2)</span></span>
+<span id="cb5-403"><a href="#cb5-403" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-404"><a href="#cb5-404" aria-hidden="true" tabindex="-1"></a><span class="in">    # Berechne R²</span></span>
+<span id="cb5-405"><a href="#cb5-405" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC_t_modell_at_data &lt;- bateman_function(data$t_min, a, k1, k2, BLC0)</span></span>
+<span id="cb5-406"><a href="#cb5-406" aria-hidden="true" tabindex="-1"></a><span class="in">    ss_res &lt;- sum((data$BLC_t - BLC_t_modell_at_data)^2)</span></span>
+<span id="cb5-407"><a href="#cb5-407" aria-hidden="true" tabindex="-1"></a><span class="in">    ss_tot &lt;- sum((data$BLC_t - mean(data$BLC_t))^2)</span></span>
+<span id="cb5-408"><a href="#cb5-408" aria-hidden="true" tabindex="-1"></a><span class="in">    r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
+<span id="cb5-409"><a href="#cb5-409" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-410"><a href="#cb5-410" aria-hidden="true" tabindex="-1"></a><span class="in">    # Plotly-Plot</span></span>
+<span id="cb5-411"><a href="#cb5-411" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
+<span id="cb5-412"><a href="#cb5-412" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = t_min_modell, y = BLC_t_modell, type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-413"><a href="#cb5-413" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Bateman-Funktion', line = list(color = '#EF5350')) %&gt;%</span></span>
+<span id="cb5-414"><a href="#cb5-414" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = t_min_modell, y = invasion_modell, type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-415"><a href="#cb5-415" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Invasion', line = list(color = "#9C85C0", width = 2, dash = '8 5'),</span></span>
+<span id="cb5-416"><a href="#cb5-416" aria-hidden="true" tabindex="-1"></a><span class="in">                opacity = 0.65) %&gt;%</span></span>
+<span id="cb5-417"><a href="#cb5-417" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = t_min_modell, y = elimination_modell, type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-418"><a href="#cb5-418" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Elimination', line = list(color = '#2683C6', width = 2, dash = '8 5'),</span></span>
+<span id="cb5-419"><a href="#cb5-419" aria-hidden="true" tabindex="-1"></a><span class="in">                opacity = 0.65) %&gt;%</span></span>
+<span id="cb5-420"><a href="#cb5-420" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = data$t_min, y = data$BLC_t, type = 'scatter', mode = 'markers', </span></span>
+<span id="cb5-421"><a href="#cb5-421" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Gemessene BLC-Werte', marker = list(color = "#42BA97", size = 9, symbol = 'x')) %&gt;%</span></span>
+<span id="cb5-422"><a href="#cb5-422" aria-hidden="true" tabindex="-1"></a><span class="in">      add_segments(x = tmax, xend = tmax, y = 0, yend = max_y, </span></span>
+<span id="cb5-423"><a href="#cb5-423" aria-hidden="true" tabindex="-1"></a><span class="in">                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), </span></span>
+<span id="cb5-424"><a href="#cb5-424" aria-hidden="true" tabindex="-1"></a><span class="in">                   showlegend = FALSE, opacity = 0.5) %&gt;%</span></span>
+<span id="cb5-425"><a href="#cb5-425" aria-hidden="true" tabindex="-1"></a><span class="in">      add_segments(x = 0, xend = max_x, y = Lamax, yend = Lamax, </span></span>
+<span id="cb5-426"><a href="#cb5-426" aria-hidden="true" tabindex="-1"></a><span class="in">                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), </span></span>
+<span id="cb5-427"><a href="#cb5-427" aria-hidden="true" tabindex="-1"></a><span class="in">                   showlegend = FALSE, opacity = 0.5) %&gt;%</span></span>
+<span id="cb5-428"><a href="#cb5-428" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "Bateman-Funktion für Laktat-Modellierung",</span></span>
+<span id="cb5-429"><a href="#cb5-429" aria-hidden="true" tabindex="-1"></a><span class="in">             margin = list(t = 40),</span></span>
+<span id="cb5-430"><a href="#cb5-430" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "Zeit [min]", range = c(0, max_x)),</span></span>
+<span id="cb5-431"><a href="#cb5-431" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "Laktat [mmol/l]", range = c(0, max_y)),</span></span>
+<span id="cb5-432"><a href="#cb5-432" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
+<span id="cb5-433"><a href="#cb5-433" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-434"><a href="#cb5-434" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5, </span></span>
+<span id="cb5-435"><a href="#cb5-435" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.95,</span></span>
+<span id="cb5-436"><a href="#cb5-436" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = eq_text,</span></span>
+<span id="cb5-437"><a href="#cb5-437" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-438"><a href="#cb5-438" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-439"><a href="#cb5-439" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-440"><a href="#cb5-440" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-441"><a href="#cb5-441" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-442"><a href="#cb5-442" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-443"><a href="#cb5-443" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-444"><a href="#cb5-444" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb5-445"><a href="#cb5-445" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-446"><a href="#cb5-446" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5,</span></span>
+<span id="cb5-447"><a href="#cb5-447" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.90,</span></span>
+<span id="cb5-448"><a href="#cb5-448" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = sprintf("R²: %.4f", r_squared),</span></span>
+<span id="cb5-449"><a href="#cb5-449" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-450"><a href="#cb5-450" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-451"><a href="#cb5-451" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-452"><a href="#cb5-452" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-453"><a href="#cb5-453" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-454"><a href="#cb5-454" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-455"><a href="#cb5-455" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-456"><a href="#cb5-456" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb5-457"><a href="#cb5-457" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-458"><a href="#cb5-458" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5,</span></span>
+<span id="cb5-459"><a href="#cb5-459" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.85,</span></span>
+<span id="cb5-460"><a href="#cb5-460" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = sprintf("BLC&lt;sub&gt;max&lt;/sub&gt;: %.2f mmol/l, TBLC&lt;sub&gt;max&lt;/sub&gt;: %.2f min", Lamax, tmax),</span></span>
+<span id="cb5-461"><a href="#cb5-461" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-462"><a href="#cb5-462" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-463"><a href="#cb5-463" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-464"><a href="#cb5-464" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-465"><a href="#cb5-465" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-466"><a href="#cb5-466" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-467"><a href="#cb5-467" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-468"><a href="#cb5-468" aria-hidden="true" tabindex="-1"></a><span class="in">               )</span></span>
+<span id="cb5-469"><a href="#cb5-469" aria-hidden="true" tabindex="-1"></a><span class="in">             ))</span></span>
+<span id="cb5-470"><a href="#cb5-470" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-471"><a href="#cb5-471" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
+<span id="cb5-472"><a href="#cb5-472" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-473"><a href="#cb5-473" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-474"><a href="#cb5-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-475"><a href="#cb5-475" aria-hidden="true" tabindex="-1"></a><span class="in"># Starte die App</span></span>
+<span id="cb5-476"><a href="#cb5-476" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
+<span id="cb5-477"><a href="#cb5-477" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-478"><a href="#cb5-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-479"><a href="#cb5-479" aria-hidden="true" tabindex="-1"></a><span class="fu"># Blutlaktat-Kompartmentmodell-Modellfunktion (nach Freund et al. 1986): Während und nach dem Belastungszeitraum</span></span>
+<span id="cb5-480"><a href="#cb5-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-481"><a href="#cb5-481" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
+<span id="cb5-482"><a href="#cb5-482" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
+<span id="cb5-483"><a href="#cb5-483" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
+<span id="cb5-484"><a href="#cb5-484" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
+<span id="cb5-485"><a href="#cb5-485" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
+<span id="cb5-486"><a href="#cb5-486" aria-hidden="true" tabindex="-1"></a><span class="in">library(minpack.lm)</span></span>
+<span id="cb5-487"><a href="#cb5-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-488"><a href="#cb5-488" aria-hidden="true" tabindex="-1"></a><span class="in"># Definiere Daten</span></span>
+<span id="cb5-489"><a href="#cb5-489" aria-hidden="true" tabindex="-1"></a><span class="in">t_min &lt;- c(0.4, 3.3, 6.5, 8.4, 10.2, 12.5, 14.9, 16.7, 19.3)</span></span>
+<span id="cb5-490"><a href="#cb5-490" aria-hidden="true" tabindex="-1"></a><span class="in">BLC_t &lt;- c(0.82, 4.53, 6.97, 7.52, 7.73, 7.28, 6.37, 5.41, 4.71)</span></span>
+<span id="cb5-491"><a href="#cb5-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-492"><a href="#cb5-492" aria-hidden="true" tabindex="-1"></a><span class="in"># Normalisiere t_min, wenn der kleinste Wert größer als 0.0 ist</span></span>
+<span id="cb5-493"><a href="#cb5-493" aria-hidden="true" tabindex="-1"></a><span class="in">if (min(t_min) &gt; 0.0) {</span></span>
+<span id="cb5-494"><a href="#cb5-494" aria-hidden="true" tabindex="-1"></a><span class="in">  t_min &lt;- t_min - min(t_min)</span></span>
+<span id="cb5-495"><a href="#cb5-495" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-496"><a href="#cb5-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-497"><a href="#cb5-497" aria-hidden="true" tabindex="-1"></a><span class="in"># Freund et al. Kompartmentmodell-Funktion</span></span>
+<span id="cb5-498"><a href="#cb5-498" aria-hidden="true" tabindex="-1"></a><span class="in">freund_model &lt;- function(t, A1, A2, gamma1, gamma2, La0) {</span></span>
+<span id="cb5-499"><a href="#cb5-499" aria-hidden="true" tabindex="-1"></a><span class="in">  La0 + A1 * (1 - exp(-gamma1 * t)) + A2 * (1 - exp(-gamma2 * t))</span></span>
+<span id="cb5-500"><a href="#cb5-500" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-501"><a href="#cb5-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-502"><a href="#cb5-502" aria-hidden="true" tabindex="-1"></a><span class="in"># Berechne tmax und Lamax</span></span>
+<span id="cb5-503"><a href="#cb5-503" aria-hidden="true" tabindex="-1"></a><span class="in">calculate_tmax_lamax &lt;- function(A1, A2, gamma1, gamma2, La0) {</span></span>
+<span id="cb5-504"><a href="#cb5-504" aria-hidden="true" tabindex="-1"></a><span class="in">  f &lt;- function(t) freund_model(t, A1, A2, gamma1, gamma2, La0)</span></span>
+<span id="cb5-505"><a href="#cb5-505" aria-hidden="true" tabindex="-1"></a><span class="in">  tmax &lt;- optimize(f, c(0, 100), maximum = TRUE)$maximum</span></span>
+<span id="cb5-506"><a href="#cb5-506" aria-hidden="true" tabindex="-1"></a><span class="in">  Lamax &lt;- f(tmax)</span></span>
+<span id="cb5-507"><a href="#cb5-507" aria-hidden="true" tabindex="-1"></a><span class="in">  list(tmax = tmax, Lamax = Lamax)</span></span>
+<span id="cb5-508"><a href="#cb5-508" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-509"><a href="#cb5-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-510"><a href="#cb5-510" aria-hidden="true" tabindex="-1"></a><span class="in"># Benutzeroberfläche (UI)</span></span>
+<span id="cb5-511"><a href="#cb5-511" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
+<span id="cb5-512"><a href="#cb5-512" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("Kompartmentmodell für Laktat-Modellierung"),</span></span>
+<span id="cb5-513"><a href="#cb5-513" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
+<span id="cb5-514"><a href="#cb5-514" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
+<span id="cb5-515"><a href="#cb5-515" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 3,</span></span>
+<span id="cb5-516"><a href="#cb5-516" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("A1", "A1 [mmol/l]", min = 0.0, max = 100.0, value = 20.0, step = 0.1),</span></span>
+<span id="cb5-517"><a href="#cb5-517" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("A2", "A2 [mmol/l]", min = -100.0, max = 0.0, value = -20.0, step = 0.1),</span></span>
+<span id="cb5-518"><a href="#cb5-518" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("gamma1", "γ1 [min^-1]", min = 0.05, max = 2.0, value = 0.1, step = 0.001),</span></span>
+<span id="cb5-519"><a href="#cb5-519" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("gamma2", "γ2 [min^-1]", min = 0.01, max = 0.5, value = 0.05, step = 0.001),</span></span>
+<span id="cb5-520"><a href="#cb5-520" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("La0", "La0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),</span></span>
+<span id="cb5-521"><a href="#cb5-521" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Anpassen: nlsLM"),</span></span>
+<span id="cb5-522"><a href="#cb5-522" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
+<span id="cb5-523"><a href="#cb5-523" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb5-524"><a href="#cb5-524" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
+<span id="cb5-525"><a href="#cb5-525" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot")</span></span>
+<span id="cb5-526"><a href="#cb5-526" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb5-527"><a href="#cb5-527" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb5-528"><a href="#cb5-528" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb5-529"><a href="#cb5-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-530"><a href="#cb5-530" aria-hidden="true" tabindex="-1"></a><span class="in"># Server-Logik</span></span>
+<span id="cb5-531"><a href="#cb5-531" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
+<span id="cb5-532"><a href="#cb5-532" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-533"><a href="#cb5-533" aria-hidden="true" tabindex="-1"></a><span class="in">  # Reaktiver Wert für hochgeladene Daten</span></span>
+<span id="cb5-534"><a href="#cb5-534" aria-hidden="true" tabindex="-1"></a><span class="in">  uploaded_data &lt;- reactiveVal(NULL)</span></span>
+<span id="cb5-535"><a href="#cb5-535" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-536"><a href="#cb5-536" aria-hidden="true" tabindex="-1"></a><span class="in">  # Beobachter für CSV-Upload</span></span>
+<span id="cb5-537"><a href="#cb5-537" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$file_upload, {</span></span>
+<span id="cb5-538"><a href="#cb5-538" aria-hidden="true" tabindex="-1"></a><span class="in">    req(input$file_upload)</span></span>
+<span id="cb5-539"><a href="#cb5-539" aria-hidden="true" tabindex="-1"></a><span class="in">    df &lt;- read.csv(input$file_upload$datapath)</span></span>
+<span id="cb5-540"><a href="#cb5-540" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-541"><a href="#cb5-541" aria-hidden="true" tabindex="-1"></a><span class="in">    if ("t_min" %in% names(df) &amp;&amp; "BLC_t" %in% names(df)) {</span></span>
+<span id="cb5-542"><a href="#cb5-542" aria-hidden="true" tabindex="-1"></a><span class="in">      if (df$t_min[1] != 0.0) {</span></span>
+<span id="cb5-543"><a href="#cb5-543" aria-hidden="true" tabindex="-1"></a><span class="in">        df$t_min &lt;- df$t_min - df$t_min[1]</span></span>
+<span id="cb5-544"><a href="#cb5-544" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb5-545"><a href="#cb5-545" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb5-546"><a href="#cb5-546" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data(df)</span></span>
+<span id="cb5-547"><a href="#cb5-547" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-548"><a href="#cb5-548" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb5-549"><a href="#cb5-549" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Ungültige CSV",</span></span>
+<span id="cb5-550"><a href="#cb5-550" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die CSV-Datei muss 't_min' und 'BLC_t' als Spaltennamen enthalten.",</span></span>
+<span id="cb5-551"><a href="#cb5-551" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb5-552"><a href="#cb5-552" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb5-553"><a href="#cb5-553" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb5-554"><a href="#cb5-554" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-555"><a href="#cb5-555" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-556"><a href="#cb5-556" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-557"><a href="#cb5-557" aria-hidden="true" tabindex="-1"></a><span class="in">  observeEvent(input$optimize, {</span></span>
+<span id="cb5-558"><a href="#cb5-558" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-559"><a href="#cb5-559" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_min = t_min, BLC_t = BLC_t)</span></span>
+<span id="cb5-560"><a href="#cb5-560" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-561"><a href="#cb5-561" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-562"><a href="#cb5-562" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-563"><a href="#cb5-563" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-564"><a href="#cb5-564" aria-hidden="true" tabindex="-1"></a><span class="in">    # Setze La0 Grenzen basierend auf dem ersten BLC_t Wert</span></span>
+<span id="cb5-565"><a href="#cb5-565" aria-hidden="true" tabindex="-1"></a><span class="in">    La0_lower &lt;- max(0, data$BLC_t[1] * 0.9)</span></span>
+<span id="cb5-566"><a href="#cb5-566" aria-hidden="true" tabindex="-1"></a><span class="in">    La0_upper &lt;- min(5, data$BLC_t[1] * 1.1)</span></span>
+<span id="cb5-567"><a href="#cb5-567" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-568"><a href="#cb5-568" aria-hidden="true" tabindex="-1"></a><span class="in">    best_fit &lt;- NULL</span></span>
+<span id="cb5-569"><a href="#cb5-569" aria-hidden="true" tabindex="-1"></a><span class="in">    best_rss &lt;- Inf</span></span>
+<span id="cb5-570"><a href="#cb5-570" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-571"><a href="#cb5-571" aria-hidden="true" tabindex="-1"></a><span class="in">    withProgress(message = 'Fitting in progress', value = 0, {</span></span>
+<span id="cb5-572"><a href="#cb5-572" aria-hidden="true" tabindex="-1"></a><span class="in">      for (i in 1:100) {</span></span>
+<span id="cb5-573"><a href="#cb5-573" aria-hidden="true" tabindex="-1"></a><span class="in">        # Randomisierte Startwerte</span></span>
+<span id="cb5-574"><a href="#cb5-574" aria-hidden="true" tabindex="-1"></a><span class="in">        A1_start &lt;- runif(1, 0, 100)</span></span>
+<span id="cb5-575"><a href="#cb5-575" aria-hidden="true" tabindex="-1"></a><span class="in">        A2_start &lt;- runif(1, -100, 0)</span></span>
+<span id="cb5-576"><a href="#cb5-576" aria-hidden="true" tabindex="-1"></a><span class="in">        gamma1_start &lt;- runif(1, 0.05, 2)</span></span>
+<span id="cb5-577"><a href="#cb5-577" aria-hidden="true" tabindex="-1"></a><span class="in">        gamma2_start &lt;- runif(1, 0.01, 0.5)</span></span>
+<span id="cb5-578"><a href="#cb5-578" aria-hidden="true" tabindex="-1"></a><span class="in">        La0_start &lt;- runif(1, La0_lower, La0_upper)</span></span>
+<span id="cb5-579"><a href="#cb5-579" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-580"><a href="#cb5-580" aria-hidden="true" tabindex="-1"></a><span class="in">        start_values &lt;- list(A1 = A1_start, A2 = A2_start, gamma1 = gamma1_start, gamma2 = gamma2_start, La0 = La0_start)</span></span>
+<span id="cb5-581"><a href="#cb5-581" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-582"><a href="#cb5-582" aria-hidden="true" tabindex="-1"></a><span class="in">        model_equation &lt;- BLC_t ~ La0 + A1 * (1 - exp(-gamma1 * t_min)) + A2 * (1 - exp(-gamma2 * t_min))</span></span>
+<span id="cb5-583"><a href="#cb5-583" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-584"><a href="#cb5-584" aria-hidden="true" tabindex="-1"></a><span class="in">        fit &lt;- try(nlsLM(model_equation,</span></span>
+<span id="cb5-585"><a href="#cb5-585" aria-hidden="true" tabindex="-1"></a><span class="in">                         data = data,</span></span>
+<span id="cb5-586"><a href="#cb5-586" aria-hidden="true" tabindex="-1"></a><span class="in">                         start = start_values,</span></span>
+<span id="cb5-587"><a href="#cb5-587" aria-hidden="true" tabindex="-1"></a><span class="in">                         lower = c(A1 = 0.0, A2 = -100.0, gamma1 = 0.05, gamma2 = 0.01, La0 = La0_lower),</span></span>
+<span id="cb5-588"><a href="#cb5-588" aria-hidden="true" tabindex="-1"></a><span class="in">                         upper = c(A1 = 100.0, A2 = 0.0, gamma1 = 2.0, gamma2 = 0.5, La0 = La0_upper),</span></span>
+<span id="cb5-589"><a href="#cb5-589" aria-hidden="true" tabindex="-1"></a><span class="in">                         control = nls.control(maxiter = 1024)), silent = TRUE)</span></span>
+<span id="cb5-590"><a href="#cb5-590" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-591"><a href="#cb5-591" aria-hidden="true" tabindex="-1"></a><span class="in">        if (!inherits(fit, "try-error")) {</span></span>
+<span id="cb5-592"><a href="#cb5-592" aria-hidden="true" tabindex="-1"></a><span class="in">          rss &lt;- sum(residuals(fit)^2)</span></span>
+<span id="cb5-593"><a href="#cb5-593" aria-hidden="true" tabindex="-1"></a><span class="in">          if (rss &lt; best_rss) {</span></span>
+<span id="cb5-594"><a href="#cb5-594" aria-hidden="true" tabindex="-1"></a><span class="in">            best_rss &lt;- rss</span></span>
+<span id="cb5-595"><a href="#cb5-595" aria-hidden="true" tabindex="-1"></a><span class="in">            best_fit &lt;- fit</span></span>
+<span id="cb5-596"><a href="#cb5-596" aria-hidden="true" tabindex="-1"></a><span class="in">          }</span></span>
+<span id="cb5-597"><a href="#cb5-597" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb5-598"><a href="#cb5-598" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb5-599"><a href="#cb5-599" aria-hidden="true" tabindex="-1"></a><span class="in">        incProgress(1/100, detail = paste("Iteration", i))</span></span>
+<span id="cb5-600"><a href="#cb5-600" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb5-601"><a href="#cb5-601" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
+<span id="cb5-602"><a href="#cb5-602" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-603"><a href="#cb5-603" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!is.null(best_fit)) {</span></span>
+<span id="cb5-604"><a href="#cb5-604" aria-hidden="true" tabindex="-1"></a><span class="in">      params &lt;- as.list(coef(best_fit))</span></span>
+<span id="cb5-605"><a href="#cb5-605" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "A1", value = params$A1)</span></span>
+<span id="cb5-606"><a href="#cb5-606" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "A2", value = params$A2)</span></span>
+<span id="cb5-607"><a href="#cb5-607" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "gamma1", value = params$gamma1)</span></span>
+<span id="cb5-608"><a href="#cb5-608" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "gamma2", value = params$gamma2)</span></span>
+<span id="cb5-609"><a href="#cb5-609" aria-hidden="true" tabindex="-1"></a><span class="in">      updateSliderInput(session, "La0", value = params$La0)</span></span>
+<span id="cb5-610"><a href="#cb5-610" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb5-611"><a href="#cb5-611" aria-hidden="true" tabindex="-1"></a><span class="in">      showNotification("Fitting completed successfully!", type = "message")</span></span>
+<span id="cb5-612"><a href="#cb5-612" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-613"><a href="#cb5-613" aria-hidden="true" tabindex="-1"></a><span class="in">      showModal(modalDialog(</span></span>
+<span id="cb5-614"><a href="#cb5-614" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "nlsLM fehlgeschlagen",</span></span>
+<span id="cb5-615"><a href="#cb5-615" aria-hidden="true" tabindex="-1"></a><span class="in">        "Die nicht-lineare Regression mit dem Levenberg-Marquardt-Algorithmus konnte nicht erfolgreich durchgeführt werden.",</span></span>
+<span id="cb5-616"><a href="#cb5-616" aria-hidden="true" tabindex="-1"></a><span class="in">        easyClose = TRUE,</span></span>
+<span id="cb5-617"><a href="#cb5-617" aria-hidden="true" tabindex="-1"></a><span class="in">        footer = NULL</span></span>
+<span id="cb5-618"><a href="#cb5-618" aria-hidden="true" tabindex="-1"></a><span class="in">      ))</span></span>
+<span id="cb5-619"><a href="#cb5-619" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-620"><a href="#cb5-620" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-621"><a href="#cb5-621" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-622"><a href="#cb5-622" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
+<span id="cb5-623"><a href="#cb5-623" aria-hidden="true" tabindex="-1"></a><span class="in">    A1 &lt;- input$A1</span></span>
+<span id="cb5-624"><a href="#cb5-624" aria-hidden="true" tabindex="-1"></a><span class="in">    A2 &lt;- input$A2</span></span>
+<span id="cb5-625"><a href="#cb5-625" aria-hidden="true" tabindex="-1"></a><span class="in">    gamma1 &lt;- input$gamma1</span></span>
+<span id="cb5-626"><a href="#cb5-626" aria-hidden="true" tabindex="-1"></a><span class="in">    gamma2 &lt;- input$gamma2</span></span>
+<span id="cb5-627"><a href="#cb5-627" aria-hidden="true" tabindex="-1"></a><span class="in">    La0 &lt;- input$La0</span></span>
+<span id="cb5-628"><a href="#cb5-628" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-629"><a href="#cb5-629" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- if (is.null(uploaded_data())) {</span></span>
+<span id="cb5-630"><a href="#cb5-630" aria-hidden="true" tabindex="-1"></a><span class="in">      data.frame(t_min = t_min, BLC_t = BLC_t)</span></span>
+<span id="cb5-631"><a href="#cb5-631" aria-hidden="true" tabindex="-1"></a><span class="in">    } else {</span></span>
+<span id="cb5-632"><a href="#cb5-632" aria-hidden="true" tabindex="-1"></a><span class="in">      uploaded_data()</span></span>
+<span id="cb5-633"><a href="#cb5-633" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-634"><a href="#cb5-634" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-635"><a href="#cb5-635" aria-hidden="true" tabindex="-1"></a><span class="in">    max_x &lt;- max(data$t_min) * 1.66</span></span>
+<span id="cb5-636"><a href="#cb5-636" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-637"><a href="#cb5-637" aria-hidden="true" tabindex="-1"></a><span class="in">    t_min_modell &lt;- seq(0, max_x, length.out = 1000)</span></span>
+<span id="cb5-638"><a href="#cb5-638" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC_t_modell &lt;- freund_model(t_min_modell, A1, A2, gamma1, gamma2, La0)</span></span>
+<span id="cb5-639"><a href="#cb5-639" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-640"><a href="#cb5-640" aria-hidden="true" tabindex="-1"></a><span class="in">    max_y &lt;- max(max(BLC_t_modell) * 1.2, max(data$BLC_t) * 1.2)</span></span>
+<span id="cb5-641"><a href="#cb5-641" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-642"><a href="#cb5-642" aria-hidden="true" tabindex="-1"></a><span class="in">    # Berechne tmax und Lamax</span></span>
+<span id="cb5-643"><a href="#cb5-643" aria-hidden="true" tabindex="-1"></a><span class="in">    results &lt;- calculate_tmax_lamax(A1, A2, gamma1, gamma2, La0)</span></span>
+<span id="cb5-644"><a href="#cb5-644" aria-hidden="true" tabindex="-1"></a><span class="in">    tmax &lt;- results$tmax</span></span>
+<span id="cb5-645"><a href="#cb5-645" aria-hidden="true" tabindex="-1"></a><span class="in">    Lamax &lt;- results$Lamax</span></span>
+<span id="cb5-646"><a href="#cb5-646" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-647"><a href="#cb5-647" aria-hidden="true" tabindex="-1"></a><span class="in">    # Erstelle Gleichungstext</span></span>
+<span id="cb5-648"><a href="#cb5-648" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("[La]&lt;sub&gt;b(t)&lt;/sub&gt; = %.2f + %.1f * (1 - e&lt;sup&gt;-%.3f*t&lt;/sup&gt;) + %.1f * (1 - e&lt;sup&gt;-%.3f*t&lt;/sup&gt;)", </span></span>
+<span id="cb5-649"><a href="#cb5-649" aria-hidden="true" tabindex="-1"></a><span class="in">                       La0, A1, gamma1, A2, gamma2)</span></span>
+<span id="cb5-650"><a href="#cb5-650" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-651"><a href="#cb5-651" aria-hidden="true" tabindex="-1"></a><span class="in">    # Berechne R²</span></span>
+<span id="cb5-652"><a href="#cb5-652" aria-hidden="true" tabindex="-1"></a><span class="in">    BLC_t_modell_at_data &lt;- freund_model(data$t_min, A1, A2, gamma1, gamma2, La0)</span></span>
+<span id="cb5-653"><a href="#cb5-653" aria-hidden="true" tabindex="-1"></a><span class="in">    ss_res &lt;- sum((data$BLC_t - BLC_t_modell_at_data)^2)</span></span>
+<span id="cb5-654"><a href="#cb5-654" aria-hidden="true" tabindex="-1"></a><span class="in">    ss_tot &lt;- sum((data$BLC_t - mean(data$BLC_t))^2)</span></span>
+<span id="cb5-655"><a href="#cb5-655" aria-hidden="true" tabindex="-1"></a><span class="in">    r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
+<span id="cb5-656"><a href="#cb5-656" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-657"><a href="#cb5-657" aria-hidden="true" tabindex="-1"></a><span class="in">    # Plotly-Plot</span></span>
+<span id="cb5-658"><a href="#cb5-658" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
+<span id="cb5-659"><a href="#cb5-659" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = t_min_modell, y = BLC_t_modell, type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-660"><a href="#cb5-660" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Modellgleichung', line = list(color = '#EF5350')) %&gt;%</span></span>
+<span id="cb5-661"><a href="#cb5-661" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = data$t_min, y = data$BLC_t, type = 'scatter', mode = 'markers', </span></span>
+<span id="cb5-662"><a href="#cb5-662" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Gemessene BLC-Werte', marker = list(color = "#42BA97", size = 9, symbol = 'x')) %&gt;%</span></span>
+<span id="cb5-663"><a href="#cb5-663" aria-hidden="true" tabindex="-1"></a><span class="in">      add_segments(x = tmax, xend = tmax, y = 0, yend = max_y, </span></span>
+<span id="cb5-664"><a href="#cb5-664" aria-hidden="true" tabindex="-1"></a><span class="in">                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), </span></span>
+<span id="cb5-665"><a href="#cb5-665" aria-hidden="true" tabindex="-1"></a><span class="in">                   showlegend = FALSE, opacity = 0.5) %&gt;%</span></span>
+<span id="cb5-666"><a href="#cb5-666" aria-hidden="true" tabindex="-1"></a><span class="in">      add_segments(x = 0, xend = max_x, y = Lamax, yend = Lamax, </span></span>
+<span id="cb5-667"><a href="#cb5-667" aria-hidden="true" tabindex="-1"></a><span class="in">                   line = list(color = 'darkgrey', width = 1, dash = 'dash'), </span></span>
+<span id="cb5-668"><a href="#cb5-668" aria-hidden="true" tabindex="-1"></a><span class="in">                   showlegend = FALSE, opacity = 0.5) %&gt;%</span></span>
+<span id="cb5-669"><a href="#cb5-669" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "Freund et al. Kompartmentmodell für Laktat-Modellierung",</span></span>
+<span id="cb5-670"><a href="#cb5-670" aria-hidden="true" tabindex="-1"></a><span class="in">             margin = list(t = 40),</span></span>
+<span id="cb5-671"><a href="#cb5-671" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "Zeit [min]", range = c(0, max_x)),</span></span>
+<span id="cb5-672"><a href="#cb5-672" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "Laktat [mmol/l]", range = c(0, max_y)),</span></span>
+<span id="cb5-673"><a href="#cb5-673" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
+<span id="cb5-674"><a href="#cb5-674" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-675"><a href="#cb5-675" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5, </span></span>
+<span id="cb5-676"><a href="#cb5-676" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.95,</span></span>
+<span id="cb5-677"><a href="#cb5-677" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = eq_text,</span></span>
+<span id="cb5-678"><a href="#cb5-678" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-679"><a href="#cb5-679" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-680"><a href="#cb5-680" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-681"><a href="#cb5-681" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-682"><a href="#cb5-682" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-683"><a href="#cb5-683" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-684"><a href="#cb5-684" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-685"><a href="#cb5-685" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb5-686"><a href="#cb5-686" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-687"><a href="#cb5-687" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5,</span></span>
+<span id="cb5-688"><a href="#cb5-688" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.90,</span></span>
+<span id="cb5-689"><a href="#cb5-689" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = sprintf("R²: %.4f", r_squared),</span></span>
+<span id="cb5-690"><a href="#cb5-690" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-691"><a href="#cb5-691" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-692"><a href="#cb5-692" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-693"><a href="#cb5-693" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-694"><a href="#cb5-694" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-695"><a href="#cb5-695" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-696"><a href="#cb5-696" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-697"><a href="#cb5-697" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
+<span id="cb5-698"><a href="#cb5-698" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
+<span id="cb5-699"><a href="#cb5-699" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.5,</span></span>
+<span id="cb5-700"><a href="#cb5-700" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.85,</span></span>
+<span id="cb5-701"><a href="#cb5-701" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = sprintf("BLC&lt;sub&gt;max&lt;/sub&gt;: %.2f mmol/l, TBLC&lt;sub&gt;max&lt;/sub&gt;: %.2f min", Lamax, tmax),</span></span>
+<span id="cb5-702"><a href="#cb5-702" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
+<span id="cb5-703"><a href="#cb5-703" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
+<span id="cb5-704"><a href="#cb5-704" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
+<span id="cb5-705"><a href="#cb5-705" aria-hidden="true" tabindex="-1"></a><span class="in">                 font = list(</span></span>
+<span id="cb5-706"><a href="#cb5-706" aria-hidden="true" tabindex="-1"></a><span class="in">                   size = 12,</span></span>
+<span id="cb5-707"><a href="#cb5-707" aria-hidden="true" tabindex="-1"></a><span class="in">                   color = "black"</span></span>
+<span id="cb5-708"><a href="#cb5-708" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
+<span id="cb5-709"><a href="#cb5-709" aria-hidden="true" tabindex="-1"></a><span class="in">               )</span></span>
+<span id="cb5-710"><a href="#cb5-710" aria-hidden="true" tabindex="-1"></a><span class="in">             ))</span></span>
+<span id="cb5-711"><a href="#cb5-711" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-712"><a href="#cb5-712" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
+<span id="cb5-713"><a href="#cb5-713" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-714"><a href="#cb5-714" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-715"><a href="#cb5-715" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-716"><a href="#cb5-716" aria-hidden="true" tabindex="-1"></a><span class="in"># Starte die App</span></span>
+<span id="cb5-717"><a href="#cb5-717" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
+<span id="cb5-718"><a href="#cb5-718" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-719"><a href="#cb5-719" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-720"><a href="#cb5-720" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-721"><a href="#cb5-721" aria-hidden="true" tabindex="-1"></a><span class="fu"># Laktat-Leistungs-Beziehung</span></span>
+<span id="cb5-722"><a href="#cb5-722" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-723"><a href="#cb5-723" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
+<span id="cb5-724"><a href="#cb5-724" aria-hidden="true" tabindex="-1"></a><span class="in">#| standalone: true</span></span>
+<span id="cb5-725"><a href="#cb5-725" aria-hidden="true" tabindex="-1"></a><span class="in">#| viewerHeight: 900</span></span>
+<span id="cb5-726"><a href="#cb5-726" aria-hidden="true" tabindex="-1"></a><span class="in">library(shiny)</span></span>
+<span id="cb5-727"><a href="#cb5-727" aria-hidden="true" tabindex="-1"></a><span class="in">library(plotly)</span></span>
+<span id="cb5-728"><a href="#cb5-728" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-729"><a href="#cb5-729" aria-hidden="true" tabindex="-1"></a><span class="in"># UI</span></span>
+<span id="cb5-730"><a href="#cb5-730" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
+<span id="cb5-731"><a href="#cb5-731" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("Laktat-Leistungs-Modell"),</span></span>
+<span id="cb5-732"><a href="#cb5-732" aria-hidden="true" tabindex="-1"></a><span class="in">  sidebarLayout(</span></span>
+<span id="cb5-733"><a href="#cb5-733" aria-hidden="true" tabindex="-1"></a><span class="in">    sidebarPanel(</span></span>
+<span id="cb5-734"><a href="#cb5-734" aria-hidden="true" tabindex="-1"></a><span class="in">      numericInput("num_rows", "Anzahl der Datenpunkte", 4, min = 1, max = 20),</span></span>
+<span id="cb5-735"><a href="#cb5-735" aria-hidden="true" tabindex="-1"></a><span class="in">      uiOutput("input_fields"),</span></span>
+<span id="cb5-736"><a href="#cb5-736" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 2  </span></span>
+<span id="cb5-737"><a href="#cb5-737" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb5-738"><a href="#cb5-738" aria-hidden="true" tabindex="-1"></a><span class="in">    mainPanel(</span></span>
+<span id="cb5-739"><a href="#cb5-739" aria-hidden="true" tabindex="-1"></a><span class="in">      plotlyOutput("plot"),</span></span>
+<span id="cb5-740"><a href="#cb5-740" aria-hidden="true" tabindex="-1"></a><span class="in">      width = 10  </span></span>
+<span id="cb5-741"><a href="#cb5-741" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb5-742"><a href="#cb5-742" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb5-743"><a href="#cb5-743" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb5-744"><a href="#cb5-744" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-745"><a href="#cb5-745" aria-hidden="true" tabindex="-1"></a><span class="in"># Server</span></span>
+<span id="cb5-746"><a href="#cb5-746" aria-hidden="true" tabindex="-1"></a><span class="in">server &lt;- function(input, output, session) {</span></span>
+<span id="cb5-747"><a href="#cb5-747" aria-hidden="true" tabindex="-1"></a><span class="in">  # Initialwerte für die Leistung und ΔBLC</span></span>
+<span id="cb5-748"><a href="#cb5-748" aria-hidden="true" tabindex="-1"></a><span class="in">  initial_values &lt;- list(</span></span>
+<span id="cb5-749"><a href="#cb5-749" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 100, DeltaBLC = 0.3),</span></span>
+<span id="cb5-750"><a href="#cb5-750" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 200, DeltaBLC = 1.0),</span></span>
+<span id="cb5-751"><a href="#cb5-751" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 300, DeltaBLC = 2.8),</span></span>
+<span id="cb5-752"><a href="#cb5-752" aria-hidden="true" tabindex="-1"></a><span class="in">    list(Leistung = 400, DeltaBLC = 8.0)</span></span>
+<span id="cb5-753"><a href="#cb5-753" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb5-754"><a href="#cb5-754" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-755"><a href="#cb5-755" aria-hidden="true" tabindex="-1"></a><span class="in">  # Dynamisch Input-Felder erzeugen</span></span>
+<span id="cb5-756"><a href="#cb5-756" aria-hidden="true" tabindex="-1"></a><span class="in">  output$input_fields &lt;- renderUI({</span></span>
+<span id="cb5-757"><a href="#cb5-757" aria-hidden="true" tabindex="-1"></a><span class="in">    num_rows &lt;- input$num_rows</span></span>
+<span id="cb5-758"><a href="#cb5-758" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-759"><a href="#cb5-759" aria-hidden="true" tabindex="-1"></a><span class="in">    lapply(1:num_rows, function(i) {</span></span>
+<span id="cb5-760"><a href="#cb5-760" aria-hidden="true" tabindex="-1"></a><span class="in">      initial_value &lt;- if (i &lt;= length(initial_values)) initial_values[[i]] else list(Leistung = 0, DeltaBLC = 0)</span></span>
+<span id="cb5-761"><a href="#cb5-761" aria-hidden="true" tabindex="-1"></a><span class="in">      tagList(</span></span>
+<span id="cb5-762"><a href="#cb5-762" aria-hidden="true" tabindex="-1"></a><span class="in">        numericInput(paste0("leistung_", i), paste("Leistung", i), value = initial_value$Leistung, step = 10),</span></span>
+<span id="cb5-763"><a href="#cb5-763" aria-hidden="true" tabindex="-1"></a><span class="in">        numericInput(paste0("deltaBLC_", i), paste("ΔBLC", i), value = initial_value$DeltaBLC, step = 0.1)</span></span>
+<span id="cb5-764"><a href="#cb5-764" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
+<span id="cb5-765"><a href="#cb5-765" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
+<span id="cb5-766"><a href="#cb5-766" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-767"><a href="#cb5-767" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-768"><a href="#cb5-768" aria-hidden="true" tabindex="-1"></a><span class="in">  # Reaktive Datenframe basierend auf Eingabewerten</span></span>
+<span id="cb5-769"><a href="#cb5-769" aria-hidden="true" tabindex="-1"></a><span class="in">  input_data &lt;- reactive({</span></span>
+<span id="cb5-770"><a href="#cb5-770" aria-hidden="true" tabindex="-1"></a><span class="in">    num_rows &lt;- input$num_rows</span></span>
+<span id="cb5-771"><a href="#cb5-771" aria-hidden="true" tabindex="-1"></a><span class="in">    if (is.null(num_rows)) return(NULL)</span></span>
+<span id="cb5-772"><a href="#cb5-772" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-773"><a href="#cb5-773" aria-hidden="true" tabindex="-1"></a><span class="in">    data &lt;- data.frame(Leistung = numeric(num_rows), ΔBLC = numeric(num_rows))</span></span>
+<span id="cb5-774"><a href="#cb5-774" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-775"><a href="#cb5-775" aria-hidden="true" tabindex="-1"></a><span class="in">    for (i in 1:num_rows) {</span></span>
+<span id="cb5-776"><a href="#cb5-776" aria-hidden="true" tabindex="-1"></a><span class="in">      leistung_val &lt;- input[[paste0("leistung_", i)]]</span></span>
+<span id="cb5-777"><a href="#cb5-777" aria-hidden="true" tabindex="-1"></a><span class="in">      deltaBLC_val &lt;- input[[paste0("deltaBLC_", i)]]</span></span>
+<span id="cb5-778"><a href="#cb5-778" aria-hidden="true" tabindex="-1"></a><span class="in">      </span></span>
+<span id="cb5-779"><a href="#cb5-779" aria-hidden="true" tabindex="-1"></a><span class="in">      if (is.null(leistung_val) || is.null(deltaBLC_val)) {</span></span>
+<span id="cb5-780"><a href="#cb5-780" aria-hidden="true" tabindex="-1"></a><span class="in">        data$Leistung[i] &lt;- if (i &lt;= length(initial_values)) initial_values[[i]]$Leistung else 0</span></span>
+<span id="cb5-781"><a href="#cb5-781" aria-hidden="true" tabindex="-1"></a><span class="in">        data$ΔBLC[i] &lt;- if (i &lt;= length(initial_values)) initial_values[[i]]$DeltaBLC else 0</span></span>
+<span id="cb5-782"><a href="#cb5-782" aria-hidden="true" tabindex="-1"></a><span class="in">      } else {</span></span>
+<span id="cb5-783"><a href="#cb5-783" aria-hidden="true" tabindex="-1"></a><span class="in">        data$Leistung[i] &lt;- leistung_val</span></span>
+<span id="cb5-784"><a href="#cb5-784" aria-hidden="true" tabindex="-1"></a><span class="in">        data$ΔBLC[i] &lt;- deltaBLC_val</span></span>
+<span id="cb5-785"><a href="#cb5-785" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb5-786"><a href="#cb5-786" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-787"><a href="#cb5-787" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-788"><a href="#cb5-788" aria-hidden="true" tabindex="-1"></a><span class="in">    data</span></span>
+<span id="cb5-789"><a href="#cb5-789" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-790"><a href="#cb5-790" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-791"><a href="#cb5-791" aria-hidden="true" tabindex="-1"></a><span class="in">  # Initiale Werte setzen</span></span>
+<span id="cb5-792"><a href="#cb5-792" aria-hidden="true" tabindex="-1"></a><span class="in">  observe({</span></span>
+<span id="cb5-793"><a href="#cb5-793" aria-hidden="true" tabindex="-1"></a><span class="in">    for (i in 1:length(initial_values)) {</span></span>
+<span id="cb5-794"><a href="#cb5-794" aria-hidden="true" tabindex="-1"></a><span class="in">      updateNumericInput(session, paste0("leistung_", i), value = initial_values[[i]]$Leistung)</span></span>
+<span id="cb5-795"><a href="#cb5-795" aria-hidden="true" tabindex="-1"></a><span class="in">      updateNumericInput(session, paste0("deltaBLC_", i), value = initial_values[[i]]$DeltaBLC)</span></span>
+<span id="cb5-796"><a href="#cb5-796" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb5-797"><a href="#cb5-797" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-798"><a href="#cb5-798" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb5-799"><a href="#cb5-799" aria-hidden="true" tabindex="-1"></a><span class="in">  # Modell anpassen und Plot aktualisieren</span></span>
+<span id="cb5-800"><a href="#cb5-800" aria-hidden="true" tabindex="-1"></a><span class="in">  output$plot &lt;- renderPlotly({</span></span>
+<span id="cb5-801"><a href="#cb5-801" aria-hidden="true" tabindex="-1"></a><span class="in">    df_proband &lt;- input_data()</span></span>
+<span id="cb5-802"><a href="#cb5-802" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-803"><a href="#cb5-803" aria-hidden="true" tabindex="-1"></a><span class="in">    if (is.null(df_proband)) return(NULL)</span></span>
+<span id="cb5-804"><a href="#cb5-804" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-805"><a href="#cb5-805" aria-hidden="true" tabindex="-1"></a><span class="in">    # Anpassung des Exponentialmodells</span></span>
+<span id="cb5-806"><a href="#cb5-806" aria-hidden="true" tabindex="-1"></a><span class="in">    model &lt;- nls(ΔBLC ~ a * exp(b * Leistung), data = df_proband, start = list(a = 1, b = 0.01))</span></span>
+<span id="cb5-807"><a href="#cb5-807" aria-hidden="true" tabindex="-1"></a><span class="in">    coef_exponential_model &lt;- coef(model)</span></span>
+<span id="cb5-808"><a href="#cb5-808" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-809"><a href="#cb5-809" aria-hidden="true" tabindex="-1"></a><span class="in">    # Vorhersagen und Sequenz für den Plot</span></span>
+<span id="cb5-810"><a href="#cb5-810" aria-hidden="true" tabindex="-1"></a><span class="in">    x_seq &lt;- seq(min(df_proband$Leistung), max(df_proband$Leistung), length.out = 100)</span></span>
+<span id="cb5-811"><a href="#cb5-811" aria-hidden="true" tabindex="-1"></a><span class="in">    y_pred &lt;- predict(model, newdata = data.frame(Leistung = x_seq))</span></span>
+<span id="cb5-812"><a href="#cb5-812" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb5-813"><a href="#cb5-813" aria-hidden="true" tabindex="-1"></a><span class="in">    # Plotly-Diagramm</span></span>
+<span id="cb5-814"><a href="#cb5-814" aria-hidden="true" tabindex="-1"></a><span class="in">    plot_ly() %&gt;%</span></span>
+<span id="cb5-815"><a href="#cb5-815" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(data = df_proband, x = ~Leistung, y = ~ΔBLC, type = 'scatter', mode = 'markers',</span></span>
+<span id="cb5-816"><a href="#cb5-816" aria-hidden="true" tabindex="-1"></a><span class="in">                name = "ΔBLC",</span></span>
+<span id="cb5-817"><a href="#cb5-817" aria-hidden="true" tabindex="-1"></a><span class="in">                marker = list(color = "#2683C6", size = 7.0)) %&gt;%</span></span>
+<span id="cb5-818"><a href="#cb5-818" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~x_seq, y = ~y_pred, type = 'scatter', mode = 'lines', </span></span>
+<span id="cb5-819"><a href="#cb5-819" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Laktat-Modellfunktion', </span></span>
+<span id="cb5-820"><a href="#cb5-820" aria-hidden="true" tabindex="-1"></a><span class="in">                line = list(color = '#62A39F', width = 3)) %&gt;%</span></span>
+<span id="cb5-821"><a href="#cb5-821" aria-hidden="true" tabindex="-1"></a><span class="in">      add_annotations(text = sprintf("ΔBLC = %.5f \u00B7 e&lt;sup&gt;%.5f \u00B7 Leistung&lt;/sup&gt;", </span></span>
+<span id="cb5-822"><a href="#cb5-822" aria-hidden="true" tabindex="-1"></a><span class="in">                                     coef_exponential_model['a'], coef_exponential_model['b']),</span></span>
+<span id="cb5-823"><a href="#cb5-823" aria-hidden="true" tabindex="-1"></a><span class="in">                      x = min(df_proband$Leistung), y = max(y_pred), showarrow = FALSE,</span></span>
+<span id="cb5-824"><a href="#cb5-824" aria-hidden="true" tabindex="-1"></a><span class="in">                      xanchor = 'left', yanchor = 'bottom',</span></span>
+<span id="cb5-825"><a href="#cb5-825" aria-hidden="true" tabindex="-1"></a><span class="in">                      font = list(family = "Arial, sans-serif", size = 12, color = "black")) %&gt;%</span></span>
+<span id="cb5-826"><a href="#cb5-826" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(</span></span>
+<span id="cb5-827"><a href="#cb5-827" aria-hidden="true" tabindex="-1"></a><span class="in">        title = "Laktat-Leistungs-Modell",</span></span>
+<span id="cb5-828"><a href="#cb5-828" aria-hidden="true" tabindex="-1"></a><span class="in">        margin = list(t = 40),</span></span>
+<span id="cb5-829"><a href="#cb5-829" aria-hidden="true" tabindex="-1"></a><span class="in">        xaxis = list(title = "Leistung [Watt]"),</span></span>
+<span id="cb5-830"><a href="#cb5-830" aria-hidden="true" tabindex="-1"></a><span class="in">        yaxis = list(title = "ΔBLC [mmol \u00B7 l&lt;sup&gt;-1&lt;/sup&gt;]")</span></span>
+<span id="cb5-831"><a href="#cb5-831" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
+<span id="cb5-832"><a href="#cb5-832" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb5-833"><a href="#cb5-833" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb5-834"><a href="#cb5-834" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-835"><a href="#cb5-835" aria-hidden="true" tabindex="-1"></a><span class="in"># App starten</span></span>
+<span id="cb5-836"><a href="#cb5-836" aria-hidden="true" tabindex="-1"></a><span class="in">shinyApp(ui = ui, server = server)</span></span>
+<span id="cb5-837"><a href="#cb5-837" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
