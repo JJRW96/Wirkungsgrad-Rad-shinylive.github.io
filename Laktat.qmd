@@ -29,23 +29,28 @@ laktat_model_function <- function(t, A, k, BLC0, delay) {
   A * exp(-k * (t - delay)) + BLC0
 }
 
-# User interface (UI)
+# UI
 ui <- fluidPage(
-  titlePanel("Exponentielles Laktat-Abbaumodell"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
+  titlePanel("EPOC-Modellfunktion"),
+  fluidRow(
+    column(3,
+           style = "height: 90vh; overflow-y: auto;",
+           
+      tags$h4(tags$strong("Modellparameter:")),
       sliderInput("A", "A [mmol/l]", min = 0.0, max = 15.0, value = 8.0, step = 0.1),
       sliderInput("k", "k [s^-1]", min = 0.0001, max = 0.02, value = 0.005, step = 0.0001),
       sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
       sliderInput("delay", "Delay [s]", min = 0, max = 3600, value = 0, step = 0.1),
       actionButton("set_delay", "Delay auf BLC_1"),
-      br(), 
-      actionButton("optimize", "Anpassen: nlsLM"),
+      br(), br(),
+      actionButton("optimize", "Fit: nlsLM"), 
+      br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
     mainPanel(
-      plotlyOutput("plot")
+      width = 9,
+      plotlyOutput("plot"),
+      uiOutput("instructions")
     )
   )
 )
@@ -225,11 +230,63 @@ server <- function(input, output, session) {
     
     p
   })
+  output$instructions <- renderUI({
+    HTML(
+      "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+        <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+        <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+          <li>Beispiel-Laktatdaten verwenden oder eigene Laktat-Daten als CSV-Datei einfügen.</li>
+          <li>Zeitverzögerung manuell setzen oder mit 'Delay auf BLC_1' die Zeitverzögerung auf den Zeitpunkt des ersten BLC-Wertes setzen.</li>
+          <li>Modellanpassung 'Fit: nlsLM' durchführen.</li>
+          <li>Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.</li>
+        </ol>
+        <div style='margin-top: 20px;'></div>
+        <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+Laktat-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
+t_s,BLC_t
+0.0,5.84
+90.0,3.60
+180.0,1.09
+…
+        </pre>
+      </div>"
+    )
+  })
 }
 
-# Start the app
+# App ausführen
 shinyApp(ui = ui, server = server)
 ```
+
+::: {.callout-note icon=false collapse=true appearance="simple"}
+### Modellanpassung - Details:
+
+**Optimierung (nlsLM - Fit):**
+
+- Verwendete Funktion: nlsLM
+- Parameter: A, k, BLC0
+- Modell: BLC_t ~ A · exp(-k · (t_s - delay)) + BLC0
+- Grenzen:
+  - A: *0 bis 15 mmol/l*
+  - k: *0.0001 bis 0.02 s^-1*
+  - BLC0: *0 bis 5 mmol/l*
+- Prozess:
+  a) Datenauswahl:
+     - Verwendung der Daten nach dem eingestellten Delay-Wert
+     - Überprüfung auf mindestens 3 Datenpunkte nach dem Delay
+  b) Iterative Optimierung (100 Durchläufe):
+     - Zufällige Startwertebestimmung für jeden Durchlauf:
+       · A: Zufallswert zwischen 0 und 15
+       · k: Zufallswert zwischen 0.0001 und 0.02
+       · BLC0: Zufallswert zwischen 0 und 5
+     - Durchführung der nicht-linearen Regression:
+       · Verwendung des Levenberg-Marquardt-Algorithmus
+       · Maximale Iterationen: *1024*
+     - Berechnung der Residuenquadratsumme (RSS) für jede Anpassung
+     - Speicherung der besten Anpassung (niedrigste RSS)
+
+:::
+
 
 # Blutlaktat-Bateman-Modellfunktion: Während und nach dem Belastungszeitraum
 
@@ -263,21 +320,26 @@ elimination_function <- function(t, a, k2, BLC0) {
   BLC0 + a * exp(-k2 * t)
 }
 
-# Benutzeroberfläche (UI)
+# UI
 ui <- fluidPage(
-  titlePanel("Bateman-Funktion für Laktat-Modellierung"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
+  titlePanel("EPOC-Modellfunktion"),
+  fluidRow(
+    column(3,
+           style = "height: 90vh; overflow-y: auto;",
+           
+      tags$h4(tags$strong("Modellparameter:")),
       sliderInput("a", "a [mmol/l]", min = 0.0, max = 30.0, value = 15.0, step = 0.01),
       sliderInput("k1", "k1 [min^-1]", min = 0.1, max = 3.5, value = 0.5, step = 0.001),
       sliderInput("k2", "k2 [min^-1]", min = 0.020, max = 0.200, value = 0.10, step = 0.001),
       sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
-      actionButton("optimize", "Anpassen: nlsLM"),
+      actionButton("optimize", "Fit: nlsLM"), 
+      br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
     mainPanel(
-      plotlyOutput("plot")
+      width = 9,
+      plotlyOutput("plot"),
+      uiOutput("instructions")
     )
   )
 )
@@ -457,7 +519,19 @@ server <- function(input, output, session) {
                list(
                  x = max_x * 0.5,
                  y = max_y * 0.85,
-                 text = sprintf("BLC<sub>max</sub>: %.2f mmol/l, TBLC<sub>max</sub>: %.2f min", Lamax, tmax),
+                 text = sprintf("BLC<sub>max</sub>: %.2f mmol/l", Lamax),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.80,
+                 text = sprintf("TBLC<sub>max</sub>: %.2f min",tmax),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -470,11 +544,65 @@ server <- function(input, output, session) {
     
     p
   })
+  output$instructions <- renderUI({
+    HTML(
+      "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+        <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+        <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+          <li>Beispiel-Laktatdaten verwenden oder eigene Laktat-Daten als CSV-Datei einfügen.</li>
+          <li>Modellanpassung 'Fit: nlsLM' durchführen.</li>
+          <li>Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.</li>
+        </ol>
+        <div style='margin-top: 20px;'></div>
+        <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+Laktat-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
+t_min,BLC_t
+0.0,2.84
+1.5,3.60
+3.0,5.09
+…
+        </pre>
+      </div>"
+    )
+  })
 }
 
-# Starte die App
+# App ausführen
 shinyApp(ui = ui, server = server)
 ```
+
+::: {.callout-note icon=false collapse=true appearance="simple"}
+### Modellanpassung - Details:
+
+**nlsLM - Fit:**
+
+- Verwendete Funktion: nlsLM
+- Parameter: a, k1, k2, BLC0
+- Modell: BLC_t ~ BLC0 + (a · k1 / (k2 - k1)) · (exp(-k1 · t_min) - exp(-k2 · t_min))
+- Grenzen:
+  - a: *0.0 bis 30.0 mmol/l*
+  - k1: *0.1 bis 3.5 min^-1*
+  - k2: *0.020 bis 0.200 min^-1*
+  - BLC0: *0.90 · BLC_t[1] bis 1.10 · BLC_t[1], begrenzt auf 0 bis 5 mmol/l*
+- Prozess:
+  a) Bestimmung der BLC0-Grenzen:
+     - Untere Grenze: *max(0, 0.90 · erster BLC-Wert)*
+     - Obere Grenze: *min(5, 1.10 · erster BLC-Wert)*
+  b) Iterative Optimierung (100 Durchläufe):
+     - Zufällige Startwertebestimmung für jeden Durchlauf:
+       · a: Zufallswert zwischen 0 und 30
+       · k1: Zufallswert zwischen 0.1 und 3.5
+       · k2: Zufallswert zwischen 0.020 und 0.200
+       · BLC0: Zufallswert zwischen der unteren und oberen BLC0-Grenze
+     - Durchführung der nicht-linearen Regression:
+       · Verwendung des Levenberg-Marquardt-Algorithmus
+       · Maximale Iterationen: *1024*
+     - Berechnung der Residuenquadratsumme (RSS) für jede Anpassung
+     - Speicherung der besten Anpassung (niedrigste RSS)
+- Optimierung: Minimierung der Residuenquadratsumme (RSS)
+
+:::
+
 
 # Blutlaktat-Kompartmentmodell-Modellfunktion (nach Freund et al. 1986): Während und nach dem Belastungszeitraum
 
@@ -507,22 +635,27 @@ calculate_tmax_lamax <- function(A1, A2, gamma1, gamma2, La0) {
   list(tmax = tmax, Lamax = Lamax)
 }
 
-# Benutzeroberfläche (UI)
+# UI
 ui <- fluidPage(
-  titlePanel("Kompartmentmodell für Laktat-Modellierung"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
+  titlePanel("EPOC-Modellfunktion"),
+  fluidRow(
+    column(3,
+           style = "height: 90vh; overflow-y: auto;",
+           
+      tags$h4(tags$strong("Modellparameter:")),
       sliderInput("A1", "A1 [mmol/l]", min = 0.0, max = 100.0, value = 20.0, step = 0.1),
       sliderInput("A2", "A2 [mmol/l]", min = -100.0, max = 0.0, value = -20.0, step = 0.1),
       sliderInput("gamma1", "γ1 [min^-1]", min = 0.05, max = 2.0, value = 0.1, step = 0.001),
       sliderInput("gamma2", "γ2 [min^-1]", min = 0.01, max = 0.5, value = 0.05, step = 0.001),
       sliderInput("La0", "La0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
-      actionButton("optimize", "Anpassen: nlsLM"),
+      actionButton("optimize", "Fit: nlsLM"), 
+      br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
     mainPanel(
-      plotlyOutput("plot")
+      width = 9,
+      plotlyOutput("plot"),
+      uiOutput("instructions")
     )
   )
 )
@@ -698,7 +831,19 @@ server <- function(input, output, session) {
                list(
                  x = max_x * 0.5,
                  y = max_y * 0.85,
-                 text = sprintf("BLC<sub>max</sub>: %.2f mmol/l, TBLC<sub>max</sub>: %.2f min", Lamax, tmax),
+                 text = sprintf("BLC<sub>max</sub>: %.2f mmol/l", Lamax),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.80,
+                 text = sprintf("TBLC<sub>max</sub>: %.2f min",tmax),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -711,11 +856,66 @@ server <- function(input, output, session) {
     
     p
   })
+  output$instructions <- renderUI({
+    HTML(
+      "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+        <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+        <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+          <li>Beispiel-Laktatdaten verwenden oder eigene Laktat-Daten als CSV-Datei einfügen.</li>
+          <li>Modellanpassung 'Fit: nlsLM' durchführen.</li>
+          <li>Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.</li>
+        </ol>
+        <div style='margin-top: 20px;'></div>
+        <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+Laktat-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
+t_min,BLC_t
+0.0,2.84
+1.5,3.60
+3.0,5.09
+…
+        </pre>
+      </div>"
+    )
+  })
 }
 
-# Starte die App
+# App ausführen
 shinyApp(ui = ui, server = server)
 ```
+
+::: {.callout-note icon=false collapse=true appearance="simple"}
+### Modellanpassung - Details:
+
+**nlsLM - Fit:**
+
+- Verwendete Funktion: nlsLM
+- Parameter: A1, A2, gamma1, gamma2, La0
+- Modell: BLC_t ~ La0 + A1 · (1 - exp(-gamma1 · t_min)) + A2 · (1 - exp(-gamma2 · t_min))
+- Grenzen:
+  - A1: *0.0 bis 100.0 mmol/l*
+  - A2: *-100.0 bis 0.0 mmol/l*
+  - gamma1: *0.05 bis 2.0 min^-1*
+  - gamma2: *0.01 bis 0.5 min^-1*
+  - La0: *0.90 · BLC_t[1] bis 1.10 · BLC_t[1], begrenzt auf 0 bis 5 mmol/l*
+- Prozess:
+  a) Bestimmung der La0-Grenzen:
+     - Untere Grenze: *max(0, 0.90 · erster BLC-Wert)*
+     - Obere Grenze: *min(5, 1.10 · erster BLC-Wert)*
+  b) Iterative Optimierung (100 Durchläufe):
+     - Zufällige Startwertebestimmung für jeden Durchlauf:
+       · A1: Zufallswert zwischen 0 und 100
+       · A2: Zufallswert zwischen -100 und 0
+       · gamma1: Zufallswert zwischen 0.05 und 2.0
+       · gamma2: Zufallswert zwischen 0.01 und 0.5
+       · La0: Zufallswert zwischen der unteren und oberen La0-Grenze
+     - Durchführung der nicht-linearen Regression:
+       · Verwendung des Levenberg-Marquardt-Algorithmus
+       · Maximale Iterationen: *1024*
+     - Berechnung der Residuenquadratsumme (RSS) für jede Anpassung
+     - Speicherung der besten Anpassung (niedrigste RSS)
+- Optimierung: Minimierung der Residuenquadratsumme (RSS)
+
+:::
 
 
 # Laktat-Leistungs-Beziehung
@@ -736,8 +936,9 @@ ui <- fluidPage(
       width = 2  
     ),
     mainPanel(
+      width = 9,
       plotlyOutput("plot"),
-      width = 10  
+      uiOutput("instructions")
     )
   )
 )
@@ -815,7 +1016,7 @@ server <- function(input, output, session) {
       add_trace(data = df_proband, x = ~Leistung, y = ~ΔBLC, type = 'scatter', mode = 'markers',
                 name = "ΔBLC",
                 marker = list(color = "#2683C6", size = 7.0)) %>%
-      add_trace(x = ~x_seq, y = ~y_pred, type = 'scatter', mode = 'lines', 
+      add_trace(x = x_seq, y = y_pred, type = 'scatter', mode = 'lines', 
                 name = 'Laktat-Modellfunktion', 
                 line = list(color = '#62A39F', width = 3)) %>%
       add_annotations(text = sprintf("ΔBLC = %.5f \u00B7 e<sup>%.5f \u00B7 Leistung</sup>", 
@@ -830,9 +1031,50 @@ server <- function(input, output, session) {
         yaxis = list(title = "ΔBLC [mmol \u00B7 l<sup>-1</sup>]")
       )
   })
+  output$instructions <- renderUI({
+    HTML(
+      "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+        <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+        <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+          <li>Anzahl der Datenpunkte bestimmen.</li>
+          <li>Für jeden Datenpunkt die Leistung (in Watt) und den entsprechenden ΔBLC-Wert eingeben.</li>
+          <li>Das exponentielle Modell wird automatisch an die eingegebenen Daten angepasst.</li>
+        </ol>
+      </div>"
+    )
+  })
 }
 
-# App starten
+# App ausführen
 shinyApp(ui = ui, server = server)
 ```
 
+::: {.callout-note icon=false collapse=true appearance="simple"}
+### Modellanpassung - Details:
+
+**1. Optimierung (nls - Fit):**
+
+- Verwendete Funktion: nls (Non-Linear Least Squares)
+- Parameter: a, b
+- Modell: ΔBLC ~ a · exp(b · Leistung)
+- Prozess:
+  a) Datenaufbereitung:
+     - Erstellung eines reaktiven Dataframes basierend auf den Benutzereingaben
+  b) Modellierung:
+     - Anwendung des nicht-linearen Regressionsmodells auf die eingegebenen Daten
+     - Startwerte:
+       - a: *1.0*
+       - b: *0.01*
+  c) Durchführung der nicht-linearen Regression:
+     - Verwendung der Standard-nls-Funktion in R
+     - Keine expliziten Grenzen für die Parameter gesetzt
+  d) Ergebnisverarbeitung:
+     - Extraktion der Koeffizienten a und b aus dem angepassten Modell
+  e) Visualisierung:
+     - Erstellung einer Sequenz von Leistungswerten für glatte Kurvendarstellung
+     - Berechnung der vorhergesagten ΔBLC-Werte basierend auf dem Modell
+     - Darstellung der eingegebenen Datenpunkte und der Modellkurve
+     - Anzeige der Modellgleichung mit den angepassten Koeffizienten
+- Optimierung: Minimierung der Summe der quadrierten Abweichungen (nls)
+
+:::

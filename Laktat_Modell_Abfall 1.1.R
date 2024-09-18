@@ -11,23 +11,28 @@ laktat_model_function <- function(t, A, k, BLC0, delay) {
   A * exp(-k * (t - delay)) + BLC0
 }
 
-# User interface (UI)
+# UI
 ui <- fluidPage(
-  titlePanel("Exponentielles Laktat-Abbaumodell"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
+  titlePanel("EPOC-Modellfunktion"),
+  fluidRow(
+    column(3,
+           style = "height: 90vh; overflow-y: auto;",
+           
+      tags$h4(tags$strong("Modellparameter:")),
       sliderInput("A", "A [mmol/l]", min = 0.0, max = 15.0, value = 8.0, step = 0.1),
       sliderInput("k", "k [s^-1]", min = 0.0001, max = 0.02, value = 0.005, step = 0.0001),
       sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
       sliderInput("delay", "Delay [s]", min = 0, max = 3600, value = 0, step = 0.1),
       actionButton("set_delay", "Delay auf BLC_1"),
-      br(), 
-      actionButton("optimize", "Anpassen: nlsLM"),
+      br(), br(),
+      actionButton("optimize", "Fit: nlsLM"), 
+      br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
     mainPanel(
-      plotlyOutput("plot")
+      width = 9,
+      plotlyOutput("plot"),
+      uiOutput("instructions")
     )
   )
 )
@@ -207,7 +212,29 @@ server <- function(input, output, session) {
     
     p
   })
+  output$instructions <- renderUI({
+    HTML(
+      "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+        <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+        <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+          <li>Beispiel-Laktatdaten verwenden oder eigene Laktat-Daten als CSV-Datei einfügen.</li>
+          <li>Zeitverzögerung manuell setzen oder mit 'Delay auf BLC_1' die Zeitverzögerung auf den Zeitpunkt des ersten BLC-Wertes setzen.</li>
+          <li>Modellanpassung 'Fit: nlsLM' durchführen.</li>
+          <li>Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.</li>
+        </ol>
+        <div style='margin-top: 20px;'></div>
+        <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+Laktat-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
+t_s,BLC_t
+0.0,5.84
+90.0,3.60
+180.0,1.09
+…
+        </pre>
+      </div>"
+    )
+  })
 }
 
-# Start the app
+# App ausführen
 shinyApp(ui = ui, server = server)

@@ -24,22 +24,27 @@ calculate_tmax_lamax <- function(A1, A2, gamma1, gamma2, La0) {
   list(tmax = tmax, Lamax = Lamax)
 }
 
-# Benutzeroberfläche (UI)
+# UI
 ui <- fluidPage(
-  titlePanel("Kompartmentmodell für Laktat-Modellierung"),
-  sidebarLayout(
-    sidebarPanel(
-      width = 3,
+  titlePanel("EPOC-Modellfunktion"),
+  fluidRow(
+    column(3,
+           style = "height: 90vh; overflow-y: auto;",
+           
+      tags$h4(tags$strong("Modellparameter:")),
       sliderInput("A1", "A1 [mmol/l]", min = 0.0, max = 100.0, value = 20.0, step = 0.1),
       sliderInput("A2", "A2 [mmol/l]", min = -100.0, max = 0.0, value = -20.0, step = 0.1),
       sliderInput("gamma1", "γ1 [min^-1]", min = 0.05, max = 2.0, value = 0.1, step = 0.001),
       sliderInput("gamma2", "γ2 [min^-1]", min = 0.01, max = 0.5, value = 0.05, step = 0.001),
       sliderInput("La0", "La0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
-      actionButton("optimize", "Anpassen: nlsLM"),
+      actionButton("optimize", "Fit: nlsLM"), 
+      br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
     mainPanel(
-      plotlyOutput("plot")
+      width = 9,
+      plotlyOutput("plot"),
+      uiOutput("instructions")
     )
   )
 )
@@ -215,7 +220,19 @@ server <- function(input, output, session) {
                list(
                  x = max_x * 0.5,
                  y = max_y * 0.85,
-                 text = sprintf("BLC<sub>max</sub>: %.2f mmol/l, TBLC<sub>max</sub>: %.2f min", Lamax, tmax),
+                 text = sprintf("BLC<sub>max</sub>: %.2f mmol/l", Lamax),
+                 showarrow = FALSE,
+                 xanchor = 'left',
+                 yanchor = 'bottom',
+                 font = list(
+                   size = 12,
+                   color = "black"
+                 )
+               ),
+               list(
+                 x = max_x * 0.5,
+                 y = max_y * 0.80,
+                 text = sprintf("TBLC<sub>max</sub>: %.2f min",tmax),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -228,7 +245,28 @@ server <- function(input, output, session) {
     
     p
   })
+  output$instructions <- renderUI({
+    HTML(
+      "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+        <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+        <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+          <li>Beispiel-Laktatdaten verwenden oder eigene Laktat-Daten als CSV-Datei einfügen.</li>
+          <li>Modellanpassung 'Fit: nlsLM' durchführen.</li>
+          <li>Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.</li>
+        </ol>
+        <div style='margin-top: 20px;'></div>
+        <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+Laktat-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
+t_min,BLC_t
+0.0,2.84
+1.5,3.60
+3.0,5.09
+…
+        </pre>
+      </div>"
+    )
+  })
 }
 
-# Starte die App
+# App ausführen
 shinyApp(ui = ui, server = server)

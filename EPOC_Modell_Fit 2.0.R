@@ -608,21 +608,19 @@ server <- function(input, output, session) {
       "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px;'>
     <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
     <ol style='color: #555;'>
-      <li>Beispiel VO2-Daten oder eigene VO2-Daten als CSV-Datei einfügen.</li>
-      <li>Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder nach Angabe der nötigen Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.</li>
-      <li>O2-Speicher manuell festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht beachtet werden soll.</li>
-      <li>Zeitverzögerung festlegen, um Startpunkt der Modellanpassung festzulegen.</li>
-      <li>Komplette Modellanpassung in 3 Schritten über 'nlsLM - Fit' oder schrittweise durchführen:</li>
+      <li>Beispiel-VO2-Daten (mit oder ohne Nachbelastung) einfügen oder eigene VO2-Daten als CSV-Datei hochladen.</li>
+      <li>Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder anhand der Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.</li>
+      <li>Bei Daten ohne Nachbelastung 'Mit VO2 Ruhe' wählen, bei Daten mit Nachbelastung 'VO2 Referenz' wählen und den entsprechenden Referenzwert festlegen.</li>
+      <li>O2-Speicher festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht berücksichtigt werden soll.</li>
+      <li>Zeitverzögerung festlegen, um den Startpunkt der Modellanpassung zu bestimmen.</li>
+      <li>Wählen Sie zwischen 3-Schritt- oder 1-Schritt-Modellanpassung. Bei 3-Schritt-Anpassung den Zeitraum für simulierte Ruhe- bzw. Referenzwerte mit dem Slider einstellen.</li>
+      <li>Modellanpassung durchführen:</li>
       <ul>
-        <li>'1. Fit: Tau' Bestimmung der Zeitkonstante tau mit einfacher Exponentialfunktion.</li>
-        <li>'2. Fit: EPOC Slow' Modellanpassung der langsamen EPOC-Komponente mit simulierten Ruhewerten.
-          <ul>
-            <li>'Ruhe_sim anzeigen' wechselt zwischen der normalen und der erweiterten Ansicht mit der Ruhesauerstoffaufnahme.</li>
-          </ul>
-        </li>
-        <li>'3. Fit: EPOC Fast' Modellanpassung der schnellen EPOC-Komponente.</li>
+        <li>'Fit: nlsLM' für komplette Anpassung oder</li>
+        <li>Schrittweise: '1. Fit: Tau', '2. Fit: EPOC Slow', '3. Fit: EPOC Fast'</li>
       </ul>
-      <li>Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.</li>
+      <li>Mit 'Ruhe_sim anzeigen' können simulierte Ruhewerte in der Abbildung ein- oder ausgeblendet werden.</li>
+      <li>Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.</li>
     </ol>
     </div>"
     )
