@@ -486,6 +486,7 @@ server &lt;- function(input, output, session) {
         
         slow_est &lt;- slow_estimates()
         t_delay &lt;- isolate(input$t_delay)
+        ruhe_sim_start &lt;- input$ruhe_sim_range[1]
         
         if (is.null(tau_estimate()) || is.null(slow_est)) {
           showNotification("Einige Schätzwerte fehlen. Bitte führen Sie Schritt 1 und 2 erneut aus.", type = "error")
@@ -504,13 +505,12 @@ server &lt;- function(input, output, session) {
         
         # Berechne 2tau
         tau2 &lt;- 2 * tau_estimate()
-        actual_data_count &lt;- sum(Beispieldaten$t_s &gt;= tau2)
         
         # Datenfilterung und Zeitverschiebung
         Beispieldaten_gefiltert &lt;- Beispieldaten %&gt;%
           filter(t_s &gt;= t_delay) %&gt;%
           mutate(t_s = t_s - t_delay) %&gt;%
-          filter(t_s &lt; 3600)  # Entferne simulierte Ruhewerte
+          filter(t_s &lt; (ruhe_sim_start - t_delay))  # Entferne simulierte Ruhewerte
         
         # Erstelle Gewichte basierend auf t_s
         weights &lt;- ifelse(Beispieldaten_gefiltert$t_s &lt;= tau2, 1, 1)
@@ -750,11 +750,13 @@ server &lt;- function(input, output, session) {
     if (show_data()) {
       Beispieldaten &lt;- current_data()
       if (!is.null(Beispieldaten)) {
+        ruhe_sim_start &lt;- input$ruhe_sim_range[1]
+        
         # Datenfilterung und Zeitverschiebung
         Beispieldaten &lt;- Beispieldaten %&gt;%
           filter(t_s &gt;= t_delay) %&gt;%
           mutate(t_s = t_s - t_delay) %&gt;%
-          filter(t_s &lt; 3600)  # Entferne simulierte Ruhewerte
+          filter(t_s &lt; (ruhe_sim_start - t_delay))  # Entferne simulierte Ruhewerte
         
         last_data_point &lt;- max(Beispieldaten$t_s)
         
@@ -825,21 +827,19 @@ server &lt;- function(input, output, session) {
       "&lt;div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px;'&gt;
     &lt;h4 style='color: #333;'&gt;&lt;strong&gt;Anleitung - Modellanpassung:&lt;/strong&gt;&lt;/h4&gt;
     &lt;ol style='color: #555;'&gt;
-      &lt;li&gt;Beispiel VO2-Daten oder eigene VO2-Daten als CSV-Datei einfügen.&lt;/li&gt;
-      &lt;li&gt;Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder nach Angabe der nötigen Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.&lt;/li&gt;
-      &lt;li&gt;O2-Speicher manuell festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht beachtet werden soll.&lt;/li&gt;
-      &lt;li&gt;Zeitverzögerung festlegen, um Startpunkt der Modellanpassung festzulegen.&lt;/li&gt;
-      &lt;li&gt;Komplette Modellanpassung in 3 Schritten über 'nlsLM - Fit' oder schrittweise durchführen:&lt;/li&gt;
+      &lt;li&gt;Beispiel-VO2-Daten (mit oder ohne Nachbelastung) einfügen oder eigene VO2-Daten als CSV-Datei hochladen.&lt;/li&gt;
+      &lt;li&gt;Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder anhand der Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.&lt;/li&gt;
+      &lt;li&gt;Bei Daten ohne Nachbelastung 'Mit VO2 Ruhe' wählen, bei Daten mit Nachbelastung 'VO2 Referenz' wählen und den entsprechenden Referenzwert festlegen.&lt;/li&gt;
+      &lt;li&gt;O2-Speicher festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht berücksichtigt werden soll.&lt;/li&gt;
+      &lt;li&gt;Zeitverzögerung festlegen, um den Startpunkt der Modellanpassung zu bestimmen.&lt;/li&gt;
+      &lt;li&gt;Wählen Sie zwischen 3-Schritt- oder 1-Schritt-Modellanpassung. Bei 3-Schritt-Anpassung den Zeitraum für simulierte Ruhe- bzw. Referenzwerte mit dem Slider einstellen.&lt;/li&gt;
+      &lt;li&gt;Modellanpassung durchführen:&lt;/li&gt;
       &lt;ul&gt;
-        &lt;li&gt;'1. Fit: Tau' Bestimmung der Zeitkonstante tau mit einfacher Exponentialfunktion.&lt;/li&gt;
-        &lt;li&gt;'2. Fit: EPOC Slow' Modellanpassung der langsamen EPOC-Komponente mit simulierten Ruhewerten.
-          &lt;ul&gt;
-            &lt;li&gt;'Ruhe_sim anzeigen' wechselt zwischen der normalen und der erweiterten Ansicht mit der Ruhesauerstoffaufnahme.&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;'3. Fit: EPOC Fast' Modellanpassung der schnellen EPOC-Komponente.&lt;/li&gt;
+        &lt;li&gt;'Fit: nlsLM' für komplette Anpassung oder&lt;/li&gt;
+        &lt;li&gt;Schrittweise: '1. Fit: Tau', '2. Fit: EPOC Slow', '3. Fit: EPOC Fast'&lt;/li&gt;
       &lt;/ul&gt;
-      &lt;li&gt;Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.&lt;/li&gt;
+      &lt;li&gt;Mit 'Ruhe_sim anzeigen' können simulierte Ruhewerte in der Abbildung ein- oder ausgeblendet werden.&lt;/li&gt;
+      &lt;li&gt;Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.&lt;/li&gt;
     &lt;/ol&gt;
     &lt;/div&gt;"
     )
@@ -850,17 +850,88 @@ shinyApp(ui = ui, server = server)
 
 
 </code></pre>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-CSV-Datei hochladen
+Modellanpassung - Details:
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:<br> t_s,VO2_t<br> 0.0,5.479<br> 1.0,5.251<br> 2.3,4.829<br> 3.5,4.746<br> …</p>
+<p><strong>A. Dreischritt-Modellanpassung:</strong></p>
+<ol type="1">
+<li>Schnelle Komponente (1. Fit: Tau):
+<ul>
+<li>Verwendete Funktion: nlsLM</li>
+<li>Parameter: x (entspricht A), Tau (entspricht TauA)</li>
+<li>Modell: VO2_t ~ x · exp(-t_s/Tau) + C</li>
+<li>Grenzen:
+<ul>
+<li>x: <em>0 bis Inf</em></li>
+<li>Tau: <em>10 bis 600 s</em></li>
+</ul></li>
+<li>Optimierung: Minimierung der Residuenquadratsumme (RSS)</li>
+</ul></li>
+<li>Langsame Komponente (2. Fit: EPOC Slow):
+<ul>
+<li>Verwendete Funktion: nlsLM</li>
+<li>Parameter: B, TauB</li>
+<li>Modell: VO2_t ~ B · exp(-t_s/TauB) + VO2_Basis</li>
+<li>Grenzen:
+<ul>
+<li>B: <em>0.1 bis (VO2_max · 0.5) l/min</em></li>
+<li>TauB: <em>90 bis 3600 s</em></li>
+</ul></li>
+<li>Prozess:
+<ol type="a">
+<li>Datenauswahl: Verwendung der Daten ab <em>2 · Tau</em></li>
+<li>Erweiterung der Daten mit simulierten Ruhe- oder Referenzwerten:
+<ul>
+<li>Zeitraum: <em>Festgelegter Bereich der simulierten Werte (Standard: 3600-4200s)</em></li>
+<li>Anzahl der simulierten Werte: <em>Gleiche Anzahl wie reale Datenpunkte ab dem Zeitpunkt 2 · Tau bis zum Start der simulierten Werte</em></li>
+<li>Wert: <em>Konstant auf VO2_Ruhe oder VO2_Referenz (je nach Auswahl)</em></li>
+</ul></li>
+</ol></li>
+<li>Optimierung: Minimierung der RSS</li>
+</ul></li>
+<li>Vollständige Anpassung (3. Fit: EPOC Fast):
+<ul>
+<li>Verwendete Funktion: nlsLM</li>
+<li>Parameter: A, TauA</li>
+<li>Modell: VO2_t ~ A · exp(-t_s/TauA) + B · exp(-t_s/TauB) + C (B, TauB und C aus vorherigen Modellanpassungen)</li>
+<li>Grenzen:
+<ul>
+<li>A: <em>1.0 bis 4.0 l/min</em></li>
+<li>TauA: <em>15 bis 90 s</em></li>
+</ul></li>
+<li>Prozess:
+<ol type="a">
+<li>Datenauswahl: Verwendung der Daten bis zum Beginn der simulierten Ruhe- oder Referenzwerte</li>
+</ol></li>
+<li>Optimierung: Minimierung der RSS</li>
+</ul></li>
+</ol>
+<p><strong>B. Einschritt-Modellanpassung:</strong></p>
+<ul>
+<li>Verwendete Funktion: nlsLM</li>
+<li>Parameter: A, TauA, B, TauB</li>
+<li>Modell: VO2_t ~ A · exp(-(t_s - t_delay) / TauA) + B · exp(-(t_s - t_delay) / TauB) + C</li>
+<li>Grenzen:
+<ul>
+<li>A: <em>1.5 bis 6.0 l/min</em></li>
+<li>TauA: <em>20 bis 90 s</em></li>
+<li>B: <em>0.3 bis 3.0 l/min</em></li>
+<li>TauB: <em>90 bis 900 s</em></li>
+</ul></li>
+<li>Prozess: <em>100 Iterationen</em> mit zufälligen Startwerten</li>
+<li>Optimierung: Minimierung der RSS</li>
+<li>Keine Verwendung von simulierten Ruhe- oder Referenzwerten</li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -1785,31 +1856,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
 <span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a><span class="in">        slow_est &lt;- slow_estimates()</span></span>
 <span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a><span class="in">        t_delay &lt;- isolate(input$t_delay)</span></span>
-<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="in">        if (is.null(tau_estimate()) || is.null(slow_est)) {</span></span>
-<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a><span class="in">          showNotification("Einige Schätzwerte fehlen. Bitte führen Sie Schritt 1 und 2 erneut aus.", type = "error")</span></span>
-<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="in">          return()</span></span>
-<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
-<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a><span class="in">        start_params &lt;- list(</span></span>
-<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="in">          A = isolate(input$A),</span></span>
-<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="in">          TauA = tau_estimate()</span></span>
-<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a><span class="in">        )</span></span>
-<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a><span class="in">        # Definiere eine Funktion mit festen Werten für B, TauB und C</span></span>
-<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="in">        model_func &lt;- function(t_s, A, TauA) {</span></span>
-<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a><span class="in">          A * exp(-t_s/TauA) + slow_est$B * exp(-t_s/slow_est$TauB) + slow_est$C</span></span>
-<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
-<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a><span class="in">        # Berechne 2tau</span></span>
-<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a><span class="in">        tau2 &lt;- 2 * tau_estimate()</span></span>
-<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">        actual_data_count &lt;- sum(Beispieldaten$t_s &gt;= tau2)</span></span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="in">        ruhe_sim_start &lt;- input$ruhe_sim_range[1]</span></span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a><span class="in">        if (is.null(tau_estimate()) || is.null(slow_est)) {</span></span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="in">          showNotification("Einige Schätzwerte fehlen. Bitte führen Sie Schritt 1 und 2 erneut aus.", type = "error")</span></span>
+<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a><span class="in">          return()</span></span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="in">        start_params &lt;- list(</span></span>
+<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="in">          A = isolate(input$A),</span></span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a><span class="in">          TauA = tau_estimate()</span></span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a><span class="in">        )</span></span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="in">        # Definiere eine Funktion mit festen Werten für B, TauB und C</span></span>
+<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a><span class="in">        model_func &lt;- function(t_s, A, TauA) {</span></span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="in">          A * exp(-t_s/TauA) + slow_est$B * exp(-t_s/slow_est$TauB) + slow_est$C</span></span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a><span class="in">        # Berechne 2tau</span></span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">        tau2 &lt;- 2 * tau_estimate()</span></span>
 <span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
 <span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">        # Datenfilterung und Zeitverschiebung</span></span>
 <span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="in">        Beispieldaten_gefiltert &lt;- Beispieldaten %&gt;%</span></span>
 <span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &gt;= t_delay) %&gt;%</span></span>
 <span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a><span class="in">          mutate(t_s = t_s - t_delay) %&gt;%</span></span>
-<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &lt; 3600)  # Entferne simulierte Ruhewerte</span></span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &lt; (ruhe_sim_start - t_delay))  # Entferne simulierte Ruhewerte</span></span>
 <span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
 <span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="in">        # Erstelle Gewichte basierend auf t_s</span></span>
 <span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a><span class="in">        weights &lt;- ifelse(Beispieldaten_gefiltert$t_s &lt;= tau2, 1, 1)</span></span>
@@ -2049,96 +2120,96 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-550"><a href="#cb2-550" aria-hidden="true" tabindex="-1"></a><span class="in">    if (show_data()) {</span></span>
 <span id="cb2-551"><a href="#cb2-551" aria-hidden="true" tabindex="-1"></a><span class="in">      Beispieldaten &lt;- current_data()</span></span>
 <span id="cb2-552"><a href="#cb2-552" aria-hidden="true" tabindex="-1"></a><span class="in">      if (!is.null(Beispieldaten)) {</span></span>
-<span id="cb2-553"><a href="#cb2-553" aria-hidden="true" tabindex="-1"></a><span class="in">        # Datenfilterung und Zeitverschiebung</span></span>
-<span id="cb2-554"><a href="#cb2-554" aria-hidden="true" tabindex="-1"></a><span class="in">        Beispieldaten &lt;- Beispieldaten %&gt;%</span></span>
-<span id="cb2-555"><a href="#cb2-555" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &gt;= t_delay) %&gt;%</span></span>
-<span id="cb2-556"><a href="#cb2-556" aria-hidden="true" tabindex="-1"></a><span class="in">          mutate(t_s = t_s - t_delay) %&gt;%</span></span>
-<span id="cb2-557"><a href="#cb2-557" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &lt; 3600)  # Entferne simulierte Ruhewerte</span></span>
-<span id="cb2-558"><a href="#cb2-558" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-559"><a href="#cb2-559" aria-hidden="true" tabindex="-1"></a><span class="in">        last_data_point &lt;- max(Beispieldaten$t_s)</span></span>
+<span id="cb2-553"><a href="#cb2-553" aria-hidden="true" tabindex="-1"></a><span class="in">        ruhe_sim_start &lt;- input$ruhe_sim_range[1]</span></span>
+<span id="cb2-554"><a href="#cb2-554" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-555"><a href="#cb2-555" aria-hidden="true" tabindex="-1"></a><span class="in">        # Datenfilterung und Zeitverschiebung</span></span>
+<span id="cb2-556"><a href="#cb2-556" aria-hidden="true" tabindex="-1"></a><span class="in">        Beispieldaten &lt;- Beispieldaten %&gt;%</span></span>
+<span id="cb2-557"><a href="#cb2-557" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &gt;= t_delay) %&gt;%</span></span>
+<span id="cb2-558"><a href="#cb2-558" aria-hidden="true" tabindex="-1"></a><span class="in">          mutate(t_s = t_s - t_delay) %&gt;%</span></span>
+<span id="cb2-559"><a href="#cb2-559" aria-hidden="true" tabindex="-1"></a><span class="in">          filter(t_s &lt; (ruhe_sim_start - t_delay))  # Entferne simulierte Ruhewerte</span></span>
 <span id="cb2-560"><a href="#cb2-560" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-561"><a href="#cb2-561" aria-hidden="true" tabindex="-1"></a><span class="in">        # Füge last_data_point Linie und Annotation hinzu</span></span>
-<span id="cb2-562"><a href="#cb2-562" aria-hidden="true" tabindex="-1"></a><span class="in">        p &lt;- p %&gt;% add_segments(x = last_data_point, xend = last_data_point, y = 0, yend = max_y,</span></span>
-<span id="cb2-563"><a href="#cb2-563" aria-hidden="true" tabindex="-1"></a><span class="in">                                line = list(color = "gray", width = 0.5, dash = "dash"),</span></span>
-<span id="cb2-564"><a href="#cb2-564" aria-hidden="true" tabindex="-1"></a><span class="in">                                showlegend = FALSE)</span></span>
-<span id="cb2-565"><a href="#cb2-565" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-566"><a href="#cb2-566" aria-hidden="true" tabindex="-1"></a><span class="in">        p$x$layout$annotations &lt;- c(p$x$layout$annotations,</span></span>
-<span id="cb2-567"><a href="#cb2-567" aria-hidden="true" tabindex="-1"></a><span class="in">                                    list(</span></span>
-<span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a><span class="in">                                      list(</span></span>
-<span id="cb2-569"><a href="#cb2-569" aria-hidden="true" tabindex="-1"></a><span class="in">                                        x = last_data_point, y = max_y * 0.75, text = sprintf("t&lt;sub&gt;data_last&lt;/sub&gt;: %.1f", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
-<span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a><span class="in">                                        textangle = -90, font = list(size = 11, color = "darkgrey")</span></span>
-<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">                                      )</span></span>
-<span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="in">                                    ))</span></span>
-<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a><span class="in">        model_values_at_data &lt;- A * exp(-Beispieldaten$t_s / TauA) + B * exp(-Beispieldaten$t_s / TauB) + C</span></span>
+<span id="cb2-561"><a href="#cb2-561" aria-hidden="true" tabindex="-1"></a><span class="in">        last_data_point &lt;- max(Beispieldaten$t_s)</span></span>
+<span id="cb2-562"><a href="#cb2-562" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-563"><a href="#cb2-563" aria-hidden="true" tabindex="-1"></a><span class="in">        # Füge last_data_point Linie und Annotation hinzu</span></span>
+<span id="cb2-564"><a href="#cb2-564" aria-hidden="true" tabindex="-1"></a><span class="in">        p &lt;- p %&gt;% add_segments(x = last_data_point, xend = last_data_point, y = 0, yend = max_y,</span></span>
+<span id="cb2-565"><a href="#cb2-565" aria-hidden="true" tabindex="-1"></a><span class="in">                                line = list(color = "gray", width = 0.5, dash = "dash"),</span></span>
+<span id="cb2-566"><a href="#cb2-566" aria-hidden="true" tabindex="-1"></a><span class="in">                                showlegend = FALSE)</span></span>
+<span id="cb2-567"><a href="#cb2-567" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a><span class="in">        p$x$layout$annotations &lt;- c(p$x$layout$annotations,</span></span>
+<span id="cb2-569"><a href="#cb2-569" aria-hidden="true" tabindex="-1"></a><span class="in">                                    list(</span></span>
+<span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a><span class="in">                                      list(</span></span>
+<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">                                        x = last_data_point, y = max_y * 0.75, text = sprintf("t&lt;sub&gt;data_last&lt;/sub&gt;: %.1f", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="in">                                        textangle = -90, font = list(size = 11, color = "darkgrey")</span></span>
+<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a><span class="in">                                      )</span></span>
+<span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a><span class="in">                                    ))</span></span>
 <span id="cb2-575"><a href="#cb2-575" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-576"><a href="#cb2-576" aria-hidden="true" tabindex="-1"></a><span class="in">        data_subset &lt;- Beispieldaten</span></span>
+<span id="cb2-576"><a href="#cb2-576" aria-hidden="true" tabindex="-1"></a><span class="in">        model_values_at_data &lt;- A * exp(-Beispieldaten$t_s / TauA) + B * exp(-Beispieldaten$t_s / TauB) + C</span></span>
 <span id="cb2-577"><a href="#cb2-577" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-578"><a href="#cb2-578" aria-hidden="true" tabindex="-1"></a><span class="in">        ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data)^2, na.rm = TRUE)</span></span>
-<span id="cb2-579"><a href="#cb2-579" aria-hidden="true" tabindex="-1"></a><span class="in">        ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)</span></span>
-<span id="cb2-580"><a href="#cb2-580" aria-hidden="true" tabindex="-1"></a><span class="in">        r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
-<span id="cb2-581"><a href="#cb2-581" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-582"><a href="#cb2-582" aria-hidden="true" tabindex="-1"></a><span class="in">        p &lt;- p %&gt;%</span></span>
-<span id="cb2-583"><a href="#cb2-583" aria-hidden="true" tabindex="-1"></a><span class="in">          add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
-<span id="cb2-584"><a href="#cb2-584" aria-hidden="true" tabindex="-1"></a><span class="in">                    name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;', </span></span>
-<span id="cb2-585"><a href="#cb2-585" aria-hidden="true" tabindex="-1"></a><span class="in">                    marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),</span></span>
-<span id="cb2-586"><a href="#cb2-586" aria-hidden="true" tabindex="-1"></a><span class="in">                    line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4'))</span></span>
-<span id="cb2-587"><a href="#cb2-587" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-588"><a href="#cb2-588" aria-hidden="true" tabindex="-1"></a><span class="in">        if (show_full_view()) {</span></span>
-<span id="cb2-589"><a href="#cb2-589" aria-hidden="true" tabindex="-1"></a><span class="in">          ruhe_sim &lt;- data.frame(</span></span>
-<span id="cb2-590"><a href="#cb2-590" aria-hidden="true" tabindex="-1"></a><span class="in">            t_s = seq(input$ruhe_sim_range[1], input$ruhe_sim_range[2], by = 1),</span></span>
-<span id="cb2-591"><a href="#cb2-591" aria-hidden="true" tabindex="-1"></a><span class="in">            VO2_t = rep(VO2_Basis, input$ruhe_sim_range[2] - input$ruhe_sim_range[1] + 1)</span></span>
-<span id="cb2-592"><a href="#cb2-592" aria-hidden="true" tabindex="-1"></a><span class="in">          )</span></span>
-<span id="cb2-593"><a href="#cb2-593" aria-hidden="true" tabindex="-1"></a><span class="in">          </span></span>
-<span id="cb2-594"><a href="#cb2-594" aria-hidden="true" tabindex="-1"></a><span class="in">          p &lt;- p %&gt;%</span></span>
-<span id="cb2-595"><a href="#cb2-595" aria-hidden="true" tabindex="-1"></a><span class="in">            add_trace(data = ruhe_sim, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
-<span id="cb2-596"><a href="#cb2-596" aria-hidden="true" tabindex="-1"></a><span class="in">                      name = 'Sim. Ruhewerte', </span></span>
-<span id="cb2-597"><a href="#cb2-597" aria-hidden="true" tabindex="-1"></a><span class="in">                      marker = list(color = '#1CADE4', size = 3.0),</span></span>
-<span id="cb2-598"><a href="#cb2-598" aria-hidden="true" tabindex="-1"></a><span class="in">                      line = list(color = '#1CADE4', width = 0.5, dash = '4 4'))</span></span>
-<span id="cb2-599"><a href="#cb2-599" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
-<span id="cb2-600"><a href="#cb2-600" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb2-601"><a href="#cb2-601" aria-hidden="true" tabindex="-1"></a><span class="in">        p$x$layout$annotations &lt;- c(p$x$layout$annotations,</span></span>
-<span id="cb2-602"><a href="#cb2-602" aria-hidden="true" tabindex="-1"></a><span class="in">                                    list(</span></span>
-<span id="cb2-603"><a href="#cb2-603" aria-hidden="true" tabindex="-1"></a><span class="in">                                      list(</span></span>
-<span id="cb2-604"><a href="#cb2-604" aria-hidden="true" tabindex="-1"></a><span class="in">                                        x = max_x * 0.10,</span></span>
-<span id="cb2-605"><a href="#cb2-605" aria-hidden="true" tabindex="-1"></a><span class="in">                                        y = max_y * 0.65,</span></span>
-<span id="cb2-606"><a href="#cb2-606" aria-hidden="true" tabindex="-1"></a><span class="in">                                        text = sprintf("R²: %.3f", r_squared),</span></span>
-<span id="cb2-607"><a href="#cb2-607" aria-hidden="true" tabindex="-1"></a><span class="in">                                        showarrow = FALSE,</span></span>
-<span id="cb2-608"><a href="#cb2-608" aria-hidden="true" tabindex="-1"></a><span class="in">                                        xanchor = 'left',</span></span>
-<span id="cb2-609"><a href="#cb2-609" aria-hidden="true" tabindex="-1"></a><span class="in">                                        yanchor = 'bottom',</span></span>
-<span id="cb2-610"><a href="#cb2-610" aria-hidden="true" tabindex="-1"></a><span class="in">                                        font = list(</span></span>
-<span id="cb2-611"><a href="#cb2-611" aria-hidden="true" tabindex="-1"></a><span class="in">                                          family = "Arial, sans-serif",</span></span>
-<span id="cb2-612"><a href="#cb2-612" aria-hidden="true" tabindex="-1"></a><span class="in">                                          size = 12,</span></span>
-<span id="cb2-613"><a href="#cb2-613" aria-hidden="true" tabindex="-1"></a><span class="in">                                          color = "black"</span></span>
-<span id="cb2-614"><a href="#cb2-614" aria-hidden="true" tabindex="-1"></a><span class="in">                                        )</span></span>
-<span id="cb2-615"><a href="#cb2-615" aria-hidden="true" tabindex="-1"></a><span class="in">                                      )</span></span>
-<span id="cb2-616"><a href="#cb2-616" aria-hidden="true" tabindex="-1"></a><span class="in">                                    ))</span></span>
-<span id="cb2-617"><a href="#cb2-617" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
-<span id="cb2-618"><a href="#cb2-618" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
-<span id="cb2-619"><a href="#cb2-619" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb2-620"><a href="#cb2-620" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
-<span id="cb2-621"><a href="#cb2-621" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb2-622"><a href="#cb2-622" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb2-623"><a href="#cb2-623" aria-hidden="true" tabindex="-1"></a><span class="in">  output$instructions &lt;- renderUI({</span></span>
-<span id="cb2-624"><a href="#cb2-624" aria-hidden="true" tabindex="-1"></a><span class="in">    HTML(</span></span>
-<span id="cb2-625"><a href="#cb2-625" aria-hidden="true" tabindex="-1"></a><span class="in">      "&lt;div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px;'&gt;</span></span>
-<span id="cb2-626"><a href="#cb2-626" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;h4 style='color: #333;'&gt;&lt;strong&gt;Anleitung - Modellanpassung:&lt;/strong&gt;&lt;/h4&gt;</span></span>
-<span id="cb2-627"><a href="#cb2-627" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;ol style='color: #555;'&gt;</span></span>
-<span id="cb2-628"><a href="#cb2-628" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Beispiel VO2-Daten oder eigene VO2-Daten als CSV-Datei einfügen.&lt;/li&gt;</span></span>
-<span id="cb2-629"><a href="#cb2-629" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder nach Angabe der nötigen Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.&lt;/li&gt;</span></span>
-<span id="cb2-630"><a href="#cb2-630" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;O2-Speicher manuell festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht beachtet werden soll.&lt;/li&gt;</span></span>
-<span id="cb2-631"><a href="#cb2-631" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Zeitverzögerung festlegen, um Startpunkt der Modellanpassung festzulegen.&lt;/li&gt;</span></span>
-<span id="cb2-632"><a href="#cb2-632" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Komplette Modellanpassung in 3 Schritten über 'nlsLM - Fit' oder schrittweise durchführen:&lt;/li&gt;</span></span>
-<span id="cb2-633"><a href="#cb2-633" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;ul&gt;</span></span>
-<span id="cb2-634"><a href="#cb2-634" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;'1. Fit: Tau' Bestimmung der Zeitkonstante tau mit einfacher Exponentialfunktion.&lt;/li&gt;</span></span>
-<span id="cb2-635"><a href="#cb2-635" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;'2. Fit: EPOC Slow' Modellanpassung der langsamen EPOC-Komponente mit simulierten Ruhewerten.</span></span>
-<span id="cb2-636"><a href="#cb2-636" aria-hidden="true" tabindex="-1"></a><span class="in">          &lt;ul&gt;</span></span>
-<span id="cb2-637"><a href="#cb2-637" aria-hidden="true" tabindex="-1"></a><span class="in">            &lt;li&gt;'Ruhe_sim anzeigen' wechselt zwischen der normalen und der erweiterten Ansicht mit der Ruhesauerstoffaufnahme.&lt;/li&gt;</span></span>
-<span id="cb2-638"><a href="#cb2-638" aria-hidden="true" tabindex="-1"></a><span class="in">          &lt;/ul&gt;</span></span>
-<span id="cb2-639"><a href="#cb2-639" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;/li&gt;</span></span>
-<span id="cb2-640"><a href="#cb2-640" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;'3. Fit: EPOC Fast' Modellanpassung der schnellen EPOC-Komponente.&lt;/li&gt;</span></span>
-<span id="cb2-641"><a href="#cb2-641" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;/ul&gt;</span></span>
-<span id="cb2-642"><a href="#cb2-642" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Alternativ: Manuelle Modellanpassung der Modellparameter mit den Schiebereglern.&lt;/li&gt;</span></span>
+<span id="cb2-578"><a href="#cb2-578" aria-hidden="true" tabindex="-1"></a><span class="in">        data_subset &lt;- Beispieldaten</span></span>
+<span id="cb2-579"><a href="#cb2-579" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-580"><a href="#cb2-580" aria-hidden="true" tabindex="-1"></a><span class="in">        ss_res &lt;- sum((data_subset$VO2_t - model_values_at_data)^2, na.rm = TRUE)</span></span>
+<span id="cb2-581"><a href="#cb2-581" aria-hidden="true" tabindex="-1"></a><span class="in">        ss_tot &lt;- sum((data_subset$VO2_t - mean(data_subset$VO2_t, na.rm = TRUE))^2, na.rm = TRUE)</span></span>
+<span id="cb2-582"><a href="#cb2-582" aria-hidden="true" tabindex="-1"></a><span class="in">        r_squared &lt;- 1 - (ss_res / ss_tot)</span></span>
+<span id="cb2-583"><a href="#cb2-583" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-584"><a href="#cb2-584" aria-hidden="true" tabindex="-1"></a><span class="in">        p &lt;- p %&gt;%</span></span>
+<span id="cb2-585"><a href="#cb2-585" aria-hidden="true" tabindex="-1"></a><span class="in">          add_trace(data = Beispieldaten, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
+<span id="cb2-586"><a href="#cb2-586" aria-hidden="true" tabindex="-1"></a><span class="in">                    name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;', </span></span>
+<span id="cb2-587"><a href="#cb2-587" aria-hidden="true" tabindex="-1"></a><span class="in">                    marker = list(color = 'rgba(38, 131, 198, 0.9)', size = 5.0),</span></span>
+<span id="cb2-588"><a href="#cb2-588" aria-hidden="true" tabindex="-1"></a><span class="in">                    line = list(color = 'rgba(38, 131, 198, 1.0)', width = 0.65, dash = '4 4'))</span></span>
+<span id="cb2-589"><a href="#cb2-589" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-590"><a href="#cb2-590" aria-hidden="true" tabindex="-1"></a><span class="in">        if (show_full_view()) {</span></span>
+<span id="cb2-591"><a href="#cb2-591" aria-hidden="true" tabindex="-1"></a><span class="in">          ruhe_sim &lt;- data.frame(</span></span>
+<span id="cb2-592"><a href="#cb2-592" aria-hidden="true" tabindex="-1"></a><span class="in">            t_s = seq(input$ruhe_sim_range[1], input$ruhe_sim_range[2], by = 1),</span></span>
+<span id="cb2-593"><a href="#cb2-593" aria-hidden="true" tabindex="-1"></a><span class="in">            VO2_t = rep(VO2_Basis, input$ruhe_sim_range[2] - input$ruhe_sim_range[1] + 1)</span></span>
+<span id="cb2-594"><a href="#cb2-594" aria-hidden="true" tabindex="-1"></a><span class="in">          )</span></span>
+<span id="cb2-595"><a href="#cb2-595" aria-hidden="true" tabindex="-1"></a><span class="in">          </span></span>
+<span id="cb2-596"><a href="#cb2-596" aria-hidden="true" tabindex="-1"></a><span class="in">          p &lt;- p %&gt;%</span></span>
+<span id="cb2-597"><a href="#cb2-597" aria-hidden="true" tabindex="-1"></a><span class="in">            add_trace(data = ruhe_sim, x = ~t_s, y = ~VO2_t, type = 'scatter', mode = 'markers+lines',</span></span>
+<span id="cb2-598"><a href="#cb2-598" aria-hidden="true" tabindex="-1"></a><span class="in">                      name = 'Sim. Ruhewerte', </span></span>
+<span id="cb2-599"><a href="#cb2-599" aria-hidden="true" tabindex="-1"></a><span class="in">                      marker = list(color = '#1CADE4', size = 3.0),</span></span>
+<span id="cb2-600"><a href="#cb2-600" aria-hidden="true" tabindex="-1"></a><span class="in">                      line = list(color = '#1CADE4', width = 0.5, dash = '4 4'))</span></span>
+<span id="cb2-601"><a href="#cb2-601" aria-hidden="true" tabindex="-1"></a><span class="in">        }</span></span>
+<span id="cb2-602"><a href="#cb2-602" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
+<span id="cb2-603"><a href="#cb2-603" aria-hidden="true" tabindex="-1"></a><span class="in">        p$x$layout$annotations &lt;- c(p$x$layout$annotations,</span></span>
+<span id="cb2-604"><a href="#cb2-604" aria-hidden="true" tabindex="-1"></a><span class="in">                                    list(</span></span>
+<span id="cb2-605"><a href="#cb2-605" aria-hidden="true" tabindex="-1"></a><span class="in">                                      list(</span></span>
+<span id="cb2-606"><a href="#cb2-606" aria-hidden="true" tabindex="-1"></a><span class="in">                                        x = max_x * 0.10,</span></span>
+<span id="cb2-607"><a href="#cb2-607" aria-hidden="true" tabindex="-1"></a><span class="in">                                        y = max_y * 0.65,</span></span>
+<span id="cb2-608"><a href="#cb2-608" aria-hidden="true" tabindex="-1"></a><span class="in">                                        text = sprintf("R²: %.3f", r_squared),</span></span>
+<span id="cb2-609"><a href="#cb2-609" aria-hidden="true" tabindex="-1"></a><span class="in">                                        showarrow = FALSE,</span></span>
+<span id="cb2-610"><a href="#cb2-610" aria-hidden="true" tabindex="-1"></a><span class="in">                                        xanchor = 'left',</span></span>
+<span id="cb2-611"><a href="#cb2-611" aria-hidden="true" tabindex="-1"></a><span class="in">                                        yanchor = 'bottom',</span></span>
+<span id="cb2-612"><a href="#cb2-612" aria-hidden="true" tabindex="-1"></a><span class="in">                                        font = list(</span></span>
+<span id="cb2-613"><a href="#cb2-613" aria-hidden="true" tabindex="-1"></a><span class="in">                                          family = "Arial, sans-serif",</span></span>
+<span id="cb2-614"><a href="#cb2-614" aria-hidden="true" tabindex="-1"></a><span class="in">                                          size = 12,</span></span>
+<span id="cb2-615"><a href="#cb2-615" aria-hidden="true" tabindex="-1"></a><span class="in">                                          color = "black"</span></span>
+<span id="cb2-616"><a href="#cb2-616" aria-hidden="true" tabindex="-1"></a><span class="in">                                        )</span></span>
+<span id="cb2-617"><a href="#cb2-617" aria-hidden="true" tabindex="-1"></a><span class="in">                                      )</span></span>
+<span id="cb2-618"><a href="#cb2-618" aria-hidden="true" tabindex="-1"></a><span class="in">                                    ))</span></span>
+<span id="cb2-619"><a href="#cb2-619" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb2-620"><a href="#cb2-620" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-621"><a href="#cb2-621" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb2-622"><a href="#cb2-622" aria-hidden="true" tabindex="-1"></a><span class="in">    p</span></span>
+<span id="cb2-623"><a href="#cb2-623" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb2-624"><a href="#cb2-624" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb2-625"><a href="#cb2-625" aria-hidden="true" tabindex="-1"></a><span class="in">  output$instructions &lt;- renderUI({</span></span>
+<span id="cb2-626"><a href="#cb2-626" aria-hidden="true" tabindex="-1"></a><span class="in">    HTML(</span></span>
+<span id="cb2-627"><a href="#cb2-627" aria-hidden="true" tabindex="-1"></a><span class="in">      "&lt;div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px;'&gt;</span></span>
+<span id="cb2-628"><a href="#cb2-628" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;h4 style='color: #333;'&gt;&lt;strong&gt;Anleitung - Modellanpassung:&lt;/strong&gt;&lt;/h4&gt;</span></span>
+<span id="cb2-629"><a href="#cb2-629" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;ol style='color: #555;'&gt;</span></span>
+<span id="cb2-630"><a href="#cb2-630" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Beispiel-VO2-Daten (mit oder ohne Nachbelastung) einfügen oder eigene VO2-Daten als CSV-Datei hochladen.&lt;/li&gt;</span></span>
+<span id="cb2-631"><a href="#cb2-631" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder anhand der Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.&lt;/li&gt;</span></span>
+<span id="cb2-632"><a href="#cb2-632" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Bei Daten ohne Nachbelastung 'Mit VO2 Ruhe' wählen, bei Daten mit Nachbelastung 'VO2 Referenz' wählen und den entsprechenden Referenzwert festlegen.&lt;/li&gt;</span></span>
+<span id="cb2-633"><a href="#cb2-633" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;O2-Speicher festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht berücksichtigt werden soll.&lt;/li&gt;</span></span>
+<span id="cb2-634"><a href="#cb2-634" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Zeitverzögerung festlegen, um den Startpunkt der Modellanpassung zu bestimmen.&lt;/li&gt;</span></span>
+<span id="cb2-635"><a href="#cb2-635" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Wählen Sie zwischen 3-Schritt- oder 1-Schritt-Modellanpassung. Bei 3-Schritt-Anpassung den Zeitraum für simulierte Ruhe- bzw. Referenzwerte mit dem Slider einstellen.&lt;/li&gt;</span></span>
+<span id="cb2-636"><a href="#cb2-636" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Modellanpassung durchführen:&lt;/li&gt;</span></span>
+<span id="cb2-637"><a href="#cb2-637" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;ul&gt;</span></span>
+<span id="cb2-638"><a href="#cb2-638" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;'Fit: nlsLM' für komplette Anpassung oder&lt;/li&gt;</span></span>
+<span id="cb2-639"><a href="#cb2-639" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;Schrittweise: '1. Fit: Tau', '2. Fit: EPOC Slow', '3. Fit: EPOC Fast'&lt;/li&gt;</span></span>
+<span id="cb2-640"><a href="#cb2-640" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;/ul&gt;</span></span>
+<span id="cb2-641"><a href="#cb2-641" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Mit 'Ruhe_sim anzeigen' können simulierte Ruhewerte in der Abbildung ein- oder ausgeblendet werden.&lt;/li&gt;</span></span>
+<span id="cb2-642"><a href="#cb2-642" aria-hidden="true" tabindex="-1"></a><span class="in">      &lt;li&gt;Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.&lt;/li&gt;</span></span>
 <span id="cb2-643"><a href="#cb2-643" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;/ol&gt;</span></span>
 <span id="cb2-644"><a href="#cb2-644" aria-hidden="true" tabindex="-1"></a><span class="in">    &lt;/div&gt;"</span></span>
 <span id="cb2-645"><a href="#cb2-645" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
@@ -2151,17 +2222,62 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-652"><a href="#cb2-652" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-653"><a href="#cb2-653" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-654"><a href="#cb2-654" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-655"><a href="#cb2-655" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-656"><a href="#cb2-656" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false}</span>
-<span id="cb2-657"><a href="#cb2-657" aria-hidden="true" tabindex="-1"></a><span class="fu">## CSV-Datei hochladen</span></span>
-<span id="cb2-658"><a href="#cb2-658" aria-hidden="true" tabindex="-1"></a>VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:&lt;br&gt;</span>
-<span id="cb2-659"><a href="#cb2-659" aria-hidden="true" tabindex="-1"></a>t_s,VO2_t&lt;br&gt;</span>
-<span id="cb2-660"><a href="#cb2-660" aria-hidden="true" tabindex="-1"></a>0.0,5.479&lt;br&gt;</span>
-<span id="cb2-661"><a href="#cb2-661" aria-hidden="true" tabindex="-1"></a>1.0,5.251&lt;br&gt;</span>
-<span id="cb2-662"><a href="#cb2-662" aria-hidden="true" tabindex="-1"></a>2.3,4.829&lt;br&gt;</span>
-<span id="cb2-663"><a href="#cb2-663" aria-hidden="true" tabindex="-1"></a>3.5,4.746&lt;br&gt;</span>
-<span id="cb2-664"><a href="#cb2-664" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb2-665"><a href="#cb2-665" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb2-655"><a href="#cb2-655" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false collapse=true appearance="simple"}</span>
+<span id="cb2-656"><a href="#cb2-656" aria-hidden="true" tabindex="-1"></a><span class="fu">### Modellanpassung - Details:</span></span>
+<span id="cb2-657"><a href="#cb2-657" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-658"><a href="#cb2-658" aria-hidden="true" tabindex="-1"></a>**A. Dreischritt-Modellanpassung:**</span>
+<span id="cb2-659"><a href="#cb2-659" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-660"><a href="#cb2-660" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Schnelle Komponente (1. Fit: Tau):</span>
+<span id="cb2-661"><a href="#cb2-661" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Verwendete Funktion: nlsLM</span>
+<span id="cb2-662"><a href="#cb2-662" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Parameter: x (entspricht A), Tau (entspricht TauA)</span>
+<span id="cb2-663"><a href="#cb2-663" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Modell: VO2_t ~ x · exp(-t_s/Tau) + C</span>
+<span id="cb2-664"><a href="#cb2-664" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Grenzen:</span>
+<span id="cb2-665"><a href="#cb2-665" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>x: *0 bis Inf*</span>
+<span id="cb2-666"><a href="#cb2-666" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>Tau: *10 bis 600 s*</span>
+<span id="cb2-667"><a href="#cb2-667" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Optimierung: Minimierung der Residuenquadratsumme (RSS)</span>
+<span id="cb2-668"><a href="#cb2-668" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-669"><a href="#cb2-669" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Langsame Komponente (2. Fit: EPOC Slow):</span>
+<span id="cb2-670"><a href="#cb2-670" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Verwendete Funktion: nlsLM</span>
+<span id="cb2-671"><a href="#cb2-671" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Parameter: B, TauB</span>
+<span id="cb2-672"><a href="#cb2-672" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Modell: VO2_t ~ B · exp(-t_s/TauB) + VO2_Basis</span>
+<span id="cb2-673"><a href="#cb2-673" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Grenzen:</span>
+<span id="cb2-674"><a href="#cb2-674" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>B: *0.1 bis (VO2_max · 0.5) l/min*</span>
+<span id="cb2-675"><a href="#cb2-675" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>TauB: *90 bis 3600 s*</span>
+<span id="cb2-676"><a href="#cb2-676" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Prozess:</span>
+<span id="cb2-677"><a href="#cb2-677" aria-hidden="true" tabindex="-1"></a>     a) Datenauswahl: Verwendung der Daten ab *2 · Tau*</span>
+<span id="cb2-678"><a href="#cb2-678" aria-hidden="true" tabindex="-1"></a>     b) Erweiterung der Daten mit simulierten Ruhe- oder Referenzwerten:</span>
+<span id="cb2-679"><a href="#cb2-679" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>Zeitraum: *Festgelegter Bereich der simulierten Werte (Standard: 3600-4200s)*</span>
+<span id="cb2-680"><a href="#cb2-680" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>Anzahl der simulierten Werte: *Gleiche Anzahl wie reale Datenpunkte ab dem Zeitpunkt 2 · Tau bis zum Start der simulierten Werte*</span>
+<span id="cb2-681"><a href="#cb2-681" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>Wert: *Konstant auf VO2_Ruhe oder VO2_Referenz (je nach Auswahl)*</span>
+<span id="cb2-682"><a href="#cb2-682" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Optimierung: Minimierung der RSS</span>
+<span id="cb2-683"><a href="#cb2-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-684"><a href="#cb2-684" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Vollständige Anpassung (3. Fit: EPOC Fast):</span>
+<span id="cb2-685"><a href="#cb2-685" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Verwendete Funktion: nlsLM</span>
+<span id="cb2-686"><a href="#cb2-686" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Parameter: A, TauA</span>
+<span id="cb2-687"><a href="#cb2-687" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Modell: VO2_t ~ A · exp(-t_s/TauA) + B · exp(-t_s/TauB) + C</span>
+<span id="cb2-688"><a href="#cb2-688" aria-hidden="true" tabindex="-1"></a>     (B, TauB und C aus vorherigen Modellanpassungen)</span>
+<span id="cb2-689"><a href="#cb2-689" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Grenzen:</span>
+<span id="cb2-690"><a href="#cb2-690" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>A: *1.0 bis 4.0 l/min*</span>
+<span id="cb2-691"><a href="#cb2-691" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>TauA: *15 bis 90 s*</span>
+<span id="cb2-692"><a href="#cb2-692" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Prozess:</span>
+<span id="cb2-693"><a href="#cb2-693" aria-hidden="true" tabindex="-1"></a>     a) Datenauswahl: Verwendung der Daten bis zum Beginn der simulierten Ruhe- oder Referenzwerte</span>
+<span id="cb2-694"><a href="#cb2-694" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Optimierung: Minimierung der RSS</span>
+<span id="cb2-695"><a href="#cb2-695" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-696"><a href="#cb2-696" aria-hidden="true" tabindex="-1"></a>**B. Einschritt-Modellanpassung:**</span>
+<span id="cb2-697"><a href="#cb2-697" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-698"><a href="#cb2-698" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Verwendete Funktion: nlsLM</span>
+<span id="cb2-699"><a href="#cb2-699" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Parameter: A, TauA, B, TauB</span>
+<span id="cb2-700"><a href="#cb2-700" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Modell: VO2_t ~ A · exp(-(t_s - t_delay) / TauA) + B · exp(-(t_s - t_delay) / TauB) + C</span>
+<span id="cb2-701"><a href="#cb2-701" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grenzen:</span>
+<span id="cb2-702"><a href="#cb2-702" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>A: *1.5 bis 6.0 l/min*</span>
+<span id="cb2-703"><a href="#cb2-703" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>TauA: *20 bis 90 s*</span>
+<span id="cb2-704"><a href="#cb2-704" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>B: *0.3 bis 3.0 l/min*</span>
+<span id="cb2-705"><a href="#cb2-705" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>TauB: *90 bis 900 s*</span>
+<span id="cb2-706"><a href="#cb2-706" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Prozess: *100 Iterationen* mit zufälligen Startwerten</span>
+<span id="cb2-707"><a href="#cb2-707" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Optimierung: Minimierung der RSS</span>
+<span id="cb2-708"><a href="#cb2-708" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Keine Verwendung von simulierten Ruhe- oder Referenzwerten</span>
+<span id="cb2-709"><a href="#cb2-709" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-710"><a href="#cb2-710" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
