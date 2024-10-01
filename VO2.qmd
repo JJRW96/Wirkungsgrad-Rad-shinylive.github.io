@@ -1171,8 +1171,10 @@ shinyApp(ui = ui, server = server)
 In dieser Arbeit wurde der Anstieg des $\dot{V}O_{2}$ nach Belastungsbeginn für jede Belastungsstufe wie folgt analysiert: Zunächst wurden aus den Atemzug-für-Atemzug $\dot{V}O_{2}$-Daten die Ausreißer entfernt. Danach erfolgte eine Glättung der Daten mittels eines gleitenden 3-Atemzug-Durchschnitts, gefolgt von der Kurvenanpassung.
 
 Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des $\dot{V}O_{2}$ grafisch so bestimmt, dass die Phase-I-Daten der kardiorespiratorischen Antwort nicht einbezogen wurden. Dies entsprach in der Regel dem von [@Bearden2000; @Stirling2005] beschriebenen Zeitraum von 10-25 Sekunden für Phase 1. Die Kurvenanpassung wurde anschließend mit @eq-VO2_Start2 an die jeweiligen Daten durchgeführt. Die Modellparameter der Kurvenanpassung wurden wie folgt gewählt:
+
 ::: {.callout-note icon=false collapse=true appearance="simple"}
 ### Parameter - Kurvenanpassung:
+
 - Verwendete Funktion: nlsLM
   * Maximale Iterationen: *1024*
   * Verwendung des Levenberg-Marquardt-Algorithmus
@@ -1182,6 +1184,7 @@ Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des $\dot
   * V̇O2: *0.5 bis 7.0 l/min*
   * Tau: *5 bis 360 s*
 - Optimierung: Minimierung der Residuenquadratsumme (RSS)
+
 :::
 
 ```{r} 
