@@ -1,21 +1,3 @@
----
-title: "EPOC-Modellfunktion"
-format:
-  html:
-    resources: 
-      - shinylive-sw.js
-
-filters:
-  - webr
-  - shinylive
----
-  
-  
-# Darstellung, Auswertung und Statistik des Energieumsatzes und Wirkungsgrads unter verschiedenen Bedingungen und Intensitäten
-  
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 1200
 library(shiny)
 library(dplyr)
 library(tidyr)
@@ -23,7 +5,6 @@ library(plotly)
 library(DT)
 library(reactable)
 library(htmltools)
-library(shinylive)
 
 Bedingungen_data <- data.frame(
   Proband = factor(rep(c(1, 6, 10, 13, 14, 15, 17, 18, 19), each = 6)),
@@ -405,7 +386,3 @@ server <- function(input, output, session) {
 
 # ShinyApp starten
 shinyApp(ui = ui, server = server)
-
-```
-
-
