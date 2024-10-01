@@ -172,6 +172,7 @@ server <- function(input, output, session) {
     ) %>%
       layout(
         title = 'Durchschnittlicher Energieverbrauch der ausgewählten Probanden',
+        margin = list(t = 40),
         xaxis = list(title = htmltools::HTML(paste0('<b>', x_title, '</b>')),
                      showgrid = TRUE,
                      gridcolor = "lightgray",
@@ -307,6 +308,7 @@ server <- function(input, output, session) {
                      hoverlabel = list(bgcolor = "#F5F5F5")
     ) %>%
       layout(title = 'Wirkungsgrad der Probanden',
+             margin = list(t = 40),
              xaxis = list(title = htmltools::HTML('<b>Gruppe</b>'), 
                           showgrid = TRUE,  
                           gridcolor = "lightgray",  
