@@ -14,7 +14,7 @@ filters:
 
 
 
-# Darstellung und Auswertung des Energieumsatzes und Wirkungsgrads unter verschiedenen Bedingungen und Intensitäten
+# Darstellung und Auswertung des Energieumsatzes und Wirkungsgrads unter verschiedenen Bedingungen und  Intensitäten
 
 ```{shinylive-r}
 #| standalone: true
