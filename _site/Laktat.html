@@ -244,7 +244,7 @@ ui &lt;- fluidPage(
       sliderInput("delay", "Delay [s]", min = 0, max = 3600, value = 0, step = 0.1),
       actionButton("set_delay", "Delay auf BLC_1"),
       br(), br(),
-      actionButton("optimize", "Anpassen: nlsLM"), 
+      actionButton("optimize", "Fit: nlsLM"), 
       br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
@@ -543,7 +543,7 @@ ui &lt;- fluidPage(
       sliderInput("k1", "k1 [min^-1]", min = 0.1, max = 3.5, value = 0.5, step = 0.001),
       sliderInput("k2", "k2 [min^-1]", min = 0.020, max = 0.200, value = 0.10, step = 0.001),
       sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
-      actionButton("optimize", "Anpassen: nlsLM"), 
+      actionButton("optimize", "Fit: nlsLM"), 
       br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
@@ -868,7 +868,7 @@ ui &lt;- fluidPage(
       sliderInput("gamma1", "γ1 [min^-1]", min = 0.05, max = 2.0, value = 0.1, step = 0.001),
       sliderInput("gamma2", "γ2 [min^-1]", min = 0.01, max = 0.5, value = 0.05, step = 0.001),
       sliderInput("La0", "La0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),
-      actionButton("optimize", "Anpassen: nlsLM"), 
+      actionButton("optimize", "Fit: nlsLM"), 
       br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")
     ),
@@ -1301,7 +1301,11 @@ Modellanpassung - Details:
 <li>Modellierung:
 <ul>
 <li>Anwendung des nicht-linearen Regressionsmodells auf die eingegebenen Daten</li>
-<li>Startwerte: · a: 1 · b: 0.01</li>
+<li>Startwerte:
+<ul>
+<li>a: <em>1.0</em></li>
+<li>b: <em>0.01</em></li>
+</ul></li>
 </ul></li>
 <li>Durchführung der nicht-linearen Regression:
 <ul>
@@ -2001,7 +2005,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("delay", "Delay [s]", min = 0, max = 3600, value = 0, step = 0.1),</span></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("set_delay", "Delay auf BLC_1"),</span></span>
 <span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="in">      br(), br(),</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Anpassen: nlsLM"), </span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Fit: nlsLM"), </span></span>
 <span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="in">      br(), br(),</span></span>
 <span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
 <span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
@@ -2290,7 +2294,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-332"><a href="#cb5-332" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("k1", "k1 [min^-1]", min = 0.1, max = 3.5, value = 0.5, step = 0.001),</span></span>
 <span id="cb5-333"><a href="#cb5-333" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("k2", "k2 [min^-1]", min = 0.020, max = 0.200, value = 0.10, step = 0.001),</span></span>
 <span id="cb5-334"><a href="#cb5-334" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("BLC0", "BLC0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),</span></span>
-<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Anpassen: nlsLM"), </span></span>
+<span id="cb5-335"><a href="#cb5-335" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Fit: nlsLM"), </span></span>
 <span id="cb5-336"><a href="#cb5-336" aria-hidden="true" tabindex="-1"></a><span class="in">      br(), br(),</span></span>
 <span id="cb5-337"><a href="#cb5-337" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
 <span id="cb5-338"><a href="#cb5-338" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
@@ -2606,7 +2610,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-648"><a href="#cb5-648" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("gamma1", "γ1 [min^-1]", min = 0.05, max = 2.0, value = 0.1, step = 0.001),</span></span>
 <span id="cb5-649"><a href="#cb5-649" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("gamma2", "γ2 [min^-1]", min = 0.01, max = 0.5, value = 0.05, step = 0.001),</span></span>
 <span id="cb5-650"><a href="#cb5-650" aria-hidden="true" tabindex="-1"></a><span class="in">      sliderInput("La0", "La0 [mmol/l]", min = 0.0, max = 5.0, value = 1.0, step = 0.01),</span></span>
-<span id="cb5-651"><a href="#cb5-651" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Anpassen: nlsLM"), </span></span>
+<span id="cb5-651"><a href="#cb5-651" aria-hidden="true" tabindex="-1"></a><span class="in">      actionButton("optimize", "Fit: nlsLM"), </span></span>
 <span id="cb5-652"><a href="#cb5-652" aria-hidden="true" tabindex="-1"></a><span class="in">      br(), br(),</span></span>
 <span id="cb5-653"><a href="#cb5-653" aria-hidden="true" tabindex="-1"></a><span class="in">      fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv")</span></span>
 <span id="cb5-654"><a href="#cb5-654" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
@@ -3021,8 +3025,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-1063"><a href="#cb5-1063" aria-hidden="true" tabindex="-1"></a>  b) Modellierung:</span>
 <span id="cb5-1064"><a href="#cb5-1064" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>Anwendung des nicht-linearen Regressionsmodells auf die eingegebenen Daten</span>
 <span id="cb5-1065"><a href="#cb5-1065" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>Startwerte:</span>
-<span id="cb5-1066"><a href="#cb5-1066" aria-hidden="true" tabindex="-1"></a>       · a: 1</span>
-<span id="cb5-1067"><a href="#cb5-1067" aria-hidden="true" tabindex="-1"></a>       · b: 0.01</span>
+<span id="cb5-1066"><a href="#cb5-1066" aria-hidden="true" tabindex="-1"></a><span class="ss">       - </span>a: *1.0*</span>
+<span id="cb5-1067"><a href="#cb5-1067" aria-hidden="true" tabindex="-1"></a><span class="ss">       - </span>b: *0.01*</span>
 <span id="cb5-1068"><a href="#cb5-1068" aria-hidden="true" tabindex="-1"></a>  c) Durchführung der nicht-linearen Regression:</span>
 <span id="cb5-1069"><a href="#cb5-1069" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>Verwendung der Standard-nls-Funktion in R</span>
 <span id="cb5-1070"><a href="#cb5-1070" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span>Keine expliziten Grenzen für die Parameter gesetzt</span>

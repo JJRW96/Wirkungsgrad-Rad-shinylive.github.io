@@ -580,35 +580,34 @@ server <- function(input, output, session) {
   output$instructions <- renderUI({
     HTML(
       "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
-    <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
-    <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
-      <li>Beispiel-VO2-Daten (mit oder ohne Nachbelastung) einfügen oder eigene VO2-Daten als CSV-Datei hochladen.</li>
-      <li>Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder anhand der Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.</li>
-      <li>Bei Daten ohne Nachbelastung 'Mit VO2 Ruhe' wählen, bei Daten mit Nachbelastung 'VO2 Referenz' wählen und den entsprechenden Referenzwert festlegen.</li>
-      <li>O2-Speicher festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht berücksichtigt werden soll.</li>
-      <li>Zeitverzögerung festlegen, um den Startpunkt der Modellanpassung zu bestimmen.</li>
-      <li>Wählen Sie zwischen 3-Schritt- oder 1-Schritt-Modellanpassung. Bei 3-Schritt-Anpassung den Zeitraum für simulierte Ruhe- bzw. Referenzwerte mit dem Slider einstellen.</li>
-      <li>Modellanpassung durchführen:</li>
-      <ul>
-        <li>'Fit: nlsLM' für komplette Anpassung oder</li>
-        <li>Schrittweise: '1. Fit: Tau', '2. Fit: EPOC Slow', '3. Fit: EPOC Fast'</li>
-      </ul>
-      <li>Mit 'Ruhe_sim anzeigen' können simulierte Ruhewerte in der Abbildung ein- oder ausgeblendet werden.</li>
-      <li>Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.</li>
-    </ol>
-    <div style='margin-top: 20px;'></div>
-    <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+      <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+      <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+        <li>Beispiel-VO2-Daten einfügen oder eigene VO2-Daten als CSV-Datei hochladen.</li>
+        <li>Zeitverzögerung_fast festlegen, um den Startpunkt der Modellanpassung zu bestimmen.</li>
+        <li>Schrittweise die Modellanpassung durchführen:
+          <ol>
+            <li>Fit: Schnelle Komponente</li>
+            <li>Fit: Langsame Komponente Verfeinerung</li>
+            <li>Fit: Optimierung</li>
+          </ol>
+        </li>
+        <li>Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.</li>
+      </ol>
+      <div style='margin-top: 20px;'></div>
+      <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
 VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
 t_s,VO2_t
 0.0,0.479
 1.0,0.459
 2.3,0.488
 …
-    </pre>
+      </pre>
     </div>"
     )
   })
 }
+
+
 
 # App ausführen
 shinyApp(ui = ui, server = server)

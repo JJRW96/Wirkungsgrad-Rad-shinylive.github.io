@@ -1,20 +1,3 @@
----
-title: "EPOC-Modellfunktion"
-format:
-  html:
-    resources: 
-      - shinylive-sw.js
-
-filters:
-  - webr
-  - shinylive
----
-
-# Modellfunktion des EPOC in Abhängigkeit von der Zeit während der Belastung
-
-```{shinylive-r}
-#| standalone: true
-#| viewerHeight: 1200
 library(shiny)
 library(plotly)
 library(minpack.lm)
@@ -286,7 +269,6 @@ server <- function(input, output, session) {
         
         slow_est <- slow_estimates()
         t_delay <- isolate(input$t_delay)
-        ruhe_sim_start <- input$ruhe_sim_range[1]
         
         if (is.null(tau_estimate()) || is.null(slow_est)) {
           showNotification("Einige Schätzwerte fehlen. Bitte führen Sie Schritt 1 und 2 erneut aus.", type = "error")
@@ -305,12 +287,13 @@ server <- function(input, output, session) {
         
         # Berechne 2tau
         tau2 <- 2 * tau_estimate()
+        actual_data_count <- sum(Beispieldaten$t_s >= tau2)
         
         # Datenfilterung und Zeitverschiebung
         Beispieldaten_gefiltert <- Beispieldaten %>%
           filter(t_s >= t_delay) %>%
           mutate(t_s = t_s - t_delay) %>%
-          filter(t_s < (ruhe_sim_start - t_delay))  # Entferne simulierte Ruhewerte
+          filter(t_s < 3600)  # Entferne simulierte Ruhewerte
         
         # Erstelle Gewichte basierend auf t_s
         weights <- ifelse(Beispieldaten_gefiltert$t_s <= tau2, 1, 1)
@@ -550,13 +533,11 @@ server <- function(input, output, session) {
     if (show_data()) {
       Beispieldaten <- current_data()
       if (!is.null(Beispieldaten)) {
-        ruhe_sim_start <- input$ruhe_sim_range[1]
-        
         # Datenfilterung und Zeitverschiebung
         Beispieldaten <- Beispieldaten %>%
           filter(t_s >= t_delay) %>%
           mutate(t_s = t_s - t_delay) %>%
-          filter(t_s < (ruhe_sim_start - t_delay))  # Entferne simulierte Ruhewerte
+          filter(t_s < 3600)  # Entferne simulierte Ruhewerte
         
         last_data_point <- max(Beispieldaten$t_s)
         
@@ -647,64 +628,3 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui = ui, server = server)
-
-
-
-```
-
-::: {.callout-note icon=false collapse=true appearance="simple"}
-### Modellanpassung - Details:
-
-**A. Dreischritt-Modellanpassung:**
-
-1. Schnelle Komponente (1. Fit: Tau):
-   - Verwendete Funktion: nlsLM
-   - Parameter: x (entspricht A), Tau (entspricht TauA)
-   - Modell: VO2_t ~ x · exp(-t_s/Tau) + C
-   - Grenzen:
-     - x: *0 bis Inf*
-     - Tau: *10 bis 600 s*
-   - Optimierung: Minimierung der Residuenquadratsumme (RSS)
-
-2. Langsame Komponente (2. Fit: EPOC Slow):
-   - Verwendete Funktion: nlsLM
-   - Parameter: B, TauB
-   - Modell: VO2_t ~ B · exp(-t_s/TauB) + VO2_Basis
-   - Grenzen:
-     - B: *0.1 bis (VO2_max · 0.5) l/min*
-     - TauB: *90 bis 3600 s*
-   - Prozess:
-     a) Datenauswahl: Verwendung der Daten ab *2 · Tau*
-     b) Erweiterung der Daten mit simulierten Ruhe- oder Referenzwerten:
-        - Zeitraum: *Festgelegter Bereich der simulierten Werte (Standard: 3600-4200s)*
-        - Anzahl der simulierten Werte: *Gleiche Anzahl wie reale Datenpunkte ab dem Zeitpunkt 2 · Tau bis zum Start der simulierten Werte*
-        - Wert: *Konstant auf VO2_Ruhe oder VO2_Referenz (je nach Auswahl)*
-   - Optimierung: Minimierung der RSS
-
-3. Vollständige Anpassung (3. Fit: EPOC Fast):
-   - Verwendete Funktion: nlsLM
-   - Parameter: A, TauA
-   - Modell: VO2_t ~ A · exp(-t_s/TauA) + B · exp(-t_s/TauB) + C
-     (B, TauB und C aus vorherigen Modellanpassungen)
-   - Grenzen:
-     - A: *1.0 bis 4.0 l/min*
-     - TauA: *15 bis 90 s*
-   - Prozess:
-     a) Datenauswahl: Verwendung der Daten bis zum Beginn der simulierten Ruhe- oder Referenzwerte
-   - Optimierung: Minimierung der RSS
-
-**B. Einschritt-Modellanpassung:**
-
-- Verwendete Funktion: nlsLM
-- Parameter: A, TauA, B, TauB
-- Modell: VO2_t ~ A · exp(-(t_s - t_delay) / TauA) + B · exp(-(t_s - t_delay) / TauB) + C
-- Grenzen:
-  - A: *1.5 bis 6.0 l/min*
-  - TauA: *20 bis 90 s*
-  - B: *0.3 bis 3.0 l/min*
-  - TauB: *90 bis 900 s*
-- Prozess: *100 Iterationen* mit zufälligen Startwerten
-- Optimierung: Minimierung der RSS
-- Keine Verwendung von simulierten Ruhe- oder Referenzwerten
-
-:::

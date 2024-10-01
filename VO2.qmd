@@ -10,9 +10,22 @@ filters:
   - shinylive
 ---
 
-# Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung
 
+# Kinetik des Sauerstoffvolumenstroms
 
+## Monoexponentielle Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung
+
+Der Anstieg des Sauerstoffvolumenstroms ($\dot{V}O_{2}$) zu Beginn einer leichten bis moderaten körperlichen Belastung auf dem Fahrradergometer unterhalb der Laktatschwelle (LT[^1]) wurde traditionell in der Literatur als monoexponentiell beschrieben, mit einer Amplitude von ungefähr 9–10 ml O~2~·W^-1^·min^-1^ [@Barstow1991; @Bearden2000]. Die Zeitkonstante $\tau_{\text{Start}}$ beschreibt die Geschwindigkeit, mit der der Sauerstoffvolumenstrom den Gleichgewichtszustand $\dot{V}O_{2,\text{gross, SS}}$ erreicht. Dies lässt sich mit der folgenden Formel darstellen [@Hill1924; @Henry1956; @Margaria1965; @Whipp1971; @Oezyner2001; @Francescato2003; @Clark2014]:
+
+[^1]:Die LT beschreibt den Punkt, an dem das Blutlaktat bei zunehmender Belastungsintensität über das Ruheniveau hinaus zu akkumulieren beginnt [@Siestema2020]. 
+
+$$
+\dot{V}O_{2,\text{Belastung}}(t) = \dot{V}O_{2,\text{gross, SS}} \cdot \left(1 - e^{-\frac{t - TD}{\tau_{\text{Start}}}}\right) + \dot{V}O_{2,\text{Start}}
+$$ {#eq-VO2_Start1}
+
+Dabei beschreibt $\dot{V}O_{2,\text{Start}}$ den Sauerstoffvolumenstrom zu Beginn der Belastung, und $\dot{V}O_{2,\text{net, SS}}$ bezeichnet den Steady-State-Wert abzüglich des Ruhe-Sauerstoffvolumenstroms ($\dot{V}O_{2, \text{Ruhe}}$). In der folgenden Shiny-App wird ein Beispiel dieser Modellfunktion gezeigt, wie in @eq-VO2_Start1 beschrieben. Eigene $\dot{V}O_{2}$-Daten können hochgeladen und mittels nichtlinearer Regression an die Beispieldaten angepasst werden.
+
+### Mono-exponentielle Shiny-App
 ```{shinylive-r}
 #| standalone: true
 #| viewerHeight: 900
@@ -415,10 +428,66 @@ shinyApp(ui = ui, server = server)
   
 :::
 
+## Einteilung der VO2-Kinetik in drei Phasen
+
+Die Analyse der $\dot{V}O_{2}$-Kinetik kann durch die Berücksichtigung von Zeitverzögerungen und/oder Exponentialfunktionen zweiter Ordnung verfeinert werden. Dazu kann die Anpassungsreaktion des $\dot{V}O_{2}$ nach Beginn der sportlichen Betätigung in drei Phasen unterteilt werden, wie in @fig-3_Phasen zu sehen [@Whipp1982]. Dies ermöglicht es, die erhöhte Komplexität der $\dot{V}O_{2}$-Kinetik oberhalb der LT besser darzustellen und eine präzisere Analyse der physiologischen Anpassungen bei körperlicher Belastung durchzuführen, da oberhalb der LT der $\dot{V}O_2$-Umsatz über 10 ml O~2~·W^-1^·min^-1^  steigt [@Barstow1994; @Bearden2000; @Siestema2020]. Die 3 Phasen lassen sich wie folgt beschreiben:
+
+::: columns
+::: {.column width="72%"}
+![Beispiel der Drei-Phasen der VO2-Kinetik bis zum Erreichen eines SS nach Beginn der Belastung (McNulty & Robergs, 2017)](McNulty2017_VO2_3_Phase.png){#fig-3_Phasen height="500"} 
+:::
+::: {.column width="2%"}
+:::
+::: {.column width="25%"}
+:::
+:::
 
 
 
-# Bi-exponentiale Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung
+
+
+
+::: columns
+::: {.column width="60%"}
+**Phase 1:**<br>
+Phase I, häufig als kardiodynamische Phase bezeichnet, umfasst ungefähr die ersten 10 bis 25 Sekunden nach Beginn der Belastung. Aufgrund des schnellen Anstiegs des Herzzeitvolumens und des Lungenblutflusses zu Beginn der Belastung steigt $\dot{V}O_2$ abrupt an. In dieser Phase bleibt die Zusammensetzung des gemischtvenösen Blutes sowie der respiratorische Quotient ($RQ = \frac{\dot{V}CO_{2}}{\dot{V}O_{2}}$) im Vergleich zum Ruhezustand unverändert. Somit ist der Anstieg des $\dot{V}O_2$ ausschließlich auf das erhöhte Herzminutenvolumen zurückzuführen, da sich die Sauerstoffkonzentration im arteriellen und venösen Blut (C~a~ und C~v~) noch nicht verändert haben. Dies lässt sich mit Hilfe der Fick'schen Gleichung @eq-FICK verdeutlichen [@Fick1855; @Whipp1982; @Stirling2005; @Clark2014; @Siestema2020].
+
+$$
+\dot{V}O_2 = \dot{Q} \cdot (C_a - C_v) 
+$$ {#eq-FICK}
+
+Da die anfängliche „kardiodynamische“ Phase der $\dot{V}O_2$-Reaktion nicht direkt den Sauerstoffumsatz der aktiven Muskulatur repräsentiert, werden in der Regel die ersten 20 bis 25 Sekunden von Phase I bei Modellierungen der $\dot{V}O_2$-Kinetik aus der Modellanpassung ausgeschlossen [@Bearden2000; @Oezyener2001].
+
+**Phase 2:**<br>
+Phase 2 folgt auf Phase 1 und ist durch einen schnellen, monoexponentiellen Anstieg des $\dot{V}O_2$ gekennzeichnet. Die Zeitkonstante beträgt im Durchschnitt etwa 30 [@Siestema2020] bis 33 Sekunden [@Oezyner2001]. Anschließend wird entweder ein SS erreicht oder der $\dot{V}O_2$ steigt weiter an, was dann in dem Modell als Phase 3 bezeichnet wird [@Stirling2005].
+
+**Phase 3:**<br>
+In Phase 3 des $\dot{V}O_2$-Modells wird bei leichten bis moderaten Belastungen unterhalb der Laktatschwelle (LT) nach etwa 3 Minuten ein stabiler Zustand (SS) erreicht. Dieses Verhalten beschreibt, wie der $\dot{V}O_2$ sich im 3-Phasen-Modell für Belastungen unterhalb der LT verhält. Bei Belastungen oberhalb der LT erreicht der $\dot{V}O_2$ nach der primären Anpassungsreaktion keinen SS mehr, sondern steigt weiter an (siehe @fig-Verlauf_ON). Diese zusätzliche Komponente, meist als "slow component" bezeichnet und überlagert die anfängliche monoexponentielle Funktion aus Phase 2. 
+:::
+::: {.column width="2%"}
+:::
+::: {.column width="38%"}
+![Beispiele der VO<sub>2</sub>-Anstiegskinetik eines Probanden für verschiedene Belastungsintensitäten: sehr intensiv, schwer, mittelschwer und moderat (von oben nach unten). Unterhalb der VO<sub>2</sub>-Daten ist der entsprechende Residuenplot zu sehen. In Spalte A wird eine Modellfunktion mit mono-exponentieller Kurvenanpassung gezeigt, in Spalte B eine mit bi-exponentieller Anpassung (Özyener, 2001).](Ozyener_ON.png){#fig-Verlauf_ON}
+::: 
+:::
+Mathematische Modellierungen haben gezeigt, dass die langsame Komponente etwa 90 bis 200 Sekunden nach Beginn des Übergangs einsetzt [@Whipp1972; @Barstow1991; @PatersonWhipp1991; @Whipp1994; @Bearden2000; @Siestema2020]. Die Komponente der Anpassungsreaktion bis zum Beginn der slow component wird in der Literatur oft als "primary component" oder "fundamental component" bezeichnet [@Barstow1994; @Oeyzener2001]. Im Folgenden wird diese Hauptkomponente mit dem Index "fast" gekennzeichnet.
+
+
+## Bi-exponentielle Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung
+
+Phase 2 und 3 des 3-Phasen-Modells lassen sich mit Hilfe der @eq-VO2_Start2 modellieren:  
+
+$$
+\dot{V}O_2(t) = \dot{V}O_{2,\text{fast}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay, fast}}{\tau_\text{fast}}}\right) + 
+\dot{V}O_{2,\text{slow}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay,slow}}{\tau_\text{slow}}}\right) + 
+\dot{V}O_{2,\text{Start}}
+$${#eq-VO2_Start2}
+
+$\dot{V}O_{2,\text{fast}}$ repräsentiert die Amplitude der Hauptkomponente, während $\dot{V}O_{2,\text{slow}}$ die Amplitude der slow component beschreibt. Die Zeitkonstanten $\tau_\text{fast}$ und $\tau_\text{slow}$ steuern die Geschwindigkeit der jeweiligen Reaktionsprozesse, wobei die Zeitverzögerungen $t_\text{delay, fast}$ und $t_\text{delay, slow}$ den Beginn dieser Prozesse bestimmen. $\dot{V}O_{2,\text{Start}}$ beschreibt den Sauerstoffvolumenstrom zu Beginn der Belastung.
+
+In der folgenden Shiny-App wird die Modellanpassung der Gleichung @eq-VO2_Start2 an Beispieldaten demonstriert. Eigene $\dot{V}O_{2}$-Daten können hochgeladen und mittels nichtlinearer Regression an die Modellparameter angepasst werden.
+
+### Bi-exponentielle Shiny-App
 ```{shinylive-r}
 #| standalone: true
 #| viewerHeight: 900
@@ -436,7 +505,7 @@ VO2_data <- c(0.823, 0.898, 0.966, 1.122, 1.281, 1.313, 1.463, 1.537, 1.602, 1.5
 # UI
 ui <- fluidPage(
   useShinyjs(),
-  titlePanel("Biexponentielle V̇O2-Modellfunktion"),
+  titlePanel("Bi-exponentielle V̇O2-Modellfunktion"),
   fluidRow(
     column(3,
            style = "height: 90vh; overflow-y: auto;",
@@ -922,7 +991,7 @@ server <- function(input, output, session) {
                 name = 'V̇O<sub>2</sub><sub>fast</sub>', line = list(color = '#42BA97')) %>%
       add_trace(x = ~t_s, y = ~slow_values, type = 'scatter', mode = 'lines', 
                 name = 'V̇O<sub>2</sub><sub>slow</sub>', line = list(color = '#BB7693')) %>%
-      layout(title = "Biexponentielle V̇O<sub>2</sub>-Modellfunktion",
+      layout(title = "Bi-exponentielle V̇O<sub>2</sub>-Modellfunktion",
              margin = list(t = 40),
              xaxis = list(title = "t [s]", range = c(0, max_x)),
              yaxis = list(title = "V̇O<sub>2</sub> [l·min<sup>-1</sup>]", tickformat = ".1f"),
@@ -1005,31 +1074,28 @@ server <- function(input, output, session) {
   output$instructions <- renderUI({
     HTML(
       "<div style='margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
-    <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
-    <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
-      <li>Beispiel-VO2-Daten (mit oder ohne Nachbelastung) einfügen oder eigene VO2-Daten als CSV-Datei hochladen.</li>
-      <li>Ruhesauerstoffaufnahme (VO2 Ruhe) manuell eingeben oder anhand der Parameter (Geschlecht, Körpermasse, Alter, RQ) berechnen lassen.</li>
-      <li>Bei Daten ohne Nachbelastung 'Mit VO2 Ruhe' wählen, bei Daten mit Nachbelastung 'VO2 Referenz' wählen und den entsprechenden Referenzwert festlegen.</li>
-      <li>O2-Speicher festlegen oder auf 0 setzen, falls dieser in der Berechnung nicht berücksichtigt werden soll.</li>
-      <li>Zeitverzögerung festlegen, um den Startpunkt der Modellanpassung zu bestimmen.</li>
-      <li>Wählen Sie zwischen 3-Schritt- oder 1-Schritt-Modellanpassung. Bei 3-Schritt-Anpassung den Zeitraum für simulierte Ruhe- bzw. Referenzwerte mit dem Slider einstellen.</li>
-      <li>Modellanpassung durchführen:</li>
-      <ul>
-        <li>'Fit: nlsLM' für komplette Anpassung oder</li>
-        <li>Schrittweise: '1. Fit: Tau', '2. Fit: EPOC Slow', '3. Fit: EPOC Fast'</li>
-      </ul>
-      <li>Mit 'Ruhe_sim anzeigen' können simulierte Ruhewerte in der Abbildung ein- oder ausgeblendet werden.</li>
-      <li>Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.</li>
-    </ol>
-    <div style='margin-top: 20px;'></div>
-    <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
+      <h4 style='color: #333;'><strong>Anleitung - Modellanpassung:</strong></h4>
+      <ol style='color: #555; list-style-position: outside; padding-left: 20px;'>
+        <li>Beispiel-VO2-Daten einfügen oder eigene VO2-Daten als CSV-Datei hochladen.</li>
+        <li>Zeitverzögerung_fast festlegen, um den Startpunkt der Modellanpassung zu bestimmen.</li>
+        <li>Schrittweise die Modellanpassung durchführen:
+          <ol>
+            <li>Fit: Schnelle Komponente</li>
+            <li>Fit: Langsame Komponente Verfeinerung</li>
+            <li>Fit: Optimierung</li>
+          </ol>
+        </li>
+        <li>Alternative: Manuelle Anpassung der Modellparameter über die Schieberegler.</li>
+      </ol>
+      <div style='margin-top: 20px;'></div>
+      <pre style='background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: fit-content;'>
 VO2-Daten können als CSV-Datei im folgenden Format hochgeladen werden:
 t_s,VO2_t
 0.0,0.479
 1.0,0.459
 2.3,0.488
 …
-    </pre>
+      </pre>
     </div>"
     )
   })
@@ -1101,6 +1167,45 @@ shinyApp(ui = ui, server = server)
 
 
 
+## Methodenteil: Umgang mit Daten in dieser Arbeit
+In dieser Arbeit wurde der Anstieg des $\dot{V}O_{2}$ nach Belastungsbeginn für jede Belastungsstufe wie folgt analysiert: Zunächst wurden aus den Atemzug-für-Atemzug $\dot{V}O_{2}$-Daten die Ausreißer entfernt. Danach erfolgte eine Glättung der Daten mittels eines gleitenden 3-Atemzug-Durchschnitts, gefolgt von der Kurvenanpassung.
+
+Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des $\dot{V}O_{2}$ grafisch so bestimmt, dass die Phase-I-Daten der kardiorespiratorischen Antwort nicht einbezogen wurden. Dies entsprach in der Regel dem von [@Bearden2000; @Stirling2005] beschriebenen Zeitraum von 10-25 Sekunden für Phase 1. Die Kurvenanpassung wurde anschließend mit @eq-VO2_Start2 an die jeweiligen Daten durchgeführt. Die Modellparameter der Kurvenanpassung wurden wie folgt gewählt:
+::: {.callout-note icon=false collapse=true appearance="simple"}
+### Parameter - Kurvenanpassung:
+- Verwendete Funktion: nlsLM
+  * Maximale Iterationen: *1024*
+  * Verwendung des Levenberg-Marquardt-Algorithmus
+- Parameter: V̇O2 (Amplitude), Tau
+- Modell: V̇O2_t ~ V̇O2 · (1 - exp(-(t_s - t_delay) / Tau)) + V̇O2_Start
+- Grenzen:
+  * V̇O2: *0.5 bis 7.0 l/min*
+  * Tau: *5 bis 360 s*
+- Optimierung: Minimierung der Residuenquadratsumme (RSS)
+:::
+
+```{r} 
+### Dauer der Zeitkonstante bei verschiedenen Intensitäten unterschiedlich
+# @Oezyner2001 fanden, dass der Wert von τ~Start~ für die Sauerstoffaufnahme im Durchschnitt bei 33 ± 16 s liegt, unabhängig von der Belastungshöhe. 
+# -Im Gegensatz dazu berichten andere Studien von einem Anstieg von τ~Start~ mit zunehmender Belastung (Linnarsson 1974).
+# Wasserman et al. [@Wasserman1967] prognostizierten und fanden experimentell heraus, dass der Sauerstoffverbrauch bei schweren Arbeitsbelastungen länger ansteigt als bei moderaten Intensitäten. Henry und DeMoor [@Henry1956] stellten ebenfalls fest, dass die Zeit bis zum Erreichen eines stabilen Zustands der Sauerstoffaufnahme (VO2) mit steigender Arbeitslast zunimmt. Im Gegensatz dazu berichten Di Prampero et al. [@DiPrampero1970] und Margaria et al. [@Margaria1965], dass das Muster des VO2-Anstiegs zum stabilen Zustand unabhängig von der Arbeitsintensität gleich ist und dieser Anstieg durch einen einzigen exponentiellen Prozess beschrieben wird, wobei die Reaktionskonstante für alle Arbeitslasten gleich ist.
+# 
+# **Moderate Intensität:**
+# Die pulmonale V̇O~2~steigt monoexponentiell und erreicht innerhalb von etwa 3 Minuten einen Steady State [@Whipp1982; @Hughson1988; @Whipp1994]. Die V̇O~2~ erhöht sich linear zur Arbeitsrate um etwa 10 ml·min^-1·W^-1. Sobald der Steady State erreicht ist, sind ATP-Resynthese und oxidative Phosphorylierung im Gleichgewicht [@Kindermann1979; @Faude2009].
+# 
+# **Schwere Intensität:**
+# Die schwere Intensität liegt zwischen der maximalen Leistungsfähigkeit (GXT) und der kritischen Leistung (CP) [@Hill1993]. Bei schwerer Belastung ist der oxidative Bedarf höher, und der Steady State verzögert sich durch die V̇O~2~ Slow Component. Die O~2~-Kosten steigen auf etwa 13 ml·min^-1·W^-1 [@WhippWasserman1972; @PearceMilhorn1977; @WhippMahler1980; @BarstowMole1991]. Die arterielle Laktatkonzentration steigt über die Ausgangswerte, erreicht aber ein erhöhtes Gleichgewicht [@Billat2003].
+# 
+# **Schwere Intensität:**
+# In der Forschung ist umstritten, ob die primäre V̇O~2~-Kinetik bei schwerer Belastung langsamer ist als bei moderater. Dies könnte auf eine größere Zeitkonstante oder eine zusätzliche Slow Component in V̇O~2~ hindeuten, die einen verzögerten Steady State über dem vorhergesagten Niveau erreicht [@PatersonWhipp1991; @BarstowMole1991].
+# 
+# **Sehr schwere Intensität:**
+# Bei sehr schwerer Intensität, oberhalb des maximalen Laktat-Steady-State oder der kritischen Leistung, erreichen weder V̇O~2~ noch arterielle Laktatkonzentration einen Steady State [@GaesserPoole1996]. Beide steigen unaufhaltsam, bis Ermüdung eintritt und maximale V̇O~2~-Werte erreicht werden [@WassermanWhipp1975; @GaesserPoole1996].
+
+```
+
+
+
 # Anpassbarer und ausführbarer R-Code mit webR eines des Sauerstoffvolumenstrom-Verlaufs in Abhängigkeit von der Zeit während der Belastung
 
 ```{webr-r}
@@ -1115,5 +1220,6 @@ VO2_t <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 
 plot(t_s, VO2_t, type="o", col="blue", xlab="Zeit [s]", ylab="VO2 [l/min]", main="VO2 [l/min]")
 
 ```
+
 
 

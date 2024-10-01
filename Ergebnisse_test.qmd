@@ -1,0 +1,147 @@
+---
+title: "EPOC-Modellfunktion"
+format:
+  html:
+    resources: 
+      - shinylive-sw.js
+
+filters:
+  - webr
+  - shinylive
+---
+  
+  
+# Darstellung und Auswertung des Energieumsatzes und Wirkungsgrads unter verschiedenen Bedingungen und Intensitäten
+  
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 1200
+library(shiny)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(plotly)
+
+# Erweiterter Datensatz mit angepassten Spaltennamen
+Bedingungen_data <- data.frame(
+  Proband = factor(rep(c(1, 6, 10, 13, 14, 15, 17, 18, 19), each = 6)),
+  Bedingung = rep(c("stehen", "sitzen", "sitzen", "stehen", "sitzen", "stehen"), 9),
+  Intensität = rep(c("leicht", "leicht", "moderat", "moderat", "schwer", "schwer"), 9),
+  WirkPhysio = runif(54, 0.22, 0.27),
+  WAerob_kJ = runif(54, 200, 500),
+  WPCR_kJ = runif(54, 10, 50),
+  WBLC_kJ = runif(54, 5, 25),
+  WTOT_kJ = runif(54, 250, 600),
+  P_Tot = runif(54, 200, 450),
+  P_mean = runif(54, 175, 400),
+  P_Int = runif(54, 14, 60),
+  nD = runif(54, 59, 101),
+  Efficiency = runif(54, 50, 97),
+  Pedal_Smoothness = runif(54, 32, 58),
+  P_max = runif(54, 400, 850),
+  HR_percent = runif(54, 80, 96),
+  VO2_percent = runif(54, 59, 90),
+  ΔBLC = runif(54, 1, 7)
+)
+
+ui <- fluidPage(
+  titlePanel("Energieumsatz unter verschiedenen Bedingungen"),
+  sidebarLayout(
+    sidebarPanel(
+      checkboxGroupInput("selectedBedingung", "Bedingungen:",
+                         choices = unique(Bedingungen_data$Bedingung),
+                         selected = unique(Bedingungen_data$Bedingung)),
+      checkboxGroupInput("selectedIntensität", "Intensitäten:",
+                         choices = unique(Bedingungen_data$Intensität),
+                         selected = unique(Bedingungen_data$Intensität)),
+      checkboxGroupInput("selectedProband", "Probanden:",
+                         choices = unique(Bedingungen_data$Proband),
+                         selected = unique(Bedingungen_data$Proband))
+    ),
+    mainPanel(
+      plotlyOutput("barplot")
+    )
+  )
+)
+
+server <- function(input, output) {
+  output$barplot <- renderPlotly({
+    filtered_data <- Bedingungen_data %>%
+      filter(Proband %in% input$selectedProband,
+             Bedingung %in% input$selectedBedingung,
+             Intensität %in% input$selectedIntensität)
+    
+    avg_energy_data <- filtered_data %>%
+      gather(Energiequelle, Wert, WAerob_kJ, WPCR_kJ, WBLC_kJ) %>%
+      group_by(Bedingung, Intensität, Energiequelle) %>%
+      summarize(AvgWert = mean(Wert, na.rm = TRUE),
+                AvgWTOT = mean(WTOT_kJ, na.rm = TRUE),
+                Prozentsatz = (AvgWert / AvgWTOT) * 100)
+    
+    avg_efficiency_data <- filtered_data %>%
+      group_by(Bedingung, Intensität) %>%
+      summarize(AvgWirkungsgrad = mean(WirkPhysio, na.rm = TRUE))
+    
+    avg_power_data <- filtered_data %>%
+      group_by(Bedingung, Intensität) %>%
+      summarize(AvgPTOT = mean(P_Tot, na.rm = TRUE))
+    
+    p <- plot_ly(data = avg_energy_data, 
+                 x = ~interaction(Intensität, Bedingung), 
+                 y = ~AvgWert, 
+                 color = ~Energiequelle, 
+                 type = 'bar',
+                 marker = list(line = list(color = 'black', width = 0.75)),
+                 colors = c("#42BA97","#F4737A", "#1CADE4"),
+                 text = ~sprintf("%.1f%%", Prozentsatz),
+                 textposition = "auto",
+                 textfont = list(color = "black")) %>%
+      layout(
+        title = 'Durchschnittlicher Energieverbrauch der ausgewählten Probanden',
+        xaxis = list(title = 'Intensität_Bedingung',
+                     showgrid = TRUE,
+                     gridcolor = "lightgray",
+                     gridwidth = 0.05),
+        yaxis = list(title = 'Durchschnittliche Energie [kJ]', tickformat = ",.0f",
+                     showgrid = TRUE,
+                     gridcolor = "lightgray",
+                     gridwidth = 0.05),
+        barmode = 'stack',
+        bargap = 0.4
+      )
+    
+    for(i in 1:nrow(avg_efficiency_data)) {
+      p <- add_annotations(p,
+                           x = interaction(avg_efficiency_data$Intensität[i], avg_efficiency_data$Bedingung[i]),
+                           y = sum(avg_energy_data$AvgWert[avg_energy_data$Intensität == avg_efficiency_data$Intensität[i] & 
+                                                             avg_energy_data$Bedingung == avg_efficiency_data$Bedingung[i]]) + 15,
+                           text = sprintf("η = %.3f", avg_efficiency_data$AvgWirkungsgrad[i]),
+                           showarrow = FALSE,
+                           yshift = 25,
+                           bgcolor = "white",
+                           bordercolor = "black",
+                           borderpad = 4
+      )
+    }
+    
+    for(i in 1:nrow(avg_power_data)) {
+      p <- add_annotations(p,
+                           x = interaction(avg_power_data$Intensität[i], avg_power_data$Bedingung[i]),
+                           y = 0,
+                           text = sprintf("P<sub>TOT</sub> = %.1fW", avg_power_data$AvgPTOT[i]),
+                           showarrow = FALSE,
+                           yshift = 12,
+                           xanchor = "center",
+                           font = list(color = "black", size = 10)
+      )
+    }
+    
+    p
+  })
+}
+
+shinyApp(ui = ui, server = server)
+
+```
+
+# Test

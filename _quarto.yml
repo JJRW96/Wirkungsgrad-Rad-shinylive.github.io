@@ -31,6 +31,8 @@ website:
         file: EPOC.qmd
       - text: "Laktat-Modellfunktionen"
         file: Laktat.qmd
+      - text: "Ergebnisse und Statistik"
+        file: Ergebnisse.qmd
 
 lang: de
 number-sections: true

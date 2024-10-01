@@ -175,6 +175,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Laktat-Modellfunktionen</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ergebnisse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ergebnisse und Statistik</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -630,7 +636,7 @@ server &lt;- function(input, output, session) {
     TauA &lt;- input$TauA
     B &lt;- input$B
     TauB &lt;- input$TauB
-    C &lt;- if(input$fit_mit == "ruhe") input$VO2_Ruhe else input$VO2_Referenz
+    C &lt;- input$C
     O2_Store &lt;- input$O2_Store
     t_delay &lt;- input$t_delay
     VO2_Basis &lt;- if(input$fit_mit == "ruhe") input$VO2_Ruhe else input$VO2_Referenz
@@ -2000,7 +2006,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-430"><a href="#cb2-430" aria-hidden="true" tabindex="-1"></a><span class="in">    TauA &lt;- input$TauA</span></span>
 <span id="cb2-431"><a href="#cb2-431" aria-hidden="true" tabindex="-1"></a><span class="in">    B &lt;- input$B</span></span>
 <span id="cb2-432"><a href="#cb2-432" aria-hidden="true" tabindex="-1"></a><span class="in">    TauB &lt;- input$TauB</span></span>
-<span id="cb2-433"><a href="#cb2-433" aria-hidden="true" tabindex="-1"></a><span class="in">    C &lt;- if(input$fit_mit == "ruhe") input$VO2_Ruhe else input$VO2_Referenz</span></span>
+<span id="cb2-433"><a href="#cb2-433" aria-hidden="true" tabindex="-1"></a><span class="in">    C &lt;- input$C</span></span>
 <span id="cb2-434"><a href="#cb2-434" aria-hidden="true" tabindex="-1"></a><span class="in">    O2_Store &lt;- input$O2_Store</span></span>
 <span id="cb2-435"><a href="#cb2-435" aria-hidden="true" tabindex="-1"></a><span class="in">    t_delay &lt;- input$t_delay</span></span>
 <span id="cb2-436"><a href="#cb2-436" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_Basis &lt;- if(input$fit_mit == "ruhe") input$VO2_Ruhe else input$VO2_Referenz</span></span>
