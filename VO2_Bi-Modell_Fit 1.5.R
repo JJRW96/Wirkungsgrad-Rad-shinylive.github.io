@@ -519,7 +519,7 @@ server <- function(input, output, session) {
                list(
                  x = max_x * 0.35,
                  y = max_y * 0.2,
-                 text = paste("T<sub>1/2</sub>:", round(t_halb, 1)),
+                 text = paste("T<sub>1/2</sub>:", round(t_halb, 1)," s"),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -530,11 +530,11 @@ server <- function(input, output, session) {
                  )
                ),
                list(
-                 x = t_delay, y = max_y * 0.9, text = sprintf("t<sub>delay</sub>: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = t_delay, y = max_y * 0.85, text = sprintf("t<sub>delay</sub>: %.1f s", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                list(
-                 x = t_delay_slow, y = max_y * 0.9, text = sprintf("t<sub>delay_slow</sub>: %.1f", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = t_delay_slow, y = max_y * 0.85, text = sprintf("t<sub>delay_slow</sub>: %.1f s", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                )
              )) %>%

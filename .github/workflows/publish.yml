@@ -48,6 +48,9 @@ jobs:
             any::extrafont
             any::flextable
             any::curl
+            any::reactable
+            any::afex
+            any::emmeans
 
 
       - name: Render and Publish

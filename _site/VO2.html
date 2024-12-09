@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <meta name="shinylive:serviceworker_dir" content=".">
 <script src="site_libs/quarto-contrib/shinylive-0.2.3/shinylive/load-shinylive-sw.js" type="module"></script>
 <script src="site_libs/quarto-contrib/shinylive-0.2.3/shinylive/run-python-blocks.js" type="module"></script>
@@ -402,7 +402,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"editor-quick-suggestions":"false","fig-width":7,"warning":"true","comment":"","editor-word-wrap":"true","out-height":"","fig-cap":"","fig-height":5,"output":"true","message":"true","read-only":"false","context":"interactive","classes":"","results":"markup","dpi":72,"autorun":"false","editor-font-scale":"1","label":"unnamed-chunk-1","editor-max-height":"","out-width":"700px"},"code":"# Hier VO2-Daten einfügen\n\n# Zeitpunkte\nt_s <- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)\n\n# VO2-Werte\nVO2_t <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)\n\nplot(t_s, VO2_t, type=\"o\", col=\"blue\", xlab=\"Zeit [s]\", ylab=\"VO2 [l/min]\", main=\"VO2 [l/min]\")"}];
+globalThis.qwebrCellDetails = [{"options":{"editor-word-wrap":"true","label":"unnamed-chunk-1","comment":"","editor-font-scale":"1","output":"true","message":"true","fig-cap":"","fig-width":7,"warning":"true","fig-height":5,"results":"markup","dpi":72,"read-only":"false","autorun":"false","editor-quick-suggestions":"false","out-width":"700px","context":"interactive","out-height":"","editor-max-height":"","classes":""},"id":1,"code":"# Hier VO2-Daten einfügen\n\n# Zeitpunkte\nt_s <- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)\n\n# VO2-Werte\nVO2_t <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)\n\nplot(t_s, VO2_t, type=\"o\", col=\"blue\", xlab=\"Zeit [s]\", ylab=\"VO2 [l/min]\", main=\"VO2 [l/min]\")"}];
 
 </script>
 <script type="module">
@@ -1694,6 +1694,12 @@ window.Quarto = {
  <span class="menu-text">Laktat-Modellfunktionen</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Ergebnisse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ergebnisse und Statistik</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -2031,11 +2037,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h1 data-number="1"><span class="header-section-number">1</span> Kinetik des Sauerstoffvolumenstroms</h1>
 <section id="monoexponentielle-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="monoexponentielle-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung"><span class="header-section-number">1.1</span> Monoexponentielle Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</h2>
-<p>Der Anstieg des Sauerstoffvolumenstroms (<span class="math inline">\(\dot{V}O_{2}\)</span>) zu Beginn einer leichten bis moderaten körperlichen Belastung auf dem Fahrradergometer unterhalb der Laktatschwelle (LT<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) wurde traditionell in der Literatur als monoexponentiell beschrieben, mit einer Amplitude von ungefähr 9–10 ml O<sub>2</sub>·W<sup>-1</sup>·min<sup>-1</sup> <span class="citation" data-cites="Barstow1991 Bearden2000">[@Barstow1991; @Bearden2000]</span>. Die Zeitkonstante <span class="math inline">\(\tau_{\text{Start}}\)</span> beschreibt die Geschwindigkeit, mit der der Sauerstoffvolumenstrom den Gleichgewichtszustand <span class="math inline">\(\dot{V}O_{2,\text{gross, SS}}\)</span> erreicht. Dies lässt sich mit der folgenden Formel darstellen <span class="citation" data-cites="Hill1924 Henry1956 Margaria1965 Whipp1971 Oezyner2001 Francescato2003 Clark2014">[@Hill1924; @Henry1956; @Margaria1965; @Whipp1971; @Oezyner2001; @Francescato2003; @Clark2014]</span>:</p>
+<p>Der Anstieg des Sauerstoffvolumenstroms <span class="math inline">\(\dot{V}O_{2}\thinspace(t)\)</span> zu Beginn einer leichten bis moderaten körperlichen Belastung auf dem Fahrradergometer unterhalb der Laktatschwelle (LT<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>) wurde traditionell in der Literatur als monoexponentiell beschrieben, mit einer Amplitude von ungefähr 9–10 ml O<sub>2</sub>·W<sup>-1</sup>·min<sup>-1</sup> <span class="citation" data-cites="Barstow1991 Bearden2000">[@Barstow1991; @Bearden2000]</span>. Die Zeitkonstante <span class="math inline">\(\tau_{\text{Start}}\)</span> beschreibt die Geschwindigkeit, mit der der Sauerstoffvolumenstrom den Gleichgewichtszustand <span class="math inline">\(\dot{V}O_{2,\text{brutto, SS}}\)</span> erreicht. Dies lässt sich mit der folgenden Formel darstellen <span class="citation" data-cites="Hill1924 Henry1956 Margaria1965 Whipp1971 Oezyner2001 Francescato2003 Clark2014">[@Hill1924; @Henry1956; @Margaria1965; @Whipp1971; @Oezyner2001; @Francescato2003; @Clark2014]</span>:</p>
 <p><span id="eq-VO2_Start1"><span class="math display">\[
-\dot{V}O_{2,\text{Belastung}}(t) = \dot{V}O_{2,\text{gross, SS}} \cdot \left(1 - e^{-\frac{t - TD}{\tau_{\text{Start}}}}\right) + \dot{V}O_{2,\text{Start}}
+\dot{V}O_{2,\text{Belastung}}\thinspace(t) = \dot{V}O_{2,\text{brutto, SS}} \cdot \left(1 - e^{-\frac{t - TD}{\tau_{\text{Start}}}}\right) + \dot{V}O_{2,\text{Start}}
 \tag{1}\]</span></span></p>
-<p>Dabei beschreibt <span class="math inline">\(\dot{V}O_{2,\text{Start}}\)</span> den Sauerstoffvolumenstrom zu Beginn der Belastung, und <span class="math inline">\(\dot{V}O_{2,\text{net, SS}}\)</span> bezeichnet den Steady-State-Wert abzüglich des Ruhe-Sauerstoffvolumenstroms (<span class="math inline">\(\dot{V}O_{2, \text{Ruhe}}\)</span>). In der folgenden Shiny-App wird ein Beispiel dieser Modellfunktion gezeigt, wie in <a href="#eq-VO2_Start1" class="quarto-xref">Gleichung&nbsp;1</a> beschrieben. Eigene <span class="math inline">\(\dot{V}O_{2}\)</span>-Daten können hochgeladen und mittels nichtlinearer Regression an die Beispieldaten angepasst werden.</p>
+<p>Dabei beschreibt <span class="math inline">\(\dot{V}O_{2,\text{Start}}\)</span> den Sauerstoffvolumenstrom zu Beginn der Belastung, und <span class="math inline">\(\dot{V}O_{2,\text{netto, SS}}\)</span> bezeichnet den Steady-State-Wert abzüglich des Ruhe-Sauerstoffvolumenstroms <span class="math inline">\(\dot{V}O_{2, \text{Ruhe}}\)</span>. In der folgenden Shiny-App wird ein Beispiel dieser Modellfunktion gezeigt, wie in <a href="#eq-VO2_Start1" class="quarto-xref">Gleichung&nbsp;1</a> beschrieben. Eigene <span class="math inline">\(\dot{V}O_{2}\)</span>-Daten können hochgeladen und mittels nichtlinearer Regression an die Beispieldaten angepasst werden.</p>
 <section id="mono-exponentielle-shiny-app" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="mono-exponentielle-shiny-app"><span class="header-section-number">1.1.1</span> Mono-exponentielle Shiny-App</h3>
 <pre class="shinylive-r" data-engine="r"><code>#| standalone: true
@@ -2051,7 +2057,7 @@ VO2_data &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1
 
 # UI
 ui &lt;- fluidPage(
-  titlePanel("EPOC-Modellfunktion"),
+  titlePanel("V̇O2-Modellfunktion"),
   fluidRow(
     column(3,
      style = "height: 90vh; overflow-y: auto;",
@@ -2237,8 +2243,8 @@ server &lt;- function(input, output, session) {
     
     eq_text &lt;- sprintf("V̇O₂ = %.3f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.3f",
                        VO2, t_delay, Tau, VO2_Start)
-    VO2_SS_gross_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,gross&lt;/sub&gt;: %.3f", VO2_SS_gross)
-    VO2_SS_net_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,net&lt;/sub&gt;: %.3f", VO2_SS_net)
+    VO2_SS_gross_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,brutto&lt;/sub&gt;: %.3f", VO2_SS_gross)
+    VO2_SS_net_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,netto&lt;/sub&gt;: %.3f", VO2_SS_net)
     t_halb &lt;- Tau * log(2)
     
     shapes &lt;- list(
@@ -2266,7 +2272,7 @@ server &lt;- function(input, output, session) {
       )
     )
     
-    p &lt;- plot_ly() %&gt;%
+   p &lt;- plot_ly() %&gt;%
       add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',
                 name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%
       layout(title = "V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",
@@ -2317,7 +2323,7 @@ server &lt;- function(input, output, session) {
                list(
                  x = max_x * 0.70,
                  y = max_y * 0.3,
-                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),
+                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)," s"),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -2328,20 +2334,20 @@ server &lt;- function(input, output, session) {
                  )
                ),
                list(
-                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f s", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                list(
-                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f s", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                list(
-                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f s", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                if (show_data()) {
                  list(
-                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f s", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                    textangle = -90, font = list(size = 11)
                  )
                }
@@ -2463,7 +2469,7 @@ Modellanpassung - Details:
 </section>
 <section id="einteilung-der-vo2-kinetik-in-drei-phasen" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="einteilung-der-vo2-kinetik-in-drei-phasen"><span class="header-section-number">1.2</span> Einteilung der VO2-Kinetik in drei Phasen</h2>
-<p>Die Analyse der <span class="math inline">\(\dot{V}O_{2}\)</span>-Kinetik kann durch die Berücksichtigung von Zeitverzögerungen und/oder Exponentialfunktionen zweiter Ordnung verfeinert werden. Dazu kann die Anpassungsreaktion des <span class="math inline">\(\dot{V}O_{2}\)</span> nach Beginn der sportlichen Betätigung in drei Phasen unterteilt werden, wie in <a href="#fig-3_Phasen" class="quarto-xref">Abbildung&nbsp;1</a> zu sehen <span class="citation" data-cites="Whipp1982">[@Whipp1982]</span>. Dies ermöglicht es, die erhöhte Komplexität der <span class="math inline">\(\dot{V}O_{2}\)</span>-Kinetik oberhalb der LT besser darzustellen und eine präzisere Analyse der physiologischen Anpassungen bei körperlicher Belastung durchzuführen, da oberhalb der LT der <span class="math inline">\(\dot{V}O_2\)</span>-Umsatz über 10 ml O<sub>2</sub>·W<sup>-1</sup>·min<sup>-1</sup> steigt <span class="citation" data-cites="Barstow1994 Bearden2000 Siestema2020">[@Barstow1994; @Bearden2000; @Siestema2020]</span>. Die 3 Phasen lassen sich wie folgt beschreiben:</p>
+<p>Die Analyse der <span class="math inline">\(\dot{V}O_{2}\)</span>-Kinetik kann durch die Berücksichtigung von Zeitverzögerungen und/oder Exponentialfunktionen zweiter Ordnung verfeinert werden. Dazu kann die Anpassungsreaktion des <span class="math inline">\(\dot{V}O_{2}\thinspace(t)\)</span> nach Beginn der sportlichen Betätigung in drei Phasen unterteilt werden, wie in <a href="#fig-3_Phasen" class="quarto-xref">Abbildung&nbsp;1</a> zu sehen <span class="citation" data-cites="Whipp1982">[@Whipp1982]</span>. Dies ermöglicht es, die erhöhte Komplexität der <span class="math inline">\(\dot{V}O_{2}\)</span>-Kinetik oberhalb der LT besser darzustellen und eine präzisere Analyse der physiologischen Anpassungen bei körperlicher Belastung durchzuführen, da oberhalb der LT der <span class="math inline">\(\dot{V}O_2\)</span>-Umsatz über 10 ml O<sub>2</sub>·W<sup>-1</sup>·min<sup>-1</sup> steigt <span class="citation" data-cites="Barstow1994 Bearden2000 Siestema2020">[@Barstow1994; @Bearden2000; @Siestema2020]</span>. Die 3 Phasen lassen sich wie folgt beschreiben:</p>
 <div class="columns">
 <div class="column" style="width:72%;">
 <div id="fig-3_Phasen" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -2484,7 +2490,7 @@ Abbildung&nbsp;1: Beispiel der Drei-Phasen der VO2-Kinetik bis zum Erreichen ein
 </div>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p><strong>Phase 1:</strong><br> Phase I, häufig als kardiodynamische Phase bezeichnet, umfasst ungefähr die ersten 10 bis 25 Sekunden nach Beginn der Belastung. Aufgrund des schnellen Anstiegs des Herzzeitvolumens und des Lungenblutflusses zu Beginn der Belastung steigt <span class="math inline">\(\dot{V}O_2\)</span> abrupt an. In dieser Phase bleibt die Zusammensetzung des gemischtvenösen Blutes sowie der respiratorische Quotient (<span class="math inline">\(RQ = \frac{\dot{V}CO_{2}}{\dot{V}O_{2}}\)</span>) im Vergleich zum Ruhezustand unverändert. Somit ist der Anstieg des <span class="math inline">\(\dot{V}O_2\)</span> ausschließlich auf das erhöhte Herzminutenvolumen zurückzuführen, da sich die Sauerstoffkonzentration im arteriellen und venösen Blut (C<sub>a</sub> und C<sub>v</sub>) noch nicht verändert haben. Dies lässt sich mit Hilfe der Fick’schen Gleichung <a href="#eq-FICK" class="quarto-xref">Gleichung&nbsp;2</a> verdeutlichen <span class="citation" data-cites="Fick1855 Whipp1982 Stirling2005 Clark2014 Siestema2020">[@Fick1855; @Whipp1982; @Stirling2005; @Clark2014; @Siestema2020]</span>.</p>
+<p><strong>Phase 1:</strong><br> Phase I, häufig als kardiodynamische Phase bezeichnet, umfasst ungefähr die ersten 10 bis 25 Sekunden nach Beginn der Belastung. Aufgrund des schnellen Anstiegs des Herzzeitvolumens und des Lungenblutflusses zu Beginn der Belastung steigt <span class="math inline">\(\dot{V}O_2\thinspace(t)\)</span> abrupt an. In dieser Phase bleibt die Zusammensetzung des gemischtvenösen Blutes sowie der respiratorische Quotient <span class="math inline">\(RQ\thinspace(t) = \frac{\dot{V}CO_{2}\thinspace(t)}{\dot{V}O_{2}\thinspace(t)}\)</span> im Vergleich zum Ruhezustand unverändert. Somit ist der Anstieg des <span class="math inline">\(\dot{V}O_2\thinspace(t)\)</span> ausschließlich auf das erhöhte Herzminutenvolumen zurückzuführen, da sich die Sauerstoffkonzentration im arteriellen und venösen Blut (C<sub>a</sub> und C<sub>v</sub>) noch nicht verändert haben. Dies lässt sich mit Hilfe der Fick’schen Gleichung <a href="#eq-FICK" class="quarto-xref">Gleichung&nbsp;2</a> verdeutlichen <span class="citation" data-cites="Fick1855 Whipp1982 Stirling2005 Clark2014 Siestema2020">[@Fick1855; @Whipp1982; @Stirling2005; @Clark2014; @Siestema2020]</span>.</p>
 <p><span id="eq-FICK"><span class="math display">\[
 \dot{V}O_2 = \dot{Q} \cdot (C_a - C_v)
 \tag{2}\]</span></span></p>
@@ -2512,7 +2518,7 @@ Abbildung&nbsp;2: Beispiele der VO<sub>2</sub>-Anstiegskinetik eines Probanden f
 <h2 data-number="1.3" class="anchored" data-anchor-id="bi-exponentielle-modellfunktion-des-sauerstoffvolumenstroms-in-abhängigkeit-von-der-zeit-während-der-belastung"><span class="header-section-number">1.3</span> Bi-exponentielle Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</h2>
 <p>Phase 2 und 3 des 3-Phasen-Modells lassen sich mit Hilfe der <a href="#eq-VO2_Start2" class="quarto-xref">Gleichung&nbsp;3</a> modellieren:</p>
 <p><span id="eq-VO2_Start2"><span class="math display">\[
-\dot{V}O_2(t) = \dot{V}O_{2,\text{fast}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay, fast}}{\tau_\text{fast}}}\right) +
+\dot{V}O_2\thinspace(t) = \dot{V}O_{2,\text{fast}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay, fast}}{\tau_\text{fast}}}\right) +
 \dot{V}O_{2,\text{slow}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay,slow}}{\tau_\text{slow}}}\right) +
 \dot{V}O_{2,\text{Start}}
 \tag{3}\]</span></span></p>
@@ -3022,7 +3028,7 @@ server &lt;- function(input, output, session) {
                 name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;fast&lt;/sub&gt;', line = list(color = '#42BA97')) %&gt;%
       add_trace(x = ~t_s, y = ~slow_values, type = 'scatter', mode = 'lines', 
                 name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;slow&lt;/sub&gt;', line = list(color = '#BB7693')) %&gt;%
-      layout(title = "Bi-exponentielle V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",
+      layout(title = "Biexponentielle V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",
              margin = list(t = 40),
              xaxis = list(title = "t [s]", range = c(0, max_x)),
              yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),
@@ -3044,7 +3050,7 @@ server &lt;- function(input, output, session) {
                list(
                  x = max_x * 0.35,
                  y = max_y * 0.2,
-                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),
+                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)," s"),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -3055,11 +3061,11 @@ server &lt;- function(input, output, session) {
                  )
                ),
                list(
-                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = t_delay, y = max_y * 0.85, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f s", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                list(
-                 x = t_delay_slow, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay_slow&lt;/sub&gt;: %.1f", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = t_delay_slow, y = max_y * 0.85, text = sprintf("t&lt;sub&gt;delay_slow&lt;/sub&gt;: %.1f s", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                )
              )) %&gt;%
@@ -3222,8 +3228,38 @@ Modellanpassung - Details:
 </section>
 <section id="methodenteil-umgang-mit-daten-in-dieser-arbeit" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="methodenteil-umgang-mit-daten-in-dieser-arbeit"><span class="header-section-number">1.4</span> Methodenteil: Umgang mit Daten in dieser Arbeit</h2>
-<p>In dieser Arbeit wurde der Anstieg des <span class="math inline">\(\dot{V}O_{2}\)</span> nach Belastungsbeginn für jede Belastungsstufe wie folgt analysiert: Zunächst wurden aus den Atemzug-für-Atemzug <span class="math inline">\(\dot{V}O_{2}\)</span>-Daten die Ausreißer entfernt. Danach erfolgte eine Glättung der Daten mittels eines gleitenden 3-Atemzug-Durchschnitts, gefolgt von der Kurvenanpassung.</p>
-<p>Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des <span class="math inline">\(\dot{V}O_{2}\)</span> grafisch so bestimmt, dass die Phase-I-Daten der kardiorespiratorischen Antwort nicht einbezogen wurden. Dies entsprach in der Regel dem von <span class="citation" data-cites="Bearden2000 Stirling2005">[@Bearden2000; @Stirling2005]</span> beschriebenen Zeitraum von 10-25 Sekunden für Phase 1. Die Kurvenanpassung wurde anschließend mit <a href="#eq-VO2_Start2" class="quarto-xref">Gleichung&nbsp;3</a> an die jeweiligen Daten durchgeführt. Die Modellparameter der Kurvenanpassung wurden wie folgt gewählt: ::: {.callout-note icon=false collapse=true appearance=“simple”} ### Parameter - Kurvenanpassung: - Verwendete Funktion: nlsLM * Maximale Iterationen: <em>1024</em> * Verwendung des Levenberg-Marquardt-Algorithmus - Parameter: V̇O2 (Amplitude), Tau - Modell: V̇O2_t ~ V̇O2 · (1 - exp(-(t_s - t_delay) / Tau)) + V̇O2_Start - Grenzen: * V̇O2: <em>0.5 bis 7.0 l/min</em> * Tau: <em>5 bis 360 s</em> - Optimierung: Minimierung der Residuenquadratsumme (RSS) :::</p>
+<p>In dieser Arbeit wurde der Anstieg des <span class="math inline">\(\dot{V}O_{2}\thinspace(t)\)</span> nach Belastungsbeginn für jede Belastungsstufe wie folgt analysiert: Zunächst wurden aus den Atemzug-für-Atemzug <span class="math inline">\(\dot{V}O_{2}\)</span>-Daten die Ausreißer entfernt. Danach erfolgte eine Glättung der Daten mittels eines gleitenden 3-Atemzug-Durchschnitts, gefolgt von der Kurvenanpassung.</p>
+<p>Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des <span class="math inline">\(\dot{V}O_{2}\thinspace(t)\)</span> grafisch so bestimmt, dass die Phase-I-Daten der kardiorespiratorischen Antwort nicht einbezogen wurden. Dies entsprach in der Regel dem von <span class="citation" data-cites="Bearden2000 Stirling2005">[@Bearden2000; @Stirling2005]</span> beschriebenen Zeitraum von 10-25 Sekunden für Phase 1. Die Kurvenanpassung wurde anschließend mit <a href="#eq-VO2_Start2" class="quarto-xref">Gleichung&nbsp;3</a> an die jeweiligen Daten durchgeführt. Die Modellparameter der Kurvenanpassung wurden wie folgt gewählt:</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Parameter - Kurvenanpassung:
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Verwendete Funktion: nlsLM
+<ul>
+<li>Maximale Iterationen: <em>1024</em></li>
+<li>Verwendung des Levenberg-Marquardt-Algorithmus</li>
+</ul></li>
+<li>Parameter: V̇O2 (Amplitude), Tau</li>
+<li>Modell: V̇O2_t ~ V̇O2 · (1 - exp(-(t_s - t_delay) / Tau)) + V̇O2_Start</li>
+<li>Grenzen:
+<ul>
+<li>V̇O2: <em>0.5 bis 7.0 l/min</em></li>
+<li>Tau: <em>5 bis 360 s</em></li>
+</ul></li>
+<li>Optimierung: Minimierung der Residuenquadratsumme (RSS)</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -3908,15 +3944,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Monoexponentielle Modellfunktion des Sauerstoffvolumenstroms in Abhängigkeit von der Zeit während der Belastung</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Der Anstieg des Sauerstoffvolumenstroms ($\dot{V}O_{2}$) zu Beginn einer leichten bis moderaten körperlichen Belastung auf dem Fahrradergometer unterhalb der Laktatschwelle (LT<span class="ot">[^1]</span>) wurde traditionell in der Literatur als monoexponentiell beschrieben, mit einer Amplitude von ungefähr 9–10 ml O~2~·W^-1^·min^-1^ <span class="co">[</span><span class="ot">@Barstow1991; @Bearden2000</span><span class="co">]</span>. Die Zeitkonstante $\tau_{\text{Start}}$ beschreibt die Geschwindigkeit, mit der der Sauerstoffvolumenstrom den Gleichgewichtszustand $\dot{V}O_{2,\text{gross, SS}}$ erreicht. Dies lässt sich mit der folgenden Formel darstellen <span class="co">[</span><span class="ot">@Hill1924; @Henry1956; @Margaria1965; @Whipp1971; @Oezyner2001; @Francescato2003; @Clark2014</span><span class="co">]</span>:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>Der Anstieg des Sauerstoffvolumenstroms $\dot{V}O_{2}\thinspace(t)$ zu Beginn einer leichten bis moderaten körperlichen Belastung auf dem Fahrradergometer unterhalb der Laktatschwelle (LT<span class="ot">[^1]</span>) wurde traditionell in der Literatur als monoexponentiell beschrieben, mit einer Amplitude von ungefähr 9–10 ml O~2~·W^-1^·min^-1^ <span class="co">[</span><span class="ot">@Barstow1991; @Bearden2000</span><span class="co">]</span>. Die Zeitkonstante $\tau_{\text{Start}}$ beschreibt die Geschwindigkeit, mit der der Sauerstoffvolumenstrom den Gleichgewichtszustand $\dot{V}O_{2,\text{brutto, SS}}$ erreicht. Dies lässt sich mit der folgenden Formel darstellen <span class="co">[</span><span class="ot">@Hill1924; @Henry1956; @Margaria1965; @Whipp1971; @Oezyner2001; @Francescato2003; @Clark2014</span><span class="co">]</span>:</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]</span>:Die LT beschreibt den Punkt, an dem das Blutlaktat bei zunehmender Belastungsintensität über das Ruheniveau hinaus zu akkumulieren beginnt <span class="co">[</span><span class="ot">@Siestema2020</span><span class="co">]</span>. </span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>\dot{V}O_{2,\text{Belastung}}(t) = \dot{V}O_{2,\text{gross, SS}} \cdot \left(1 - e^{-\frac{t - TD}{\tau_{\text{Start}}}}\right) + \dot{V}O_{2,\text{Start}}</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>\dot{V}O_{2,\text{Belastung}}\thinspace(t) = \dot{V}O_{2,\text{brutto, SS}} \cdot \left(1 - e^{-\frac{t - TD}{\tau_{\text{Start}}}}\right) + \dot{V}O_{2,\text{Start}}</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>$$ {#eq-VO2_Start1}</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>Dabei beschreibt $\dot{V}O_{2,\text{Start}}$ den Sauerstoffvolumenstrom zu Beginn der Belastung, und $\dot{V}O_{2,\text{net, SS}}$ bezeichnet den Steady-State-Wert abzüglich des Ruhe-Sauerstoffvolumenstroms ($\dot{V}O_{2, \text{Ruhe}}$). In der folgenden Shiny-App wird ein Beispiel dieser Modellfunktion gezeigt, wie in @eq-VO2_Start1 beschrieben. Eigene $\dot{V}O_{2}$-Daten können hochgeladen und mittels nichtlinearer Regression an die Beispieldaten angepasst werden.</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>Dabei beschreibt $\dot{V}O_{2,\text{Start}}$ den Sauerstoffvolumenstrom zu Beginn der Belastung, und $\dot{V}O_{2,\text{netto, SS}}$ bezeichnet den Steady-State-Wert abzüglich des Ruhe-Sauerstoffvolumenstroms $\dot{V}O_{2, \text{Ruhe}}$. In der folgenden Shiny-App wird ein Beispiel dieser Modellfunktion gezeigt, wie in @eq-VO2_Start1 beschrieben. Eigene $\dot{V}O_{2}$-Daten können hochgeladen und mittels nichtlinearer Regression an die Beispieldaten angepasst werden.</span>
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mono-exponentielle Shiny-App</span></span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
@@ -3933,7 +3969,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="in"># UI</span></span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">ui &lt;- fluidPage(</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("EPOC-Modellfunktion"),</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="in">  titlePanel("V̇O2-Modellfunktion"),</span></span>
 <span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="in">  fluidRow(</span></span>
 <span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="in">    column(3,</span></span>
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="in">     style = "height: 90vh; overflow-y: auto;",</span></span>
@@ -4119,8 +4155,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-226"><a href="#cb4-226" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
 <span id="cb4-227"><a href="#cb4-227" aria-hidden="true" tabindex="-1"></a><span class="in">    eq_text &lt;- sprintf("V̇O₂ = %.3f * (1 - e&lt;sup&gt;-(t - %.2f) / %.2f&lt;/sup&gt;) + %.3f",</span></span>
 <span id="cb4-228"><a href="#cb4-228" aria-hidden="true" tabindex="-1"></a><span class="in">                       VO2, t_delay, Tau, VO2_Start)</span></span>
-<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_gross_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,gross&lt;/sub&gt;: %.3f", VO2_SS_gross)</span></span>
-<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_net_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,net&lt;/sub&gt;: %.3f", VO2_SS_net)</span></span>
+<span id="cb4-229"><a href="#cb4-229" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_gross_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,brutto&lt;/sub&gt;: %.3f", VO2_SS_gross)</span></span>
+<span id="cb4-230"><a href="#cb4-230" aria-hidden="true" tabindex="-1"></a><span class="in">    VO2_SS_net_text &lt;- sprintf("V̇O₂ &lt;sub&gt;SS,netto&lt;/sub&gt;: %.3f", VO2_SS_net)</span></span>
 <span id="cb4-231"><a href="#cb4-231" aria-hidden="true" tabindex="-1"></a><span class="in">    t_halb &lt;- Tau * log(2)</span></span>
 <span id="cb4-232"><a href="#cb4-232" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
 <span id="cb4-233"><a href="#cb4-233" aria-hidden="true" tabindex="-1"></a><span class="in">    shapes &lt;- list(</span></span>
@@ -4148,7 +4184,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-255"><a href="#cb4-255" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
 <span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
 <span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="in">    p &lt;- plot_ly() %&gt;%</span></span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a><span class="in">   p &lt;- plot_ly() %&gt;%</span></span>
 <span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~model_values, type = 'scatter', mode = 'lines',</span></span>
 <span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'Modellfunktion', line = list(color = '#EF6F6A')) %&gt;%</span></span>
 <span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",</span></span>
@@ -4199,7 +4235,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-306"><a href="#cb4-306" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
 <span id="cb4-307"><a href="#cb4-307" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.70,</span></span>
 <span id="cb4-308"><a href="#cb4-308" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.3,</span></span>
-<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),</span></span>
+<span id="cb4-309"><a href="#cb4-309" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)," s"),</span></span>
 <span id="cb4-310"><a href="#cb4-310" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
 <span id="cb4-311"><a href="#cb4-311" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
 <span id="cb4-312"><a href="#cb4-312" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
@@ -4210,20 +4246,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-317"><a href="#cb4-317" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
 <span id="cb4-318"><a href="#cb4-318" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb4-319"><a href="#cb4-319" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb4-320"><a href="#cb4-320" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f s", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb4-321"><a href="#cb4-321" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
 <span id="cb4-322"><a href="#cb4-322" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb4-323"><a href="#cb4-323" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb4-324"><a href="#cb4-324" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f s", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb4-325"><a href="#cb4-325" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
 <span id="cb4-326"><a href="#cb4-326" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb4-327"><a href="#cb4-327" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb4-328"><a href="#cb4-328" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f s", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb4-329"><a href="#cb4-329" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
 <span id="cb4-330"><a href="#cb4-330" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb4-331"><a href="#cb4-331" aria-hidden="true" tabindex="-1"></a><span class="in">               if (show_data()) {</span></span>
 <span id="cb4-332"><a href="#cb4-332" aria-hidden="true" tabindex="-1"></a><span class="in">                 list(</span></span>
-<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a><span class="in">                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb4-333"><a href="#cb4-333" aria-hidden="true" tabindex="-1"></a><span class="in">                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f s", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb4-334"><a href="#cb4-334" aria-hidden="true" tabindex="-1"></a><span class="in">                   textangle = -90, font = list(size = 11)</span></span>
 <span id="cb4-335"><a href="#cb4-335" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
 <span id="cb4-336"><a href="#cb4-336" aria-hidden="true" tabindex="-1"></a><span class="in">               }</span></span>
@@ -4323,7 +4359,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-430"><a href="#cb4-430" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-431"><a href="#cb4-431" aria-hidden="true" tabindex="-1"></a><span class="fu">## Einteilung der VO2-Kinetik in drei Phasen</span></span>
 <span id="cb4-432"><a href="#cb4-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-433"><a href="#cb4-433" aria-hidden="true" tabindex="-1"></a>Die Analyse der $\dot{V}O_{2}$-Kinetik kann durch die Berücksichtigung von Zeitverzögerungen und/oder Exponentialfunktionen zweiter Ordnung verfeinert werden. Dazu kann die Anpassungsreaktion des $\dot{V}O_{2}$ nach Beginn der sportlichen Betätigung in drei Phasen unterteilt werden, wie in @fig-3_Phasen zu sehen <span class="co">[</span><span class="ot">@Whipp1982</span><span class="co">]</span>. Dies ermöglicht es, die erhöhte Komplexität der $\dot{V}O_{2}$-Kinetik oberhalb der LT besser darzustellen und eine präzisere Analyse der physiologischen Anpassungen bei körperlicher Belastung durchzuführen, da oberhalb der LT der $\dot{V}O_2$-Umsatz über 10 ml O~2~·W^-1^·min^-1^  steigt <span class="co">[</span><span class="ot">@Barstow1994; @Bearden2000; @Siestema2020</span><span class="co">]</span>. Die 3 Phasen lassen sich wie folgt beschreiben:</span>
+<span id="cb4-433"><a href="#cb4-433" aria-hidden="true" tabindex="-1"></a>Die Analyse der $\dot{V}O_{2}$-Kinetik kann durch die Berücksichtigung von Zeitverzögerungen und/oder Exponentialfunktionen zweiter Ordnung verfeinert werden. Dazu kann die Anpassungsreaktion des $\dot{V}O_{2}\thinspace(t)$ nach Beginn der sportlichen Betätigung in drei Phasen unterteilt werden, wie in @fig-3_Phasen zu sehen <span class="co">[</span><span class="ot">@Whipp1982</span><span class="co">]</span>. Dies ermöglicht es, die erhöhte Komplexität der $\dot{V}O_{2}$-Kinetik oberhalb der LT besser darzustellen und eine präzisere Analyse der physiologischen Anpassungen bei körperlicher Belastung durchzuführen, da oberhalb der LT der $\dot{V}O_2$-Umsatz über 10 ml O~2~·W^-1^·min^-1^  steigt <span class="co">[</span><span class="ot">@Barstow1994; @Bearden2000; @Siestema2020</span><span class="co">]</span>. Die 3 Phasen lassen sich wie folgt beschreiben:</span>
 <span id="cb4-434"><a href="#cb4-434" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-435"><a href="#cb4-435" aria-hidden="true" tabindex="-1"></a>::: columns</span>
 <span id="cb4-436"><a href="#cb4-436" aria-hidden="true" tabindex="-1"></a>::: {.column width="72%"}</span>
@@ -4343,7 +4379,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-450"><a href="#cb4-450" aria-hidden="true" tabindex="-1"></a>::: columns</span>
 <span id="cb4-451"><a href="#cb4-451" aria-hidden="true" tabindex="-1"></a>::: {.column width="60%"}</span>
 <span id="cb4-452"><a href="#cb4-452" aria-hidden="true" tabindex="-1"></a>**Phase 1:**&lt;br&gt;</span>
-<span id="cb4-453"><a href="#cb4-453" aria-hidden="true" tabindex="-1"></a>Phase I, häufig als kardiodynamische Phase bezeichnet, umfasst ungefähr die ersten 10 bis 25 Sekunden nach Beginn der Belastung. Aufgrund des schnellen Anstiegs des Herzzeitvolumens und des Lungenblutflusses zu Beginn der Belastung steigt $\dot{V}O_2$ abrupt an. In dieser Phase bleibt die Zusammensetzung des gemischtvenösen Blutes sowie der respiratorische Quotient ($RQ = \frac{\dot{V}CO_{2}}{\dot{V}O_{2}}$) im Vergleich zum Ruhezustand unverändert. Somit ist der Anstieg des $\dot{V}O_2$ ausschließlich auf das erhöhte Herzminutenvolumen zurückzuführen, da sich die Sauerstoffkonzentration im arteriellen und venösen Blut (C~a~ und C~v~) noch nicht verändert haben. Dies lässt sich mit Hilfe der Fick'schen Gleichung @eq-FICK verdeutlichen <span class="co">[</span><span class="ot">@Fick1855; @Whipp1982; @Stirling2005; @Clark2014; @Siestema2020</span><span class="co">]</span>.</span>
+<span id="cb4-453"><a href="#cb4-453" aria-hidden="true" tabindex="-1"></a>Phase I, häufig als kardiodynamische Phase bezeichnet, umfasst ungefähr die ersten 10 bis 25 Sekunden nach Beginn der Belastung. Aufgrund des schnellen Anstiegs des Herzzeitvolumens und des Lungenblutflusses zu Beginn der Belastung steigt $\dot{V}O_2\thinspace(t)$ abrupt an. In dieser Phase bleibt die Zusammensetzung des gemischtvenösen Blutes sowie der respiratorische Quotient $RQ\thinspace(t) = \frac{\dot{V}CO_{2}\thinspace(t)}{\dot{V}O_{2}\thinspace(t)}$ im Vergleich zum Ruhezustand unverändert. Somit ist der Anstieg des $\dot{V}O_2\thinspace(t)$ ausschließlich auf das erhöhte Herzminutenvolumen zurückzuführen, da sich die Sauerstoffkonzentration im arteriellen und venösen Blut (C~a~ und C~v~) noch nicht verändert haben. Dies lässt sich mit Hilfe der Fick'schen Gleichung @eq-FICK verdeutlichen <span class="co">[</span><span class="ot">@Fick1855; @Whipp1982; @Stirling2005; @Clark2014; @Siestema2020</span><span class="co">]</span>.</span>
 <span id="cb4-454"><a href="#cb4-454" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-455"><a href="#cb4-455" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb4-456"><a href="#cb4-456" aria-hidden="true" tabindex="-1"></a>\dot{V}O_2 = \dot{Q} \cdot (C_a - C_v) </span>
@@ -4371,7 +4407,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-478"><a href="#cb4-478" aria-hidden="true" tabindex="-1"></a>Phase 2 und 3 des 3-Phasen-Modells lassen sich mit Hilfe der @eq-VO2_Start2 modellieren:  </span>
 <span id="cb4-479"><a href="#cb4-479" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-480"><a href="#cb4-480" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb4-481"><a href="#cb4-481" aria-hidden="true" tabindex="-1"></a>\dot{V}O_2(t) = \dot{V}O_{2,\text{fast}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay, fast}}{\tau_\text{fast}}}\right) + </span>
+<span id="cb4-481"><a href="#cb4-481" aria-hidden="true" tabindex="-1"></a>\dot{V}O_2\thinspace(t) = \dot{V}O_{2,\text{fast}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay, fast}}{\tau_\text{fast}}}\right) + </span>
 <span id="cb4-482"><a href="#cb4-482" aria-hidden="true" tabindex="-1"></a>\dot{V}O_{2,\text{slow}} \cdot \left(1 - e^{-\frac{t_s - t_\text{delay,slow}}{\tau_\text{slow}}}\right) + </span>
 <span id="cb4-483"><a href="#cb4-483" aria-hidden="true" tabindex="-1"></a>\dot{V}O_{2,\text{Start}}</span>
 <span id="cb4-484"><a href="#cb4-484" aria-hidden="true" tabindex="-1"></a>$${#eq-VO2_Start2}</span>
@@ -4884,7 +4920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-991"><a href="#cb4-991" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;fast&lt;/sub&gt;', line = list(color = '#42BA97')) %&gt;%</span></span>
 <span id="cb4-992"><a href="#cb4-992" aria-hidden="true" tabindex="-1"></a><span class="in">      add_trace(x = ~t_s, y = ~slow_values, type = 'scatter', mode = 'lines', </span></span>
 <span id="cb4-993"><a href="#cb4-993" aria-hidden="true" tabindex="-1"></a><span class="in">                name = 'V̇O&lt;sub&gt;2&lt;/sub&gt;&lt;sub&gt;slow&lt;/sub&gt;', line = list(color = '#BB7693')) %&gt;%</span></span>
-<span id="cb4-994"><a href="#cb4-994" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "Bi-exponentielle V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",</span></span>
+<span id="cb4-994"><a href="#cb4-994" aria-hidden="true" tabindex="-1"></a><span class="in">      layout(title = "Biexponentielle V̇O&lt;sub&gt;2&lt;/sub&gt;-Modellfunktion",</span></span>
 <span id="cb4-995"><a href="#cb4-995" aria-hidden="true" tabindex="-1"></a><span class="in">             margin = list(t = 40),</span></span>
 <span id="cb4-996"><a href="#cb4-996" aria-hidden="true" tabindex="-1"></a><span class="in">             xaxis = list(title = "t [s]", range = c(0, max_x)),</span></span>
 <span id="cb4-997"><a href="#cb4-997" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", tickformat = ".1f"),</span></span>
@@ -4906,7 +4942,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-1013"><a href="#cb4-1013" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
 <span id="cb4-1014"><a href="#cb4-1014" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = max_x * 0.35,</span></span>
 <span id="cb4-1015"><a href="#cb4-1015" aria-hidden="true" tabindex="-1"></a><span class="in">                 y = max_y * 0.2,</span></span>
-<span id="cb4-1016"><a href="#cb4-1016" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)),</span></span>
+<span id="cb4-1016"><a href="#cb4-1016" aria-hidden="true" tabindex="-1"></a><span class="in">                 text = paste("T&lt;sub&gt;1/2&lt;/sub&gt;:", round(t_halb, 1)," s"),</span></span>
 <span id="cb4-1017"><a href="#cb4-1017" aria-hidden="true" tabindex="-1"></a><span class="in">                 showarrow = FALSE,</span></span>
 <span id="cb4-1018"><a href="#cb4-1018" aria-hidden="true" tabindex="-1"></a><span class="in">                 xanchor = 'left',</span></span>
 <span id="cb4-1019"><a href="#cb4-1019" aria-hidden="true" tabindex="-1"></a><span class="in">                 yanchor = 'bottom',</span></span>
@@ -4917,11 +4953,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-1024"><a href="#cb4-1024" aria-hidden="true" tabindex="-1"></a><span class="in">                 )</span></span>
 <span id="cb4-1025"><a href="#cb4-1025" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb4-1026"><a href="#cb4-1026" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-1027"><a href="#cb4-1027" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb4-1027"><a href="#cb4-1027" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay, y = max_y * 0.85, text = sprintf("t&lt;sub&gt;delay&lt;/sub&gt;: %.1f s", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb4-1028"><a href="#cb4-1028" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
 <span id="cb4-1029"><a href="#cb4-1029" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb4-1030"><a href="#cb4-1030" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb4-1031"><a href="#cb4-1031" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay_slow, y = max_y * 0.9, text = sprintf("t&lt;sub&gt;delay_slow&lt;/sub&gt;: %.1f", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb4-1031"><a href="#cb4-1031" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = t_delay_slow, y = max_y * 0.85, text = sprintf("t&lt;sub&gt;delay_slow&lt;/sub&gt;: %.1f s", t_delay_slow), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb4-1032"><a href="#cb4-1032" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11)</span></span>
 <span id="cb4-1033"><a href="#cb4-1033" aria-hidden="true" tabindex="-1"></a><span class="in">               )</span></span>
 <span id="cb4-1034"><a href="#cb4-1034" aria-hidden="true" tabindex="-1"></a><span class="in">             )) %&gt;%</span></span>
@@ -5061,60 +5097,63 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-1168"><a href="#cb4-1168" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-1169"><a href="#cb4-1169" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-1170"><a href="#cb4-1170" aria-hidden="true" tabindex="-1"></a><span class="fu">## Methodenteil: Umgang mit Daten in dieser Arbeit</span></span>
-<span id="cb4-1171"><a href="#cb4-1171" aria-hidden="true" tabindex="-1"></a>In dieser Arbeit wurde der Anstieg des $\dot{V}O_{2}$ nach Belastungsbeginn für jede Belastungsstufe wie folgt analysiert: Zunächst wurden aus den Atemzug-für-Atemzug $\dot{V}O_{2}$-Daten die Ausreißer entfernt. Danach erfolgte eine Glättung der Daten mittels eines gleitenden 3-Atemzug-Durchschnitts, gefolgt von der Kurvenanpassung.</span>
+<span id="cb4-1171"><a href="#cb4-1171" aria-hidden="true" tabindex="-1"></a>In dieser Arbeit wurde der Anstieg des $\dot{V}O_{2}\thinspace(t)$ nach Belastungsbeginn für jede Belastungsstufe wie folgt analysiert: Zunächst wurden aus den Atemzug-für-Atemzug $\dot{V}O_{2}$-Daten die Ausreißer entfernt. Danach erfolgte eine Glättung der Daten mittels eines gleitenden 3-Atemzug-Durchschnitts, gefolgt von der Kurvenanpassung.</span>
 <span id="cb4-1172"><a href="#cb4-1172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1173"><a href="#cb4-1173" aria-hidden="true" tabindex="-1"></a>Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des $\dot{V}O_{2}$ grafisch so bestimmt, dass die Phase-I-Daten der kardiorespiratorischen Antwort nicht einbezogen wurden. Dies entsprach in der Regel dem von <span class="co">[</span><span class="ot">@Bearden2000; @Stirling2005</span><span class="co">]</span> beschriebenen Zeitraum von 10-25 Sekunden für Phase 1. Die Kurvenanpassung wurde anschließend mit @eq-VO2_Start2 an die jeweiligen Daten durchgeführt. Die Modellparameter der Kurvenanpassung wurden wie folgt gewählt:</span>
-<span id="cb4-1174"><a href="#cb4-1174" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false collapse=true appearance="simple"}</span>
-<span id="cb4-1175"><a href="#cb4-1175" aria-hidden="true" tabindex="-1"></a><span class="fu">### Parameter - Kurvenanpassung:</span></span>
-<span id="cb4-1176"><a href="#cb4-1176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Verwendete Funktion: nlsLM</span>
-<span id="cb4-1177"><a href="#cb4-1177" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Maximale Iterationen: *1024*</span>
-<span id="cb4-1178"><a href="#cb4-1178" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Verwendung des Levenberg-Marquardt-Algorithmus</span>
-<span id="cb4-1179"><a href="#cb4-1179" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Parameter: V̇O2 (Amplitude), Tau</span>
-<span id="cb4-1180"><a href="#cb4-1180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Modell: V̇O2_t ~ V̇O2 · (1 - exp(-(t_s - t_delay) / Tau)) + V̇O2_Start</span>
-<span id="cb4-1181"><a href="#cb4-1181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grenzen:</span>
-<span id="cb4-1182"><a href="#cb4-1182" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>V̇O2: *0.5 bis 7.0 l/min*</span>
-<span id="cb4-1183"><a href="#cb4-1183" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Tau: *5 bis 360 s*</span>
-<span id="cb4-1184"><a href="#cb4-1184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Optimierung: Minimierung der Residuenquadratsumme (RSS)</span>
-<span id="cb4-1185"><a href="#cb4-1185" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-1186"><a href="#cb4-1186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1189"><a href="#cb4-1189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-1190"><a href="#cb4-1190" aria-hidden="true" tabindex="-1"></a><span class="do">### Dauer der Zeitkonstante bei verschiedenen Intensitäten unterschiedlich</span></span>
-<span id="cb4-1191"><a href="#cb4-1191" aria-hidden="true" tabindex="-1"></a><span class="co"># @Oezyner2001 fanden, dass der Wert von τ~Start~ für die Sauerstoffaufnahme im Durchschnitt bei 33 ± 16 s liegt, unabhängig von der Belastungshöhe. </span></span>
-<span id="cb4-1192"><a href="#cb4-1192" aria-hidden="true" tabindex="-1"></a><span class="co"># -Im Gegensatz dazu berichten andere Studien von einem Anstieg von τ~Start~ mit zunehmender Belastung (Linnarsson 1974).</span></span>
-<span id="cb4-1193"><a href="#cb4-1193" aria-hidden="true" tabindex="-1"></a><span class="co"># Wasserman et al. [@Wasserman1967] prognostizierten und fanden experimentell heraus, dass der Sauerstoffverbrauch bei schweren Arbeitsbelastungen länger ansteigt als bei moderaten Intensitäten. Henry und DeMoor [@Henry1956] stellten ebenfalls fest, dass die Zeit bis zum Erreichen eines stabilen Zustands der Sauerstoffaufnahme (VO2) mit steigender Arbeitslast zunimmt. Im Gegensatz dazu berichten Di Prampero et al. [@DiPrampero1970] und Margaria et al. [@Margaria1965], dass das Muster des VO2-Anstiegs zum stabilen Zustand unabhängig von der Arbeitsintensität gleich ist und dieser Anstieg durch einen einzigen exponentiellen Prozess beschrieben wird, wobei die Reaktionskonstante für alle Arbeitslasten gleich ist.</span></span>
-<span id="cb4-1194"><a href="#cb4-1194" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb4-1195"><a href="#cb4-1195" aria-hidden="true" tabindex="-1"></a><span class="co"># **Moderate Intensität:**</span></span>
-<span id="cb4-1196"><a href="#cb4-1196" aria-hidden="true" tabindex="-1"></a><span class="co"># Die pulmonale V̇O~2~steigt monoexponentiell und erreicht innerhalb von etwa 3 Minuten einen Steady State [@Whipp1982; @Hughson1988; @Whipp1994]. Die V̇O~2~ erhöht sich linear zur Arbeitsrate um etwa 10 ml·min^-1·W^-1. Sobald der Steady State erreicht ist, sind ATP-Resynthese und oxidative Phosphorylierung im Gleichgewicht [@Kindermann1979; @Faude2009].</span></span>
+<span id="cb4-1173"><a href="#cb4-1173" aria-hidden="true" tabindex="-1"></a>Vor der Kurvenanpassung wurde die Zeitverzögerung der Hauptkomponente des $\dot{V}O_{2}\thinspace(t)$ grafisch so bestimmt, dass die Phase-I-Daten der kardiorespiratorischen Antwort nicht einbezogen wurden. Dies entsprach in der Regel dem von <span class="co">[</span><span class="ot">@Bearden2000; @Stirling2005</span><span class="co">]</span> beschriebenen Zeitraum von 10-25 Sekunden für Phase 1. Die Kurvenanpassung wurde anschließend mit @eq-VO2_Start2 an die jeweiligen Daten durchgeführt. Die Modellparameter der Kurvenanpassung wurden wie folgt gewählt:</span>
+<span id="cb4-1174"><a href="#cb4-1174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1175"><a href="#cb4-1175" aria-hidden="true" tabindex="-1"></a>::: {.callout-note icon=false collapse=true appearance="simple"}</span>
+<span id="cb4-1176"><a href="#cb4-1176" aria-hidden="true" tabindex="-1"></a><span class="fu">### Parameter - Kurvenanpassung:</span></span>
+<span id="cb4-1177"><a href="#cb4-1177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1178"><a href="#cb4-1178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Verwendete Funktion: nlsLM</span>
+<span id="cb4-1179"><a href="#cb4-1179" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Maximale Iterationen: *1024*</span>
+<span id="cb4-1180"><a href="#cb4-1180" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Verwendung des Levenberg-Marquardt-Algorithmus</span>
+<span id="cb4-1181"><a href="#cb4-1181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Parameter: V̇O2 (Amplitude), Tau</span>
+<span id="cb4-1182"><a href="#cb4-1182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Modell: V̇O2_t ~ V̇O2 · (1 - exp(-(t_s - t_delay) / Tau)) + V̇O2_Start</span>
+<span id="cb4-1183"><a href="#cb4-1183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Grenzen:</span>
+<span id="cb4-1184"><a href="#cb4-1184" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>V̇O2: *0.5 bis 7.0 l/min*</span>
+<span id="cb4-1185"><a href="#cb4-1185" aria-hidden="true" tabindex="-1"></a><span class="ss">  * </span>Tau: *5 bis 360 s*</span>
+<span id="cb4-1186"><a href="#cb4-1186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Optimierung: Minimierung der Residuenquadratsumme (RSS)</span>
+<span id="cb4-1187"><a href="#cb4-1187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1188"><a href="#cb4-1188" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-1189"><a href="#cb4-1189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1192"><a href="#cb4-1192" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-1193"><a href="#cb4-1193" aria-hidden="true" tabindex="-1"></a><span class="do">### Dauer der Zeitkonstante bei verschiedenen Intensitäten unterschiedlich</span></span>
+<span id="cb4-1194"><a href="#cb4-1194" aria-hidden="true" tabindex="-1"></a><span class="co"># @Oezyner2001 fanden, dass der Wert von τ~Start~ für die Sauerstoffaufnahme im Durchschnitt bei 33 ± 16 s liegt, unabhängig von der Belastungshöhe. </span></span>
+<span id="cb4-1195"><a href="#cb4-1195" aria-hidden="true" tabindex="-1"></a><span class="co"># -Im Gegensatz dazu berichten andere Studien von einem Anstieg von τ~Start~ mit zunehmender Belastung (Linnarsson 1974).</span></span>
+<span id="cb4-1196"><a href="#cb4-1196" aria-hidden="true" tabindex="-1"></a><span class="co"># Wasserman et al. [@Wasserman1967] prognostizierten und fanden experimentell heraus, dass der Sauerstoffverbrauch bei schweren Arbeitsbelastungen länger ansteigt als bei moderaten Intensitäten. Henry und DeMoor [@Henry1956] stellten ebenfalls fest, dass die Zeit bis zum Erreichen eines stabilen Zustands der Sauerstoffaufnahme (VO2) mit steigender Arbeitslast zunimmt. Im Gegensatz dazu berichten Di Prampero et al. [@DiPrampero1970] und Margaria et al. [@Margaria1965], dass das Muster des VO2-Anstiegs zum stabilen Zustand unabhängig von der Arbeitsintensität gleich ist und dieser Anstieg durch einen einzigen exponentiellen Prozess beschrieben wird, wobei die Reaktionskonstante für alle Arbeitslasten gleich ist.</span></span>
 <span id="cb4-1197"><a href="#cb4-1197" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb4-1198"><a href="#cb4-1198" aria-hidden="true" tabindex="-1"></a><span class="co"># **Schwere Intensität:**</span></span>
-<span id="cb4-1199"><a href="#cb4-1199" aria-hidden="true" tabindex="-1"></a><span class="co"># Die schwere Intensität liegt zwischen der maximalen Leistungsfähigkeit (GXT) und der kritischen Leistung (CP) [@Hill1993]. Bei schwerer Belastung ist der oxidative Bedarf höher, und der Steady State verzögert sich durch die V̇O~2~ Slow Component. Die O~2~-Kosten steigen auf etwa 13 ml·min^-1·W^-1 [@WhippWasserman1972; @PearceMilhorn1977; @WhippMahler1980; @BarstowMole1991]. Die arterielle Laktatkonzentration steigt über die Ausgangswerte, erreicht aber ein erhöhtes Gleichgewicht [@Billat2003].</span></span>
+<span id="cb4-1198"><a href="#cb4-1198" aria-hidden="true" tabindex="-1"></a><span class="co"># **Moderate Intensität:**</span></span>
+<span id="cb4-1199"><a href="#cb4-1199" aria-hidden="true" tabindex="-1"></a><span class="co"># Die pulmonale V̇O~2~steigt monoexponentiell und erreicht innerhalb von etwa 3 Minuten einen Steady State [@Whipp1982; @Hughson1988; @Whipp1994]. Die V̇O~2~ erhöht sich linear zur Arbeitsrate um etwa 10 ml·min^-1·W^-1. Sobald der Steady State erreicht ist, sind ATP-Resynthese und oxidative Phosphorylierung im Gleichgewicht [@Kindermann1979; @Faude2009].</span></span>
 <span id="cb4-1200"><a href="#cb4-1200" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb4-1201"><a href="#cb4-1201" aria-hidden="true" tabindex="-1"></a><span class="co"># **Schwere Intensität:**</span></span>
-<span id="cb4-1202"><a href="#cb4-1202" aria-hidden="true" tabindex="-1"></a><span class="co"># In der Forschung ist umstritten, ob die primäre V̇O~2~-Kinetik bei schwerer Belastung langsamer ist als bei moderater. Dies könnte auf eine größere Zeitkonstante oder eine zusätzliche Slow Component in V̇O~2~ hindeuten, die einen verzögerten Steady State über dem vorhergesagten Niveau erreicht [@PatersonWhipp1991; @BarstowMole1991].</span></span>
+<span id="cb4-1202"><a href="#cb4-1202" aria-hidden="true" tabindex="-1"></a><span class="co"># Die schwere Intensität liegt zwischen der maximalen Leistungsfähigkeit (GXT) und der kritischen Leistung (CP) [@Hill1993]. Bei schwerer Belastung ist der oxidative Bedarf höher, und der Steady State verzögert sich durch die V̇O~2~ Slow Component. Die O~2~-Kosten steigen auf etwa 13 ml·min^-1·W^-1 [@WhippWasserman1972; @PearceMilhorn1977; @WhippMahler1980; @BarstowMole1991]. Die arterielle Laktatkonzentration steigt über die Ausgangswerte, erreicht aber ein erhöhtes Gleichgewicht [@Billat2003].</span></span>
 <span id="cb4-1203"><a href="#cb4-1203" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb4-1204"><a href="#cb4-1204" aria-hidden="true" tabindex="-1"></a><span class="co"># **Sehr schwere Intensität:**</span></span>
-<span id="cb4-1205"><a href="#cb4-1205" aria-hidden="true" tabindex="-1"></a><span class="co"># Bei sehr schwerer Intensität, oberhalb des maximalen Laktat-Steady-State oder der kritischen Leistung, erreichen weder V̇O~2~ noch arterielle Laktatkonzentration einen Steady State [@GaesserPoole1996]. Beide steigen unaufhaltsam, bis Ermüdung eintritt und maximale V̇O~2~-Werte erreicht werden [@WassermanWhipp1975; @GaesserPoole1996].</span></span>
-<span id="cb4-1206"><a href="#cb4-1206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1207"><a href="#cb4-1207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-1208"><a href="#cb4-1208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1204"><a href="#cb4-1204" aria-hidden="true" tabindex="-1"></a><span class="co"># **Schwere Intensität:**</span></span>
+<span id="cb4-1205"><a href="#cb4-1205" aria-hidden="true" tabindex="-1"></a><span class="co"># In der Forschung ist umstritten, ob die primäre V̇O~2~-Kinetik bei schwerer Belastung langsamer ist als bei moderater. Dies könnte auf eine größere Zeitkonstante oder eine zusätzliche Slow Component in V̇O~2~ hindeuten, die einen verzögerten Steady State über dem vorhergesagten Niveau erreicht [@PatersonWhipp1991; @BarstowMole1991].</span></span>
+<span id="cb4-1206"><a href="#cb4-1206" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-1207"><a href="#cb4-1207" aria-hidden="true" tabindex="-1"></a><span class="co"># **Sehr schwere Intensität:**</span></span>
+<span id="cb4-1208"><a href="#cb4-1208" aria-hidden="true" tabindex="-1"></a><span class="co"># Bei sehr schwerer Intensität, oberhalb des maximalen Laktat-Steady-State oder der kritischen Leistung, erreichen weder V̇O~2~ noch arterielle Laktatkonzentration einen Steady State [@GaesserPoole1996]. Beide steigen unaufhaltsam, bis Ermüdung eintritt und maximale V̇O~2~-Werte erreicht werden [@WassermanWhipp1975; @GaesserPoole1996].</span></span>
 <span id="cb4-1209"><a href="#cb4-1209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1210"><a href="#cb4-1210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1211"><a href="#cb4-1211" aria-hidden="true" tabindex="-1"></a><span class="fu"># Anpassbarer und ausführbarer R-Code mit webR eines des Sauerstoffvolumenstrom-Verlaufs in Abhängigkeit von der Zeit während der Belastung</span></span>
+<span id="cb4-1210"><a href="#cb4-1210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-1211"><a href="#cb4-1211" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-1212"><a href="#cb4-1212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1213"><a href="#cb4-1213" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
-<span id="cb4-1214"><a href="#cb4-1214" aria-hidden="true" tabindex="-1"></a><span class="in"># Hier VO2-Daten einfügen</span></span>
+<span id="cb4-1213"><a href="#cb4-1213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1214"><a href="#cb4-1214" aria-hidden="true" tabindex="-1"></a><span class="fu"># Anpassbarer und ausführbarer R-Code mit webR eines des Sauerstoffvolumenstrom-Verlaufs in Abhängigkeit von der Zeit während der Belastung</span></span>
 <span id="cb4-1215"><a href="#cb4-1215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1216"><a href="#cb4-1216" aria-hidden="true" tabindex="-1"></a><span class="in"># Zeitpunkte</span></span>
-<span id="cb4-1217"><a href="#cb4-1217" aria-hidden="true" tabindex="-1"></a><span class="in">t_s &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
+<span id="cb4-1216"><a href="#cb4-1216" aria-hidden="true" tabindex="-1"></a><span class="in">```{webr-r}</span></span>
+<span id="cb4-1217"><a href="#cb4-1217" aria-hidden="true" tabindex="-1"></a><span class="in"># Hier VO2-Daten einfügen</span></span>
 <span id="cb4-1218"><a href="#cb4-1218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1219"><a href="#cb4-1219" aria-hidden="true" tabindex="-1"></a><span class="in"># VO2-Werte</span></span>
-<span id="cb4-1220"><a href="#cb4-1220" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_t &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
+<span id="cb4-1219"><a href="#cb4-1219" aria-hidden="true" tabindex="-1"></a><span class="in"># Zeitpunkte</span></span>
+<span id="cb4-1220"><a href="#cb4-1220" aria-hidden="true" tabindex="-1"></a><span class="in">t_s &lt;- c(0, 2.8, 5.3, 8.6, 10.4, 15.2, 19.7, 22.5, 24.5, 26.2, 28.2, 31.6, 33.5, 35.3, 37, 38.5, 40.3, 41.9, 43.5, 45.2, 46.8, 48.4, 50, 51.5, 53.3, 54.8, 56.5, 57.9, 59.5, 61.1, 62.9, 64.3, 65.8, 67.7, 69.1, 70.7, 72.4, 73.9, 75.7, 77.2, 78.9, 80.5, 82.7, 84.1, 85.5, 87, 88.6, 90.2, 91.5, 92.9, 94.3, 95.8, 97.6, 99.1, 100.5, 102.1, 103.5, 105.3, 106.6, 108.1, 109.6, 111.4, 112.8, 114.3, 115.8, 117.7, 119.1, 120.8, 122.3, 124.2, 125.7, 127.2, 128.8, 131.1, 132.5, 133.9, 135.4, 136.9, 138.4, 140, 141.3, 143, 144.5, 146.1, 147.6, 149, 150.5, 152.3, 153.9, 155.6, 156.9, 158.6, 160.1, 162.4, 163.7, 165.1)</span></span>
 <span id="cb4-1221"><a href="#cb4-1221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1222"><a href="#cb4-1222" aria-hidden="true" tabindex="-1"></a><span class="in">plot(t_s, VO2_t, type="o", col="blue", xlab="Zeit [s]", ylab="VO2 [l/min]", main="VO2 [l/min]")</span></span>
-<span id="cb4-1223"><a href="#cb4-1223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1224"><a href="#cb4-1224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-1225"><a href="#cb4-1225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1222"><a href="#cb4-1222" aria-hidden="true" tabindex="-1"></a><span class="in"># VO2-Werte</span></span>
+<span id="cb4-1223"><a href="#cb4-1223" aria-hidden="true" tabindex="-1"></a><span class="in">VO2_t &lt;- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.125, 1.238, 1.541, 1.395, 1.685, 1.689, 1.622, 1.917, 1.732, 1.835, 1.801, 1.664, 1.744, 1.891, 1.85, 1.858, 1.89, 2.108, 1.962, 1.992, 1.972, 2.026, 1.868, 1.949, 2.033, 1.887, 1.856, 2.112, 2.117, 2.129, 1.994, 2.03, 1.925, 1.916, 1.949, 1.956, 2.119, 1.894, 2.034, 1.766, 1.994, 1.985, 2.068, 1.796, 2.172, 2.09, 2.017, 2.152, 2.238, 2.027, 2.214, 2.159, 2.098, 1.963, 2.063, 2.292, 2.21, 1.84, 2.102, 2.1, 2.086, 2.008, 2.048, 1.978, 1.87, 2.16, 1.977, 2.335, 2.053, 2.084, 2.056, 2.005, 2.161, 2.088, 2.161, 2.078, 2.038, 2.117, 2.148, 2.043, 2.342, 2.142, 2.306, 2.043, 1.881, 1.918, 2.252)</span></span>
+<span id="cb4-1224"><a href="#cb4-1224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1225"><a href="#cb4-1225" aria-hidden="true" tabindex="-1"></a><span class="in">plot(t_s, VO2_t, type="o", col="blue", xlab="Zeit [s]", ylab="VO2 [l/min]", main="VO2 [l/min]")</span></span>
 <span id="cb4-1226"><a href="#cb4-1226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1227"><a href="#cb4-1227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-1228"><a href="#cb4-1228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1229"><a href="#cb4-1229" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="In die Zwischenablage kopieren" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
@@ -5247,7 +5286,7 @@ qwebrInstance.then(
   }
 );
 </script>
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

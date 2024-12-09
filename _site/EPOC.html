@@ -712,7 +712,7 @@ server &lt;- function(input, output, session) {
              yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", range = c(0, max_y)),
              annotations = list(
                list(
-                 x = 2 * TauA, y = max_y * 0.75, text = sprintf("2tau: %.1f", 2 * TauA), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = 2 * TauA, y = max_y * 0.70, text = sprintf("2tau: %.1f s", 2 * TauA), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11, color = "darkgrey")
                ),
                list(
@@ -774,7 +774,7 @@ server &lt;- function(input, output, session) {
         p$x$layout$annotations &lt;- c(p$x$layout$annotations,
                                     list(
                                       list(
-                                        x = last_data_point, y = max_y * 0.75, text = sprintf("t&lt;sub&gt;data_last&lt;/sub&gt;: %.1f", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                                        x = last_data_point, y = max_y * 0.70, text = sprintf("t&lt;sub&gt;data_last&lt;/sub&gt;: %.1f s", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                                         textangle = -90, font = list(size = 11, color = "darkgrey")
                                       )
                                     ))
@@ -2082,7 +2082,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-506"><a href="#cb2-506" aria-hidden="true" tabindex="-1"></a><span class="in">             yaxis = list(title = "V̇O&lt;sub&gt;2&lt;/sub&gt; [l·min&lt;sup&gt;-1&lt;/sup&gt;]", range = c(0, max_y)),</span></span>
 <span id="cb2-507"><a href="#cb2-507" aria-hidden="true" tabindex="-1"></a><span class="in">             annotations = list(</span></span>
 <span id="cb2-508"><a href="#cb2-508" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
-<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = 2 * TauA, y = max_y * 0.75, text = sprintf("2tau: %.1f", 2 * TauA), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a><span class="in">                 x = 2 * TauA, y = max_y * 0.70, text = sprintf("2tau: %.1f s", 2 * TauA), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb2-510"><a href="#cb2-510" aria-hidden="true" tabindex="-1"></a><span class="in">                 textangle = -90, font = list(size = 11, color = "darkgrey")</span></span>
 <span id="cb2-511"><a href="#cb2-511" aria-hidden="true" tabindex="-1"></a><span class="in">               ),</span></span>
 <span id="cb2-512"><a href="#cb2-512" aria-hidden="true" tabindex="-1"></a><span class="in">               list(</span></span>
@@ -2144,7 +2144,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a><span class="in">        p$x$layout$annotations &lt;- c(p$x$layout$annotations,</span></span>
 <span id="cb2-569"><a href="#cb2-569" aria-hidden="true" tabindex="-1"></a><span class="in">                                    list(</span></span>
 <span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a><span class="in">                                      list(</span></span>
-<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">                                        x = last_data_point, y = max_y * 0.75, text = sprintf("t&lt;sub&gt;data_last&lt;/sub&gt;: %.1f", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
+<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">                                        x = last_data_point, y = max_y * 0.70, text = sprintf("t&lt;sub&gt;data_last&lt;/sub&gt;: %.1f s", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",</span></span>
 <span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="in">                                        textangle = -90, font = list(size = 11, color = "darkgrey")</span></span>
 <span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a><span class="in">                                      )</span></span>
 <span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a><span class="in">                                    ))</span></span>

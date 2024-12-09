@@ -489,7 +489,7 @@ server <- function(input, output, session) {
              yaxis = list(title = "V̇O<sub>2</sub> [l·min<sup>-1</sup>]", range = c(0, max_y)),
              annotations = list(
                list(
-                 x = 2 * TauA, y = max_y * 0.75, text = sprintf("2tau: %.1f", 2 * TauA), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = 2 * TauA, y = max_y * 0.70, text = sprintf("2tau: %.1f s", 2 * TauA), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11, color = "darkgrey")
                ),
                list(
@@ -549,7 +549,7 @@ server <- function(input, output, session) {
         p$x$layout$annotations <- c(p$x$layout$annotations,
                                     list(
                                       list(
-                                        x = last_data_point, y = max_y * 0.75, text = sprintf("t<sub>data_last</sub>: %.1f", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                                        x = last_data_point, y = max_y * 0.70, text = sprintf("t<sub>data_last</sub>: %.1f s", last_data_point), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                                         textangle = -90, font = list(size = 11, color = "darkgrey")
                                       )
                                     ))

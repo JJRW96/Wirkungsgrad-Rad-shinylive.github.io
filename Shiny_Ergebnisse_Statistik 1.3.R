@@ -5,12 +5,7 @@ library(plotly)
 library(DT)
 library(reactable)
 library(htmltools)
-library(tidyverse)
-library(car)
 library(ez)
-library(lme4)
-library(lmerTest)
-
 
 Bedingungen_data <- data.frame(
   Proband = factor(rep(c(1, 6, 10, 13, 14, 15, 17, 18, 19), each = 6)),
@@ -37,69 +32,7 @@ Bedingungen_data <- data.frame(
   ΔBLC = c(2.144, 2.410, 3.250, 2.660, 4.220, 1.590, 2.285, 2.320, 3.280, 4.110, 5.360, 3.760, 1.322, 1.080, 3.540, 2.040, 3.040, 4.510, 1.640, 2.200, 2.160, 2.090, 3.360, 2.990, 1.335, 1.780, 1.780, 2.450, 1.550, 3.710, 1.672, 1.820, 2.690, 3.150, 4.130, 4.370, 1.312, 2.000, 2.190, 1.640, 3.530, 2.610, 2.172, 2.000, 3.570, 4.400, 6.670, 5.020, 1.253, 1.100, 1.920, 2.750, 3.520, 3.030)
 )
 
-#############################
 
-# 1. Überprüfung der Normalverteilung
-shapiro_test <- shapiro.test(Bedingungen_data$WirkPhysio)
-print("Shapiro-Wilk Test für Normalverteilung:")
-print(shapiro_test)
-
-# 2. Überprüfung der Sphärizität
-ez_model <- ezANOVA(
-  data = Bedingungen_data,
-  dv = .(WirkPhysio),
-  wid = .(Proband),
-  within = .(Bedingung, Intensität),
-  detailed = TRUE
-)
-print("Mauchly's Test für Sphärizität:")
-print(ez_model$Mauchly)
-
-# 3. Repeated Measures ANOVA
-rm_anova <- ezANOVA(
-  data = Bedingungen_data,
-  dv = .(WirkPhysio),
-  wid = .(Proband),
-  within = .(Bedingung, Intensität),
-  detailed = TRUE
-)
-print("Repeated Measures ANOVA Ergebnisse:")
-print(rm_anova)
-
-# 4. Gemischtes Modell (Linear Mixed Model)
-lmm <- lmer(WirkPhysio ~ Bedingung * Intensität + (1|Proband), data = Bedingungen_data)
-anova_lmm <- anova(lmm)
-print("Linear Mixed Model ANOVA Ergebnisse:")
-print(anova_lmm)
-
-# Interpretation und Empfehlung
-cat("\nInterpretation und Empfehlung:\n")
-
-if (shapiro_test$p.value < 0.05) {
-  cat("Die Daten sind nicht normalverteilt (p < 0.05). ")
-  cat("Erwägen Sie nicht-parametrische Alternativen oder Datentransformation.\n")
-} else {
-  cat("Die Daten sind normalverteilt (p > 0.05).\n")
-}
-
-if (any(ez_model$Mauchly$p < 0.05)) {
-  cat("Die Annahme der Sphärizität ist verletzt (p < 0.05 in Mauchly's Test). ")
-  cat("Verwenden Sie die Greenhouse-Geisser oder Huynh-Feldt Korrekturen in der RM-ANOVA.\n")
-} else {
-  cat("Die Annahme der Sphärizität ist erfüllt (p > 0.05 in Mauchly's Test).\n")
-}
-
-cat("\nBasierend auf diesen Ergebnissen empfehle ich:\n")
-if (shapiro_test$p.value >= 0.05 && all(ez_model$Mauchly$p >= 0.05)) {
-  cat("Verwenden Sie die klassische Repeated Measures ANOVA.\n")
-} else if (shapiro_test$p.value >= 0.05 && any(ez_model$Mauchly$p < 0.05)) {
-  cat("Verwenden Sie die Repeated Measures ANOVA mit Greenhouse-Geisser oder Huynh-Feldt Korrekturen.\n")
-} else {
-  cat("Verwenden Sie das Linear Mixed Model (LMM), da es robuster gegen Verletzungen der Annahmen ist.\n")
-}
-
-cat("\nBeachten Sie die Ergebnisse beider Analysen (RM-ANOVA und LMM) für eine umfassende Interpretation.\n")
-##########################################
 
 
 
@@ -221,6 +154,7 @@ server <- function(input, output, session) {
     ) %>%
       layout(
         title = 'Durchschnittlicher Energieverbrauch der ausgewählten Probanden',
+        margin = list(t = 40),
         xaxis = list(title = htmltools::HTML(paste0('<b>', x_title, '</b>')),
                      showgrid = TRUE,
                      gridcolor = "lightgray",
@@ -356,6 +290,7 @@ server <- function(input, output, session) {
                      hoverlabel = list(bgcolor = "#F5F5F5")
     ) %>%
       layout(title = 'Wirkungsgrad der Probanden',
+             margin = list(t = 40),
              xaxis = list(title = htmltools::HTML('<b>Gruppe</b>'), 
                           showgrid = TRUE,  
                           gridcolor = "lightgray",  
@@ -372,83 +307,154 @@ server <- function(input, output, session) {
   output$anovaOutput <- renderUI({
     data <- filtered_data()
     
-    if (length(unique(data$Gruppe)) >= 2) {
-      anova_result <- aov(WirkPhysio ~ Gruppe, data = data)
+    # Überprüfen, welche Faktoren ausgewählt sind
+    bedingung_selected <- length(input$selectedBedingung) > 1
+    intensität_selected <- length(input$selectedIntensität) > 1
+    
+    if (bedingung_selected && intensität_selected) {
+      # Zweifaktorielle ANOVA mit Messwiederholung
+      anova_result <- ezANOVA(
+        data = data,
+        dv = .(WirkPhysio),
+        wid = .(Proband),
+        within = .(Bedingung, Intensität),
+        detailed = TRUE
+      )
       
-      # ANOVA Results
-      anova_summary <- summary(anova_result)
-      anova_df <- as.data.frame(anova_summary[[1]])
-      anova_df <- anova_df[, c("Df", "Sum Sq", "Mean Sq", "F value", "Pr(>F)")]
-      colnames(anova_df) <- c("df", "Quadratsumme", "Mittel der Quadrate", "F", "Signifikanz")
-      anova_df$Quadratsumme <- round(anova_df$Quadratsumme, 6)
-      anova_df$`Mittel der Quadrate` <- round(anova_df$`Mittel der Quadrate`, 6)
-      anova_df$F <- round(anova_df$F, 3)
-      anova_df$Signifikanz <- round(anova_df$Signifikanz, 5)
-      rownames(anova_df)[1] <- "Gruppe"
-      rownames(anova_df)[2] <- "Residuen"
+      anova_title <- "Zweifaktorielle ANOVA mit Messwiederholung Ergebnisse:"
+    } else if (bedingung_selected) {
+      # Einfaktorielle ANOVA für Bedingung
+      anova_result <- ezANOVA(
+        data = data,
+        dv = .(WirkPhysio),
+        wid = .(Proband),
+        within = .(Bedingung),
+        detailed = TRUE
+      )
       
-      anova_table <- reactable(anova_df)
+      anova_title <- "Einfaktorielle ANOVA mit Messwiederholung für Bedingung:"
+    } else if (intensität_selected) {
+      # Einfaktorielle ANOVA für Intensität
+      anova_result <- ezANOVA(
+        data = data,
+        dv = .(WirkPhysio),
+        wid = .(Proband),
+        within = .(Intensität),
+        detailed = TRUE
+      )
       
-      # Signifikanzcodes
-      sig_codes <- "Signif. codes:  0 '***' | 0.001 '**' | 0.01 '*' | 0.05 '.' | 0.1 ' | ' 1"
+      anova_title <- "Einfaktorielle ANOVA mit Messwiederholung für Intensität:"
+    } else {
+      return(p("Bitte wählen Sie mindestens zwei Stufen eines Faktors (Bedingung oder Intensität) aus."))
+    }
+    
+    # ANOVA Results
+    anova_df <- as.data.frame(anova_result$ANOVA)
+    anova_df <- anova_df[, c("Effect", "DFn", "DFd", "SSn", "SSd", "F", "p", "ges")]
+    
+    # Ändere "(Intercept)" zu "Konstante"
+    anova_df$Effect <- ifelse(anova_df$Effect == "(Intercept)", "Konstante", anova_df$Effect)
+    
+    # Funktion zur Bestimmung des Signifikanzlevels
+    get_sig_code <- function(p_value, effect) {
+      if (effect == "Konstante") return("")
+      if (p_value < 0.001) return("***")
+      else if (p_value < 0.01) return("**")
+      else if (p_value < 0.05) return("*")
+      else if (p_value < 0.1) return(".")
+      else return(" ")
+    }
+    
+    # Zuerst runden, dann Spaltennamen ändern und Signifikanz hinzufügen
+    anova_df$SSn <- round(anova_df$SSn, 6)
+    anova_df$SSd <- round(anova_df$SSd, 6)
+    anova_df$F <- round(anova_df$F, 3)
+    anova_df$p <- round(anova_df$p, 5)
+    anova_df$ges <- round(anova_df$ges, 3)
+    anova_df$Signifikanz <- mapply(get_sig_code, anova_df$p, anova_df$Effect)
+    
+    # Dann die Spaltennamen ändern
+    colnames(anova_df) <- c("Effekt", "df", "Residuen", "Quadratsumme", "Quadratsumme Fehler", "F-Wert", "p-Wert", "η²", "Signifikanz")
+    
+    anova_table <- reactable(anova_df)
+    
+    # Signifikanzcodes
+    sig_codes <- "Signifikanzcodes: 0 = '***' | 0.001 = '**' | 0.01 = '*' | 0.05 = '.' | 0.1 = ' '"
+    
+    # Funktion zur Bestimmung des Signifikanzlevels
+    get_sig_code <- function(p_value) {
+      if (p_value < 0.001) return("***")
+      else if (p_value < 0.01) return("**")
+      else if (p_value < 0.05) return("*")
+      else if (p_value < 0.1) return(".")
+      else return(" ")
+    }
+    
+    # Post-hoc Tests und Tabellen
+    format_posthoc <- function(posthoc, factor_name) {
+      posthoc_df <- as.data.frame(posthoc$p.value)
+      posthoc_df$Faktor1 <- rownames(posthoc_df)
+      posthoc_df <- tidyr::pivot_longer(posthoc_df, cols = -Faktor1, names_to = "Faktor2", values_to = "p_Wert")
+      posthoc_df <- posthoc_df[!is.na(posthoc_df$p_Wert), ]
       
-      # Funktion zur Bestimmung des Signifikanzlevels
-      get_sig_code <- function(p_value) {
-        if (p_value < 0.001) return("***")
-        else if (p_value < 0.01) return("**")
-        else if (p_value < 0.05) return("*")
-        else if (p_value < 0.1) return(".")
-        else return(" ")
-      }
-      
-      # Tukey HSD Post-hoc Test
-      posthoc <- TukeyHSD(anova_result)
-      
-      # Umstrukturierung des Post-hoc-Tests
-      posthoc_df <- as.data.frame(posthoc$Gruppe)
-      posthoc_df$comparison <- rownames(posthoc_df)
       posthoc_df <- posthoc_df %>%
-        separate(comparison, c("Gruppe 1", "Gruppe 2"), sep = "-") %>%
-        mutate(
-          `Gruppe 1` = trimws(`Gruppe 1`),
-          `Gruppe 2` = trimws(`Gruppe 2`),
-          Differenz = sprintf("%.4f", round(diff, 4)),
-          `p-Wert` = sprintf("%.4f", round(`p adj`, 4)),
-          Signifikanz = sapply(`p adj`, get_sig_code)
-        )
+        dplyr::mutate(
+          `p-Wert` = sprintf("%.4f", round(p_Wert, 4)),
+          Signifikanz = sapply(p_Wert, get_sig_code)
+        ) %>%
+        dplyr::select(Faktor1, Faktor2, `p-Wert`, Signifikanz)
       
-      # Manuelles Auswählen und Neuordnen der Spalten
-      posthoc_df <- posthoc_df[, c("Gruppe 1", "Gruppe 2", "Differenz", "p-Wert", "Signifikanz")]
+      colnames(posthoc_df) <- c(paste(factor_name, "1"), paste(factor_name, "2"), "p-Wert", "Signifikanz")
       
-      # Sortieren nach p-Wert
+      # Sortiere nach p-Wert aufsteigend
       posthoc_df <- posthoc_df[order(as.numeric(posthoc_df$`p-Wert`)), ]
       
-      posthoc_table <- reactable(
-        posthoc_df,
-        columns = list(
-          `Gruppe 1` = colDef(name = "Gruppe 1"),
-          `Gruppe 2` = colDef(name = "Gruppe 2"),
-          Differenz = colDef(name = "Differenz"),
-          `p-Wert` = colDef(name = "p-Wert"),
-          Signifikanz = colDef(name = "Signifikanz")
-        ),
-        defaultPageSize = 20,
-        rownames = FALSE
-      )
+      # Ersetze Punkte durch Unterstriche in den Kombinationsspalten
+      posthoc_df[[paste(factor_name, "1")]] <- gsub("\\.", "_", posthoc_df[[paste(factor_name, "1")]])
+      posthoc_df[[paste(factor_name, "2")]] <- gsub("\\.", "_", posthoc_df[[paste(factor_name, "2")]])
       
-      tagList(
-        h4("ANOVA Ergebnisse:"),
-        div(style = "margin-top: 20px;"),
-        anova_table,
-        div(style = "margin-top: 20px;"),
-        tags$i(p(sig_codes)),
-        div(style = "margin-top: 20px;"),
-        h4("Tukey HSD Post-hoc Test:"),
-        posthoc_table
-      )
-    } else {
-      p("Mindestens zwei Gruppen sind erforderlich, um eine ANOVA durchzuführen.")
+      return(posthoc_df)
     }
+    
+    posthoc_tables <- list()
+    
+    if (bedingung_selected && intensität_selected) {
+      # Für zweifaktorielle ANOVA: Vergleich aller Kombinationen
+      data$Kombination <- interaction(data$Bedingung, data$Intensität)
+      posthoc_kombination <- pairwise.t.test(data$WirkPhysio, data$Kombination, paired = TRUE, p.adjust.method = "bonferroni")
+      posthoc_kombination_df <- format_posthoc(posthoc_kombination, "Kombination")
+      posthoc_tables$kombination <- reactable(posthoc_kombination_df, defaultPageSize = 20, rownames = FALSE)
+    } else if (bedingung_selected) {
+      posthoc_bedingung <- pairwise.t.test(data$WirkPhysio, data$Bedingung, paired = TRUE, p.adjust.method = "bonferroni")
+      posthoc_bedingung_df <- format_posthoc(posthoc_bedingung, "Bedingung")
+      posthoc_tables$bedingung <- reactable(posthoc_bedingung_df, defaultPageSize = 20, rownames = FALSE)
+    } else if (intensität_selected) {
+      posthoc_intensität <- pairwise.t.test(data$WirkPhysio, data$Intensität, paired = TRUE, p.adjust.method = "bonferroni")
+      posthoc_intensität_df <- format_posthoc(posthoc_intensität, "Intensität")
+      posthoc_tables$intensität <- reactable(posthoc_intensität_df, defaultPageSize = 20, rownames = FALSE)
+    }
+    
+    # Ausgabe zusammenstellen
+    output <- tagList(
+      h4(anova_title),
+      div(style = "margin-top: 20px;"),
+      anova_table,
+      div(style = "margin-top: 20px;"),
+      tags$i(p(sig_codes))
+    )
+    
+    if (length(posthoc_tables) > 0) {
+      for (factor_name in names(posthoc_tables)) {
+        output <- tagList(
+          output,
+          div(style = "margin-top: 20px;"),
+          h4(paste("Paarweise Vergleiche (Post-hoc) für", factor_name, ":")),
+          posthoc_tables[[factor_name]]
+        )
+      }
+    }
+    
+    return(output)
   })
 }
 

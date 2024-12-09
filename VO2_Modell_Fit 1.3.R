@@ -8,7 +8,7 @@ VO2_data <- c(0.465, 0.34, 0.466, 0.503, 0.452, 0.687, 0.846, 0.963, 0.936, 1.12
 
 # UI
 ui <- fluidPage(
-  titlePanel("EPOC-Modellfunktion"),
+  titlePanel("V̇O2-Modellfunktion"),
   fluidRow(
     column(3,
      style = "height: 90vh; overflow-y: auto;",
@@ -27,7 +27,7 @@ ui <- fluidPage(
       br(), br(),
       fileInput("file_upload", "CSV-Datei hochladen", accept = ".csv"),
       tags$h4(tags$strong("Modelanpassung:")),
-      actionButton("optimize", "nlsLM - Fit"),
+      actionButton("optimize", "Fit: nlsLM"),
       br(), br(),
       tags$h4(tags$strong("Berechnung - Ruhesauerstoffaufnahme:")),
       radioButtons("geschlecht", "Geschlecht:", choices = c("Männlich", "Weiblich")),
@@ -274,7 +274,7 @@ server <- function(input, output, session) {
                list(
                  x = max_x * 0.70,
                  y = max_y * 0.3,
-                 text = paste("T<sub>1/2</sub>:", round(t_halb, 1)),
+                 text = paste("T<sub>1/2</sub>:", round(t_halb, 1)," s"),
                  showarrow = FALSE,
                  xanchor = 'left',
                  yanchor = 'bottom',
@@ -285,20 +285,20 @@ server <- function(input, output, session) {
                  )
                ),
                list(
-                 x = t_delay, y = max_y * 0.9, text = sprintf("t<sub>delay</sub>: %.1f", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = t_delay, y = max_y * 0.9, text = sprintf("t<sub>delay</sub>: %.1f s", t_delay), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                list(
-                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = Tau + t_delay, y = max_y * 0.9, text = sprintf("tau: %.1f s", Tau), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                list(
-                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                 x = tau4 + t_delay, y = max_y * 0.9, text = sprintf("4tau: %.1f s", tau4), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                  textangle = -90, font = list(size = 11)
                ),
                if (show_data()) {
                  list(
-                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
+                   x = nlsLM_end, y = max_y * 0.9, text = sprintf("nlsLM Ende: %.1f s", nlsLM_end), showarrow = FALSE, xanchor = "left", yanchor = "bottom",
                    textangle = -90, font = list(size = 11)
                  )
                }
